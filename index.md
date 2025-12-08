@@ -79,7 +79,7 @@ title: หน้าแรก
 
   <!-- View All Button -->
   <section class="text-center">
-    <a href="/article/" class="inline-block w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold px-8 py-3 rounded-xl transition">
+    <a href="{{ '/article/' | relative_url }}" class="inline-block w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold px-8 py-3 rounded-xl transition">
       ดูบทความทั้งหมด →
     </a>
   </section>
