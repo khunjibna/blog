@@ -1,9 +1,11 @@
-<footer class="bg-gray-800 text-white text-center p-4 mt-8 text-sm">
-  <p>© {{ "now" | date: "%Y" }} {{ site.author.name }}. All rights reserved.</p>
-  <p class="mt-1">
-    Built with <span class="text-red-400">♥</span> using 
-    <a href="https://jekyllrb.com" target="_blank" class="underline hover:text-blue-300">Jekyll</a> 
-    and 
-    <a href="https://tailwindcss.com" target="_blank" class="underline hover:text-blue-300">Tailwind CSS</a>.
-  </p>
+<footer class="mt-10 text-sm text-center text-gray-600 relative z-10">
+  <div class="mx-auto max-w-5xl rounded-2xl bg-white/80 backdrop-blur p-6 shadow-lg border border-gray-200">
+    <p class="font-semibold text-gray-800">© {{ "now" | date: "%Y" }} {{ site.author.name }}. All rights reserved.</p>
+    <p class="mt-2 flex flex-wrap gap-2 justify-center items-center text-gray-500">
+      <span class="text-red-500">♥</span> Crafted with
+      <a href="https://jekyllrb.com" target="_blank" class="font-semibold text-blue-700 hover:text-blue-900">Jekyll</a>
+      &
+      <a href="https://tailwindcss.com" target="_blank" class="font-semibold text-emerald-700 hover:text-emerald-900">Tailwind CSS</a>
+    </p>
+  </div>
 </footer>

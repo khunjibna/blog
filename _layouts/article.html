@@ -25,15 +25,15 @@
     <div class="lg:w-2/3 xl:w-3/4">
 
       <main class="flex-1">
-        <nav class="text-sm text-gray-500 mb-4 px-2">
-          <a href="/" class="text-blue-600 hover:underline">Home</a>
-          {% if page.categories and page.categories.size > 0 %}
-          {% assign primary_category = page.categories[0] %}
-          &nbsp;&gt;&nbsp;
-          <a href="/{{ primary_category | slugify }}/" class="text-blue-600 hover:underline">
-            {{ primary_category }}
-          </a>
-          {% endif %}
+          <nav class="text-sm text-gray-500 mb-4 px-2">
+            <a href="{{ '/' | relative_url }}" class="text-blue-600 hover:underline">Home</a>
+            {% if page.categories and page.categories.size > 0 %}
+            {% assign primary_category = page.categories[0] %}
+            &nbsp;&gt;&nbsp;
+            <a href="{{ '/' | append: primary_category | append: '/' | relative_url }}" class="text-blue-600 hover:underline">
+              {{ primary_category }}
+            </a>
+            {% endif %}
           &nbsp;&gt;&nbsp;
           <span class="text-gray-700">Article</span>
         </nav>
@@ -41,10 +41,10 @@
         <!-- Grid แสดงโพสต์ (ไม่แบ่งหน้า) -->
         <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-2">
           {% for post in site.posts %}
-          <a href="{{ post.url | relative_url }}"
-            class="block rounded-xl shadow overflow-hidden bg-white hover:shadow-lg transition">
-            <img src="{{ post.image | default: '/assets/images/default.jpg' }}" alt="{{ post.title }}"
-              class="w-full h-48 object-cover" />
+            <a href="{{ post.url | relative_url }}"
+              class="block rounded-xl shadow overflow-hidden bg-white hover:shadow-lg transition">
+              <img src="{{ post.image | default: '/assets/images/default.jpg' | relative_url }}" alt="{{ post.title }}"
+                class="w-full h-48 object-cover" />
            <div class="p-4">
               {% assign months = "มกราคม,กุมภาพันธ์,มีนาคม,เมษายน,พฤษภาคม,มิถุนายน,กรกฎาคม,สิงหาคม,กันยายน,ตุลาคม,พฤศจิกายน,ธันวาคม" | split: "," %}
               {% assign day = post.date | date: "%-d" %}
