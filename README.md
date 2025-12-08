@@ -1,7 +1,7 @@
 # My Jekyll Site
 
 This repository contains a Jekyll site that is meant to be served from
-`https://khunjibna.github.io/myjekyllsite/`. Building locally normally requires Bundler
+`https://khunjibna.github.io/blog/`. Building locally normally requires Bundler
 to download gems from https://rubygems.org, but the current environment blocks outbound
 HTTPS requests, which results in `403 Forbidden` errors when running `bundle install`.
 
@@ -11,7 +11,7 @@ HTTPS requests, which results in `403 Forbidden` errors when running `bundle ins
 
    ```yml
    url: "https://khunjibna.github.io"
-   baseurl: "/myjekyllsite"
+   baseurl: "/blog"
    ```
 
 2. From a machine with internet access, run `bundle package --all` in this project to
@@ -22,7 +22,7 @@ HTTPS requests, which results in `403 Forbidden` errors when running `bundle ins
 
    ```bash
    script/bootstrap
-   bundle exec jekyll build --baseurl "/myjekyllsite"
+   bundle exec jekyll build --baseurl "/blog"
    ```
 
 `script/bootstrap` installs from the cached gems without attempting to reach the

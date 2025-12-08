@@ -5,11 +5,9 @@ author:
   name: Tamachirs.com
   email: khunjibna@tamachirs.com
 
-  
 url: "https://khunjibna.github.io"
-baseurl: "/myjekyllsite"  # โฮสต์ภายใต้ subfolder บน GitHub Pages
+baseurl: "/blog"  # โฮสต์ภายใต้ subfolder บน GitHub Pages
 future: true
-
 
 google_fonts: Noto Sans Thai
 og_image: /assets/image/web-banner.jpg
