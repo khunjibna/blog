@@ -1,26 +1,30 @@
-<div class="text-center">
-  <img id="profile-picture" class="mx-auto rounded-full w-32 h-32 object-cover" src="" alt="Profile Picture">
-  <h2 id="profile-name" class="text-xl font-semibold mt-4">ชื่อ</h2>
-  <p id="profile-about" class="text-gray-600 mt-2">เกี่ยวกับ</p>
+<div class="text-center space-y-4">
+  <img id="profile-picture" class="mx-auto rounded-full w-32 h-32 object-cover ring-4 ring-white shadow-lg" src="" alt="Profile Picture">
+  <div>
+    <h2 id="profile-name" class="text-2xl font-semibold mt-1">ชื่อ</h2>
+    <p id="profile-about" class="text-gray-600 mt-1">เกี่ยวกับ</p>
+  </div>
 
-  <div class="mt-6 text-sm text-gray-500">
-    <span id="followers"></span> · <span id="following"></span>
+  <div class="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
+    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold" id="followers"></span>
+    <span class="text-gray-400">•</span>
+    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-semibold" id="following"></span>
   </div>
 
   <!-- ลิงก์ Follow -->
-  <div class="mt-6">
-      <a href="https://nostrudel.ninja/#/u/npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">Follow</a>
-      <a href="https://github.com/khunjibna" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">Github</a>
+  <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a href="https://nostrudel.ninja/#/u/npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy" target="_blank" class="btn-primary">Follow</a>
+      <a href="https://github.com/khunjibna" target="_blank" class="btn-ghost">Github</a>
   </div>
   
 
   <!-- เส้นแบ่ง -->
-  <hr class="my-6">
+  <hr class="my-6 border-gray-200">
 
   <!-- ปุ่มเต็มขนาดสำหรับ 3 ลิงก์ -->
-  <div class="space-y-4">
-      <div class="font-bold">มินิเกม</div>
-      <a href="https://tamachirs.com/app/random-character/" target="_blank" class="block bg-gray-800 text-white text-center py-3 rounded hover:bg-gray-600">คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?</a>
+  <div class="space-y-4 text-left">
+      <div class="font-bold text-sm uppercase tracking-[0.2em] text-gray-500">มินิเกม</div>
+      <a href="{{ '/app/random-character/' | relative_url }}" target="_blank" class="block w-full text-center bg-gradient-to-r from-gray-900 to-blue-900 text-white py-3 rounded-xl hover:from-blue-900 hover:to-emerald-700 transition shadow-lg">คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?</a>
   </div>
 </div>
 

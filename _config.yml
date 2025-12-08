@@ -5,10 +5,9 @@ author:
   name: Tamachirs.com
   email: khunjibna@tamachirs.com
 
-  
-baseurl: ""  # ถ้าโฮสต์ที่ root (ไม่มี subfolder)
+url: "https://khunjibna.github.io"
+baseurl: "/blog"  # โฮสต์ภายใต้ subfolder บน GitHub Pages
 future: true
-
 
 google_fonts: Noto Sans Thai
 og_image: /assets/image/web-banner.jpg

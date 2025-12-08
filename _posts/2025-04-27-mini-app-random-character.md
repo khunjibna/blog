@@ -20,7 +20,7 @@ summary: "มินิแอพเล็กๆ จากรูปภาพวา
 <br><br>
 สำหรับท่านไหนที่ยังอยากจะลองเล่นสามารถเข้าไปเล่นได้ดังนี้
 <br><br>
-เข้าไปยัง <a href="https://tamachirs.com/app/random-character/" target="_blank" class="underline text-blue-600">https://tamachirs.com/app/random-character/ </a>
+เข้าไปยัง <a href="https://khunjibna.github.io/blog/app/random-character/" target="_blank" class="underline text-blue-600">https://khunjibna.github.io/blog/app/random-character/ </a>
 <br><br>
 จากกนั้น กดปุ่ม สุ่มบุคคลที่จะอยากให้ไปป้ายยา
 <br><br>

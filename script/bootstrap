@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Bootstraps bundler in restricted networks by preferring any cached gems.
+PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$PROJECT_ROOT"
+
+# Avoid bundler rewriting lockfile for missing platforms.
+export BUNDLE_WITHOUT=development:test
+export BUNDLE_PATH="${PROJECT_ROOT}/vendor/bundle"
+
+if bundle check >/dev/null 2>&1; then
+  echo "Dependencies already satisfied."
+  exit 0
+fi
+
+if [ -d "vendor/cache" ] && find vendor/cache -name '*.gem' | grep -q .; then
+  echo "Installing from local vendor/cache (offline-first)..."
+  bundle config set cache_all true
+  bundle config set path "$BUNDLE_PATH"
+  bundle install --local
+else
+  cat <<'MSG'
+Bundler needs to download gems, but this environment blocks outbound HTTPS (403).
+To proceed, pre-seed vendor/cache with the required gem *.gem files from a networked
+machine (bundle package), then re-run this script. See README.md for steps.
+MSG
+  exit 1
+fi
