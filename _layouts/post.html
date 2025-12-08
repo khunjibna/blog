@@ -29,15 +29,15 @@
       <main class="flex-1 px-2">
 
         <!-- 🔗 Breadcrumb -->
-        <nav class="text-sm text-gray-500 mb-4">
-          <a href="/" class="text-blue-600 hover:underline">Home</a>
-          {% if page.categories and page.categories.size > 0 %}
-          {% assign primary_category = page.categories[0] %}
-          &nbsp;&gt;&nbsp;
-          <a href="/{{ primary_category | slugify }}/" class="text-blue-600 hover:underline">
-            {{ primary_category }}
-          </a>
-          {% endif %}
+          <nav class="text-sm text-gray-500 mb-4">
+            <a href="{{ '/' | relative_url }}" class="text-blue-600 hover:underline">Home</a>
+            {% if page.categories and page.categories.size > 0 %}
+            {% assign primary_category = page.categories[0] %}
+            &nbsp;&gt;&nbsp;
+            <a href="{{ '/' | append: primary_category | append: '/' | relative_url }}" class="text-blue-600 hover:underline">
+              {{ primary_category }}
+            </a>
+            {% endif %}
           &nbsp;&gt;&nbsp;
           <span class="text-gray-700">{{ page.title }}</span>
         </nav>

@@ -6,7 +6,8 @@ author:
   email: khunjibna@tamachirs.com
 
   
-baseurl: ""  # ถ้าโฮสต์ที่ root (ไม่มี subfolder)
+url: "https://khunjibna.github.io"
+baseurl: "/myjekyllsite"  # โฮสต์ภายใต้ subfolder บน GitHub Pages
 future: true
 
 
