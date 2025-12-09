@@ -1,0 +1,51 @@
+name: Build and Deploy Jekyll site
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby (ใช้ Ruby >= 3.2)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.2
+          bundler-cache: true
+
+      - name: Show Ruby and Bundler versions
+        run: |
+          ruby -v
+          gem -v
+          bundle -v
+
+      - name: Install dependencies
+        run: |
+          bundle config set --local path vendor/bundle
+          # หากต้องการความทนทานต่อ platform-specific gems:
+          bundle lock --add-platform x86_64-linux || true
+          bundle install --jobs 4 --retry 3
+
+      - name: Build site with Jekyll
+        run: |
+          bundle exec jekyll build --destination ./_site
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./_site
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
