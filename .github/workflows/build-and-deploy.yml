@@ -6,11 +6,17 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -30,5 +36,11 @@ jobs:
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.PERSONAL_TOKEN }}    # <- ต้องเก็บ PAT ไว้ใน secrets
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}   # <- ต้องสร้าง secret ชื่อนี้
           publish_dir: ./_site
+          publish_branch: gh-pages
+          # optional:
+          # allow_empty: true
+          # user_name: 'github-actions[bot]'
+          # user_email: 'github-actions[bot]@users.noreply.github.com'
+          # commit_message: 'deploy: ${{ github.sha }}'
