@@ -1,4 +1,4 @@
-name: Build and Deploy Jekyll site (Pages actions)
+name: Build and Deploy Jekyll site (gh-pages branch via peaceiris)
 
 on:
   push:
@@ -10,8 +10,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -25,16 +24,11 @@ jobs:
           bundle lock --add-platform x86_64-linux || true
           bundle install --jobs 4 --retry 3
 
-      - name: Build site with Jekyll
+      - name: Build
         run: bundle exec jekyll build --destination ./_site
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v3
-
-      - name: Upload Pages artifact (updated)
-        uses: actions/upload-pages-artifact@v2
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: ./_site
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+          github_token: ${{ secrets.PERSONAL_TOKEN }}    # <- ต้องเก็บ PAT ไว้ใน secrets
+          publish_dir: ./_site
