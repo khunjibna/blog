@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- _includes/head.html -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <!-- Title -->
+    <title>ว่าด้วยเหตุการณ์นมดิบ #North101 | Tamachirs.com</title>
+    <meta name="description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta name="author" content="Tamachirs.com">
+  
+    <!-- SEO & Social: Open Graph -->
+    <meta property="og:title" content="ว่าด้วยเหตุการณ์นมดิบ #North101 | Tamachirs.com">
+    <meta property="og:description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khunjibna.github.io/blog/article/2024/01/19/north101-subject-of-raw-milk.html">
+    <meta property="og:image" content="/blog/assets/image/web-banner.jpg">
+  
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ว่าด้วยเหตุการณ์นมดิบ #North101 | Tamachirs.com">
+    <meta name="twitter:description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta name="twitter:image" content="/blog/assets/image/web-banner.jpg">
+  
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+  
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+    <!-- Nostr Tools -->
+    <script src="https://cdn.jsdelivr.net/npm/nostr-tools@2.12.0/lib/nostr.bundle.min.js"></script>
+    <script src="/blog/assets/js/nostr.js" defer></script>
+  
+    <!-- Google Fonts: Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --brand: #2563eb;
+        --brand-dark: #1e3a8a;
+        --surface: rgba(255, 255, 255, 0.9);
+        --muted: #94a3b8;
+      }
+
+      body {
+        font-family: 'Sarabun', sans-serif;
+        background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.14), transparent 30%),
+          radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.18), transparent 25%),
+          linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        color: #0f172a;
+      }
+
+      .page-shell::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(37, 99, 235, 0.07) 1px, transparent 0);
+        background-size: 22px 22px;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .glass-card {
+        background: var(--surface);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        background: linear-gradient(135deg, var(--brand), #22c55e);
+        color: #fff;
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        box-shadow: 0 15px 30px rgba(37, 99, 235, 0.25);
+        transition: transform 160ms ease, box-shadow 160ms ease, filter 200ms ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 36px rgba(34, 197, 94, 0.25);
+        filter: brightness(1.02);
+      }
+
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        color: #0f172a;
+        background: rgba(255, 255, 255, 0.6);
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+      }
+
+      .btn-ghost:hover {
+        border-color: rgba(37, 99, 235, 0.5);
+        box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+      }
+    </style>
+  </head>
+  
+
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+  <!-- เมนูส่วนหัว -->
+  <header class="bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 text-white shadow-lg sticky top-0 z-20">
+  <div class="container mx-auto flex justify-between items-center px-4 lg:px-6 py-4">
+    <div class="text-xl lg:text-2xl font-bold tracking-tight flex items-center space-x-2">
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">🌌</span>
+      <a href="/blog/" class="hover:text-sky-200 transition-colors">Tamachirs.com</a>
+    </div>
+
+
+    <!-- ปุ่มมือถือ -->
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="focus:outline-none rounded-full p-2 hover:bg-white/10 transition" aria-label="เปิดเมนู">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- เมนู Desktop -->
+    <nav class="hidden lg:flex space-x-2">
+      
+        <a href="/blog/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Home</a>
+      
+        <a href="/blog/about/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">About</a>
+      
+        <a href="/blog/article/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Article</a>
+      
+        <a href="/blog/note/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Note</a>
+      
+        <a href="/blog/project/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Project</a>
+      
+        <a href="/blog/contact/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Contact</a>
+      
+    </nav>
+  </div>
+
+  <!-- เมนู Mobile -->
+<div id="mobile-menu" class="hidden lg:hidden bg-gray-800/95 px-4 py-4 space-y-2 border-t border-white/10">
+  
+    <a href="/blog/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Home</a>
+  
+    <a href="/blog/about/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">About</a>
+  
+    <a href="/blog/article/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Article</a>
+  
+    <a href="/blog/note/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Note</a>
+  
+    <a href="/blog/project/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Project</a>
+  
+    <a href="/blog/contact/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Contact</a>
+  
+</div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    toggleBtn.addEventListener("click", function () {
+      mobileMenu.classList.toggle("hidden");
+    });
+  });
+</script>
+
+
+  <div class="container mx-auto mt-8 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 flex-grow">
+    <!-- โปรไฟล์ด้านซ้าย (4 ส่วนในหน้าจอใหญ่, 1 ส่วนในหน้าจอเล็ก) -->
+
+    <div class="lg:hidden mx-2">
+      <button onclick="toggleSidebar()" class="w-full bg-gray-200 px-4 py-2 rounded font-semibold">
+        ☰ เมนูโปรไฟล์
+      </button>
+    </div>
+
+
+    <div id="sidebar" class="hidden lg:block lg:w-1/3 xl:w-1/4 bg-white p-6 rounded-lg shadow-lg mx-2">
+      <div class="text-center space-y-4">
+  <img id="profile-picture" class="mx-auto rounded-full w-32 h-32 object-cover ring-4 ring-white shadow-lg" src="" alt="Profile Picture">
+  <div>
+    <h2 id="profile-name" class="text-2xl font-semibold mt-1">ชื่อ</h2>
+    <p id="profile-about" class="text-gray-600 mt-1">เกี่ยวกับ</p>
+  </div>
+
+  <div class="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
+    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold" id="followers"></span>
+    <span class="text-gray-400">•</span>
+    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-semibold" id="following"></span>
+  </div>
+
+  <!-- ลิงก์ Follow -->
+  <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a href="https://nostrudel.ninja/#/u/npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy" target="_blank" class="btn-primary">Follow</a>
+      <a href="https://github.com/khunjibna/blog" target="_blank" class="btn-ghost">Github</a>
+  </div>
+  
+
+  <!-- เส้นแบ่ง -->
+  <hr class="my-6 border-gray-200">
+
+  <!-- ปุ่มเต็มขนาดสำหรับ 3 ลิงก์ -->
+  <div class="space-y-4 text-left">
+      <div class="font-bold text-sm uppercase tracking-[0.2em] text-gray-500">มินิเกม</div>
+      <a href="/blog/app/random-character/" target="_blank" class="block w-full text-center bg-gradient-to-r from-gray-900 to-blue-900 text-white py-3 rounded-xl hover:from-blue-900 hover:to-emerald-700 transition shadow-lg">คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <!-- บทความด้านขวา (8 ส่วนในหน้าจอใหญ่, 1 ส่วนในหน้าจอเล็ก) -->
+    <div class="lg:w-2/3 xl:w-3/4">
+
+      <!-- Main post content -->
+      <main class="flex-1 px-2">
+
+        <!-- 🔗 Breadcrumb -->
+          <nav class="text-sm text-gray-500 mb-4">
+            <a href="/blog/" class="text-blue-600 hover:underline">Home</a>
+            
+            
+            &nbsp;&gt;&nbsp;
+            <a href="/blog/Article/" class="text-blue-600 hover:underline">
+              Article
+            </a>
+            
+          &nbsp;&gt;&nbsp;
+          <span class="text-gray-700">ว่าด้วยเหตุการณ์นมดิบ #North101</span>
+        </nav>
+
+
+        <div class="bg-green-800 text-white px-6 py-6 break-words rounded mb-2">
+          <div class="font-bold text-lg ">
+              <h1>ว่าด้วยเหตุการณ์นมดิบ #North101</h1>
+          </div>
+          <div class="flex items-center text-green-800 text-sm pt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+              <p class="ml-2 text-white"> <span>19/01/2024</span></p>
+          </div>
+      </div>
+
+
+
+        <div class="bg-white p-6 rounded border shadow-sm ">
+
+       
+          <!-- เนื้อหาโพสต์ -->
+          <article class="prose prose-indigo max-w-none break-words">
+            <p><img src="/blog/assets/image/blog/20240119-1/1.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+
+<p><b>ว่าด้วยเหตุการณ์นมดิบ #North101</b>
+<br /><br />
+      เอ้ย เชียงใหม่นี่มีนมดิบที่ไหนบ้าง แค่อยากลองกินวะ จะท้องเสียป่าวนะ ประโยคหนึ่งที่ผมคุยกับ <b class="underline">Arn Sange</b> ในช่วงระหว่างการเดินทริปขึ้นไปยัง Wat Pha Lat Hike (Monk’s trail) ของ Win Vee ณ เช้าวันนั้น หลังจากทำการด์ดิ่งช่วงเช้าระหว่างที่ลงมาที่ร้าน Basecamp Coffee House แล้วก็ได้พูดคุยว่าเอ่อนี่ อยากลองกินนมดิบไหม เขาก็บอกว่าจะชื้อมาให้ และเขาก็เอามาให้ในตอนที่อยู่ที่ร้าน Yellow ในช่วงนั้น พร้อมกับนมจำนวนหนึ่งลิตร ซึ่งผมจะจ่ายเงินให้แต่เขาเลี้ยงผมเลย ผมก็ไปหาแก้วภายในร้านพร้อมหยิบเทใส่แก้ว และกินจนหมดภายในเวลาอันสั้น เหมือนอดอยากมาจากไหน ซึ่งเพื่อนๆที่นั่งข้างๆ ผมคงตกใจอยู่พอสมควร ขอโทษจริงๆ มันอดใจไม่ได้ ฮ่าๆ (เอ่อ ก็นมธรรมดาๆนี่หนาเพียงแต่แค่มีความมันๆ ของมันเพิ่มขึ้น) ในใจนั่งคิดว่าเอ่อถ้าไม่มีใครอยากลองชิมเดี๋ยวเอาไปแช่ตู้เย็นที่ห้องพัก ชักพักผมก็บอกว่าใครจะลองนมดิบบ้าง ก็แบ่งค่อยๆ แบ่งให้กับเพื่อนๆที่มากันตอนนั้นจนหมดถึงอย่างรวดเร็ว และบางท่านก็ยังอยากชิมนมดิบนี้เหมือนกัน อย่าง อ.ตั้มเองก็อยากลองกินเหมือนกัน แต่มันหมดชะก่อน รู้ละแน่นอนว่าผมต้องออกไปชื้อชื้อมาให้ทุกๆ คนได้ลองชิม งานนี้ต้องไม่มีใครพลาด
+<br /><br />
+      สถานการณ์ก็ดำเนินไปถึงช่วงหลังแนะนำตัวแหละที่มาของการได้รู้จัก bitcoin ได้อย่างไรบ้าง ช่วงนั้นก็เที่ยงวันพอดีซึ่งแต่ละคนก็อยากจะหาอะไรกินกันก่อนจะไปที่ วันนิมมาน ช่วงบ่ายสอง ผมเองก็ต้องรีบออกมากินข้าวเที่ยงก่อนกับ <b class="underline">Arn Sange</b> ซึ่งเมื่อกินกันเสร็จเพื่อนๆก็พึ่งมาถึงร้านกัน ผมเองก็ออกจากร้านเพื่อไปชื้อนมดิบ และขอติดรถไปด้วย เพื่อจะไปดูที่หน้าร้าน ซึ่งตอนนั้นคุยกันว่ามีแต่ 5 ลิตรนะ ผมบอกโอเครไม่เป็นไร เพื่อให้ทุกคนได้ลองชิมให้ทันก่อนการพูดคุยเรื่องการใช้งาน nostr ในช่วงบ่ายสองของวันนั้น และเราก็ออกไปด้วยกันนั้นและช่วงระหว่างที่นั่งรถไปด้วยกันผมก็โพสต์โน๊ตทิ้งไว้
+<br /><br />
+<img src="/blog/assets/image/blog/20240119-1/2.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      ช่วงระหว่างการเดินทางนั้น เป็นอะไรที่ค่อนข้างรถติดพอสมควร และระยะทางที่ไปนั้นก็ค่อนข้างไกลพอสมควรเหมือนกัน เราได้พูดคุยกันในหลายๆเรื่อง จนถึงที่ร้านก็ลงออกไปชื้ออย่างรวดเร็วจ่ายและรีบเดินทางกลับมายัง วันนิมมาน เพื่อให้ทุกคนได้ลองชิมนมสดที่เย็นๆ ซึ่งก็ต้องทำเวลาด้วย ช่วงระหว่างทางกลับมาก็แวะเซเว่นเพื่อชื้อแก้ว ผมคิดอยู่พักหนึ่งเหมือนกันว่าจะชื้อกี่แก้วกันดีก็คิดว่าได้ประมาณ 3 แพ็คเล็ก น่าจะประมาณ 24 ใบ ก็คงจะเพียงพอแล้ว พอถึงสถานที่งาน <b class="underline">Arn Sange</b> เองก็ให้ผมลงก่อนเพื่อส่งนมดิบไปภายในงาน เนื่องจากต้องหาที่จอดรถภายในสถานที่งาน ผมก็เลยต้องรีบเดินแบกนมถุง 5 ลิตรใหญ่เข้างาน พอถึงสถานที่งาน พี่ซุปเองก็ถ่ายคลิปส่งมอบนมดิบให้กับชาวบิทคอยเนอร์ได้ลองชิมกัน ก็ให้ <b class="underline">Xsara8</b> เป็นผู้แกะและเทนมดิบใส่แก้วแต่ละใบให้ทุกคนได้ลองชิมกัน โดยบรรยากาศบนเวที WEB3 นั้นก็คุยไปส่วน bitcoiner นั้นก็แกะนมไป ดันกลายเป็น meme เฉยเลย (ซึ่งตอนนั้นผมคิดในใจว่าต้องมี meme แน่ๆ และก็เป็นจริง)
+<br /><br />
+<img src="/blog/assets/image/blog/20240119-1/3.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      ผมก็เรียก <b class="underline">Tendou</b> มากินนมดิบ ซึ่งหันมาและก็วิ่งมาอย่างไวจริงๆ ทุกคนต่างมารอ  <b class="underline">Xsara8</b> เทนมดิบถุง 5 กิโลเพื่อเทใส่แก้วทั้งหมด ซึ่งแปลกแก้วที่ชื้อมาดันพอดีกับจำนวนนมดิบดังกล่าว และทุกคนรอเทใส่แก้วจนหมด ก็เปิดฉากให้ อ.ตั้มได้ลองดื่มแก้วแรกและชาวบิทคอยเนอร์ก็ทยอยมาลองชิมได้อย่างละแก้วสองแก้ว รวมถ่ายรูปหมู่โชว์ชูแก้วที่ถือนมดิบในงาน และทางทีมงาน Right Shift ก็เริ่มขึ้นเวทีแนะนำ nostr และร่วมรับฟังการแนะนำ alby ตามเหตุการณ์ไป (ถือนมดิบมากินบนเวทีกันเลยทีเดียว และที่นั่งหน้าเวทีโชว์นมดิบเป็นระยะๆ)
+<br /><br />
+<b>เหตุการณ์ทั้งหมดนี่ มันแค่ผมอยากกินนมดิบเท่านั้นเองใช่รึป่าว?</b>
+<br /><br />
+      ถ้าช่วงเช้าผมไม่นึกบอกว่าอยากจะกินนมดิบจะคงไม่มีเหตุการณ์ meme เหล่านี้แน่นอน ผมอยากขอบคุณ <b class="underline">Arn Sange</b> ที่ร่วมสร้างเหตุการณ์ด้วยกัน โดยอาจไม่ได้ตั้งใจและความเห็นแก่ตัวของผมเอง ที่อุตสาห์ขับรถไปคนเดียวไปที่ร้านรอบแรกเพื่อนำนมดิบ 1 ลิตรมาให้ผมลองชิมช่วงเช้าและยังขับรถไปชื้อนมดิบกับผมมาอีกครั้งเพื่อให้ชาว bitcoiner ได้ลองชิมนมดิบดังกล่าวด้วย (เบื้องหลังการนำนมดิบมาก็เพราะนายเลย ขอบคุณจริงๆ ครับ) 
+<br /><br />
+สำหรับชาวเหนือที่อยู่เชียงใหม่นั้น (ราคาค่อนข้างถูกพอสมควร)</p>
+
+<p>สามารถชื้อได้ที่ <a href="https://maps.app.goo.gl/Te9nTqTqAvV2Y8Zz5" target="_blank" class="text-blue-800">https://maps.app.goo.gl/Te9nTqTqAvV2Y8Zz5</a></p>
+
+          </article>
+          <div class="border-t mt-5">
+            <div class="flex justify-center my-2 space-x-4">
+              <div>
+                <a href="https://www.facebook.com/sharer.php?u=https://khunjibna.github.io/blog/article/2024/01/19/north101-subject-of-raw-milk.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/share.png" alt="SHARE FACEBOOK" title="SHARE FACEBOOK">
+                </a>
+              </div>
+            
+              <div>
+                <a href="https://twitter.com/share?url=https://khunjibna.github.io/blog/article/2024/01/19/north101-subject-of-raw-milk.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/sharetw.png" alt="SHARE TWITTER" title="SHARE TWITTER">
+                </a>
+              </div>
+            
+              <div>
+                <a href="https://social-plugins.line.me/lineit/share?url=https://khunjibna.github.io/blog/article/2024/01/19/north101-subject-of-raw-milk.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/shareline.png" alt="SHARE LINE" title="SHARE LINE">
+                </a>
+              </div>
+            </div>
+            
+            <!-- หมวดหมู่ -->
+            <span class="inline-flex items-center gap-1">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M7 7a1 1 0 011-1h2.586a1 1 0 01.707.293l6.414 6.414a1 1 0 010 1.414l-4.586 4.586a1 1 0 01-1.414 0L7.293 12.707A1 1 0 017 12V8z" />
+              </svg>
+              <span>Article</span>
+            </span>
+            
+          </div>
+        </div>
+
+
+        <div class="bg-white border px-2 py-2 mt-2">
+          <div class="mb-2 pl-2"><b>สามารถสนับสนุนบทความนี้ผ่าน (Zap) ขอบคุณครับ</b></div>
+          <!-- _includes/zap-widget.html -->
+<div class="max-w-sm mx-auto">
+  <!-- ปุ่มหลัก -->
+  <button id="zap-toggle" onclick="toggleZapForm()" 
+          class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded">
+    ⚡ สนับสนุน
+  </button>
+
+  <!-- แบบฟอร์ม Zap -->
+  <div id="zap-form" class="mt-4 border border-yellow-300 bg-yellow-50 p-4 rounded hidden break-words">
+    <label for="zap-amount" class="block mb-1 text-sm text-gray-700">💸 จำนวนที่ต้องการ (sats):</label>
+    <input id="zap-amount" type="number" min="1" step="1" value="21"
+           class="w-full p-2 border rounded mb-3">
+
+    <button onclick="fetchZapInvoice()"
+            class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-4 rounded">
+      🔄 สร้าง QR สำหรับ Zap
+    </button>
+
+    <div id="zap-result" class="mt-4 hidden text-center">
+      <p class="text-sm text-gray-600">📱 สแกน QR เพื่อสนับสนุน:</p>
+      <canvas id="zap-qr" class="mx-auto my-2"></canvas>
+      <p class="text-xs text-gray-400" id="zap-pr"></p>
+      <!-- 🔗 ลิงก์เปิดในแอป Lightning จะถูกเพิ่มตรงนี้ -->
+    </div>
+  </div>
+</div>
+
+<!-- QR Code CDN -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+
+<script>
+  function toggleZapForm() {
+    const form = document.getElementById('zap-form');
+    form.classList.toggle('hidden');
+  }
+
+  async function fetchZapInvoice() {
+    const sats = parseInt(document.getElementById('zap-amount').value);
+    const resultEl = document.getElementById('zap-result');
+    const qrCanvas = document.getElementById('zap-qr');
+    const prEl = document.getElementById('zap-pr');
+
+    if (isNaN(sats) || sats < 1) {
+      alert("⚠️ กรุณาใส่จำนวน sats ที่ถูกต้อง");
+      return;
+    }
+
+    const lnurl = "https://walletofsatoshi.com/.well-known/lnurlp/khunjibna"; // เช่น https://walletofsatoshi.com/.well-known/lnurlp/jib
+
+    try {
+      const lnurlRes = await fetch(lnurl);
+      const lnData = await lnurlRes.json();
+      const callback = lnData.callback;
+      const amountMsat = sats * 1000;
+
+      // ใส่ comment แบบกำหนดเอง
+      const invoiceRes = await fetch(`${callback}?amount=${amountMsat}&comment=${encodeURIComponent("Zap Article on Tamachirs.com")}`);
+      const invoiceData = await invoiceRes.json();
+
+      if (invoiceData.pr) {
+        resultEl.classList.remove("hidden");
+        QRCode.toCanvas(qrCanvas, "lightning:" + invoiceData.pr);
+        prEl.innerText = invoiceData.pr;
+
+        // 🆕 เพิ่มลิงก์สำหรับเปิดในแอป (เฉพาะมือถือ)
+        const existingLink = document.getElementById('zap-mobile-link');
+        if (existingLink) existingLink.remove();
+
+        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+          const mobileLink = document.createElement('a');
+          mobileLink.href = "lightning:" + invoiceData.pr;
+          mobileLink.innerText = "⚡ เปิดในแอป Lightning";
+          mobileLink.className = "mt-2 inline-block text-yellow-600 underline text-sm";
+          mobileLink.setAttribute("target", "_blank");
+          mobileLink.id = "zap-mobile-link";
+          resultEl.appendChild(mobileLink);
+        }
+      } else {
+        alert("ไม่สามารถสร้าง invoice ได้ 😢");
+      }
+    } catch (e) {
+      console.error(e);
+      alert("❌ เกิดข้อผิดพลาด: " + e.message);
+    }
+  }
+</script>
+
+        </div>
+      </main>
+
+
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-10 text-sm text-center text-gray-600 relative z-10">
+  <div class="mx-auto max-w-5xl rounded-2xl bg-white/80 backdrop-blur p-6 shadow-lg border border-gray-200">
+    <p class="font-semibold text-gray-800">© 2025 Tamachirs.com. All rights reserved.</p>
+    <p class="mt-2 flex flex-wrap gap-2 justify-center items-center text-gray-500">
+      <span class="text-red-500">♥</span> Crafted with
+      <a href="https://jekyllrb.com" target="_blank" class="font-semibold text-blue-700 hover:text-blue-900">Jekyll</a>
+      &
+      <a href="https://tailwindcss.com" target="_blank" class="font-semibold text-emerald-700 hover:text-emerald-900">Tailwind CSS</a>
+    </p>
+  </div>
+</footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('hidden');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- _includes/head.html -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <!-- Title -->
+    <title>รวมร้านที่รับ Bitcoin Lightning จากการเดินทางส่วนตัวตลอดที่ผ่านมา | Tamachirs.com</title>
+    <meta name="description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta name="author" content="Tamachirs.com">
+  
+    <!-- SEO & Social: Open Graph -->
+    <meta property="og:title" content="รวมร้านที่รับ Bitcoin Lightning จากการเดินทางส่วนตัวตลอดที่ผ่านมา | Tamachirs.com">
+    <meta property="og:description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khunjibna.github.io/blog/article/2025/04/21/collection-stores-accept-bitcoin-lightning-my-personal.html">
+    <meta property="og:image" content="/blog/assets/image/web-banner.jpg">
+  
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="รวมร้านที่รับ Bitcoin Lightning จากการเดินทางส่วนตัวตลอดที่ผ่านมา | Tamachirs.com">
+    <meta name="twitter:description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta name="twitter:image" content="/blog/assets/image/web-banner.jpg">
+  
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+  
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+    <!-- Nostr Tools -->
+    <script src="https://cdn.jsdelivr.net/npm/nostr-tools@2.12.0/lib/nostr.bundle.min.js"></script>
+    <script src="/blog/assets/js/nostr.js" defer></script>
+  
+    <!-- Google Fonts: Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --brand: #2563eb;
+        --brand-dark: #1e3a8a;
+        --surface: rgba(255, 255, 255, 0.9);
+        --muted: #94a3b8;
+      }
+
+      body {
+        font-family: 'Sarabun', sans-serif;
+        background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.14), transparent 30%),
+          radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.18), transparent 25%),
+          linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        color: #0f172a;
+      }
+
+      .page-shell::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(37, 99, 235, 0.07) 1px, transparent 0);
+        background-size: 22px 22px;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .glass-card {
+        background: var(--surface);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        background: linear-gradient(135deg, var(--brand), #22c55e);
+        color: #fff;
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        box-shadow: 0 15px 30px rgba(37, 99, 235, 0.25);
+        transition: transform 160ms ease, box-shadow 160ms ease, filter 200ms ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 36px rgba(34, 197, 94, 0.25);
+        filter: brightness(1.02);
+      }
+
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        color: #0f172a;
+        background: rgba(255, 255, 255, 0.6);
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+      }
+
+      .btn-ghost:hover {
+        border-color: rgba(37, 99, 235, 0.5);
+        box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+      }
+    </style>
+  </head>
+  
+
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+  <!-- เมนูส่วนหัว -->
+  <header class="bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 text-white shadow-lg sticky top-0 z-20">
+  <div class="container mx-auto flex justify-between items-center px-4 lg:px-6 py-4">
+    <div class="text-xl lg:text-2xl font-bold tracking-tight flex items-center space-x-2">
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">🌌</span>
+      <a href="/blog/" class="hover:text-sky-200 transition-colors">Tamachirs.com</a>
+    </div>
+
+
+    <!-- ปุ่มมือถือ -->
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="focus:outline-none rounded-full p-2 hover:bg-white/10 transition" aria-label="เปิดเมนู">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- เมนู Desktop -->
+    <nav class="hidden lg:flex space-x-2">
+      
+        <a href="/blog/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Home</a>
+      
+        <a href="/blog/about/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">About</a>
+      
+        <a href="/blog/article/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Article</a>
+      
+        <a href="/blog/note/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Note</a>
+      
+        <a href="/blog/project/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Project</a>
+      
+        <a href="/blog/contact/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Contact</a>
+      
+    </nav>
+  </div>
+
+  <!-- เมนู Mobile -->
+<div id="mobile-menu" class="hidden lg:hidden bg-gray-800/95 px-4 py-4 space-y-2 border-t border-white/10">
+  
+    <a href="/blog/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Home</a>
+  
+    <a href="/blog/about/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">About</a>
+  
+    <a href="/blog/article/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Article</a>
+  
+    <a href="/blog/note/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Note</a>
+  
+    <a href="/blog/project/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Project</a>
+  
+    <a href="/blog/contact/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Contact</a>
+  
+</div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    toggleBtn.addEventListener("click", function () {
+      mobileMenu.classList.toggle("hidden");
+    });
+  });
+</script>
+
+
+  <div class="container mx-auto mt-8 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 flex-grow">
+    <!-- โปรไฟล์ด้านซ้าย (4 ส่วนในหน้าจอใหญ่, 1 ส่วนในหน้าจอเล็ก) -->
+
+    <div class="lg:hidden mx-2">
+      <button onclick="toggleSidebar()" class="w-full bg-gray-200 px-4 py-2 rounded font-semibold">
+        ☰ เมนูโปรไฟล์
+      </button>
+    </div>
+
+
+    <div id="sidebar" class="hidden lg:block lg:w-1/3 xl:w-1/4 bg-white p-6 rounded-lg shadow-lg mx-2">
+      <div class="text-center space-y-4">
+  <img id="profile-picture" class="mx-auto rounded-full w-32 h-32 object-cover ring-4 ring-white shadow-lg" src="" alt="Profile Picture">
+  <div>
+    <h2 id="profile-name" class="text-2xl font-semibold mt-1">ชื่อ</h2>
+    <p id="profile-about" class="text-gray-600 mt-1">เกี่ยวกับ</p>
+  </div>
+
+  <div class="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
+    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold" id="followers"></span>
+    <span class="text-gray-400">•</span>
+    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-semibold" id="following"></span>
+  </div>
+
+  <!-- ลิงก์ Follow -->
+  <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a href="https://nostrudel.ninja/#/u/npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy" target="_blank" class="btn-primary">Follow</a>
+      <a href="https://github.com/khunjibna/blog" target="_blank" class="btn-ghost">Github</a>
+  </div>
+  
+
+  <!-- เส้นแบ่ง -->
+  <hr class="my-6 border-gray-200">
+
+  <!-- ปุ่มเต็มขนาดสำหรับ 3 ลิงก์ -->
+  <div class="space-y-4 text-left">
+      <div class="font-bold text-sm uppercase tracking-[0.2em] text-gray-500">มินิเกม</div>
+      <a href="/blog/app/random-character/" target="_blank" class="block w-full text-center bg-gradient-to-r from-gray-900 to-blue-900 text-white py-3 rounded-xl hover:from-blue-900 hover:to-emerald-700 transition shadow-lg">คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <!-- บทความด้านขวา (8 ส่วนในหน้าจอใหญ่, 1 ส่วนในหน้าจอเล็ก) -->
+    <div class="lg:w-2/3 xl:w-3/4">
+
+      <!-- Main post content -->
+      <main class="flex-1 px-2">
+
+        <!-- 🔗 Breadcrumb -->
+          <nav class="text-sm text-gray-500 mb-4">
+            <a href="/blog/" class="text-blue-600 hover:underline">Home</a>
+            
+            
+            &nbsp;&gt;&nbsp;
+            <a href="/blog/Article/" class="text-blue-600 hover:underline">
+              Article
+            </a>
+            
+          &nbsp;&gt;&nbsp;
+          <span class="text-gray-700">รวมร้านที่รับ Bitcoin Lightning จากการเดินทางส่วนตัวตลอดที่ผ่านมา</span>
+        </nav>
+
+
+        <div class="bg-green-800 text-white px-6 py-6 break-words rounded mb-2">
+          <div class="font-bold text-lg ">
+              <h1>รวมร้านที่รับ Bitcoin Lightning จากการเดินทางส่วนตัวตลอดที่ผ่านมา</h1>
+          </div>
+          <div class="flex items-center text-green-800 text-sm pt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+              <p class="ml-2 text-white"> <span>21/04/2025</span></p>
+          </div>
+      </div>
+
+
+
+        <div class="bg-white p-6 rounded border shadow-sm ">
+
+       
+          <!-- เนื้อหาโพสต์ -->
+          <article class="prose prose-indigo max-w-none break-words">
+            <p><img src="/blog/assets/image/blog/20250421-1/11.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+
+<p>      หลังจากที่ได้เล่าเรื่องราว ปสก. ส่วนตัวกับการใช้งาน Bitcoin Lightning ตามสถานที่ที่ได้เดินทางทั้ง 4EP ที่ผ่านมา จริงๆ แล้วผมได้เดินทางไปที่นั้นที่นี้ตลอดระยะเวลาตั้งแต่ได้เข้าร่วมใน Nostr Client ที่ทำให้ส่วนตัวได้เจอเรื่องราวมากมายในชีวิตเป็นประสบการณ์ที่หาไม่ได้อีกแล้ว ปกติผมเองก็มักจะชอบเที่ยวคนเดียวอยู่เสมอเหมือนหลายๆ ท่านที่มีทริปท่องเที่ยวประจำปี ส่วนตัวผมเองนับตั้งแต่จบงาน BTC2023 และได้มารู้จักกับ Nostr และได้พูดคุยกับหลากหลายคนจนทำให้กลายเป็นว่าจากเดิมที่เดินทางไปเที่ยวคนเดียวแบบบส่วนตัว กลายเป็นว่าต้องเดินทางเพื่อ Mission บางอย่างถึงปัจจุบันก็จะวนกลับไปที่เก่าอีกครั้ง เวลาเปลี่ยนถึงแม้บางอย่างจะไม่เปลี่ยนก็ตามผมก็ยังเห็นพัฒนาการที่เติบโตขึ้นและได้เรียนรู้เรื่องราวหลากหลาย และบทความนี้ก็ขอรวบรวมร้านที่เคยได้ไปพูดคุยและชำระด้วย Bitcoin Lightning กันดีกว่าตลอดตั้งที่ผมได้มารู้จักการใช้งาน Lightning หลังจากงาน BTC2023 (Bitcoin Thailand Conference 2023) เป็นต้นมา ในบทความนี้จะปักหมุดเหมือนเดียวกับบทความ ปสก. ส่วนตัวกับการใช้งาน Bitcoin Lightning ตามสถานที่ที่ได้เดินทาง ท่านไหนอยากติดตามสามารถไปอ่านกันได้ทั้ง 4EP ครับ</p>
+<hr class="my-5" />
+
+<p><b class="text-xl mb-4">เตี๋ยวตู้ไม้บ้านแซ่</b>
+<br /><br />
+<img src="/blog/assets/image/blog/20250421-1/7.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+<div class="mb-4"><b>สถานที่:</b> พระประแดง-สมุทรปราการ</div>
+<p>      เป็นร้านแรกสำหรับส่วนตัวเลยที่ได้มีโอกาสได้ไปแวะชิมและจ่ายด้วย Bitcoin Lightning ร้านก๋วยเตี๋ยวที่อยู่พระประแดงโดยเพื่อนชาว Nostr อย่าง <b class="underline">tukjedsadatik</b>  และเป็นร้านที่เป็นทริปตามล่าหาเพื่อนบิทคอยเนอร์ในทริปพิเศษตอนปี 2024 เป็นปีที่มีการฉลอง Bitcoin Halving ซึ่งผมเขียนบทความครั้งแรกที่ได้แวะเที่ยวพระประแดงโดยสามารถแวะไปอ่านได้ ( <a href="https://khunjibna.github.io/blog/article/2024/04/09/phra-pradaeng-to-baan-sae-wooden-noodles.html" target="_blank"><b class="underline text-green-800">แวะเที่ยวพระประแดง กินข้าวเช้าที่เตี๋ยวตู้ไม้ยามเช้า</b></a> ) สำหรับร้านนี้เองก็มีก๋วยเตี๋ยวธรรมดาๆ น้ำซุปก็กลมกล่อมอร่อยใช้ได้ กินกับเนื้อจระเข้ทอด ที่อยู่ข้างโต๊ะก็อร่อย (ล้อเล่น) เจ้าของร้านก็ค่อนข้างเป็นกันเอง หากบอกว่าจ่ายด้วยบิทคอย (สีหน้าเปลี่ยนเป็นคนละคน) โดยเฉพาะต้มยำมีรสชาติที่เป็นเอกลักษณ์ ส่วนตัวหากมีโอกาสแวะได้ไป กทม ก็คงได้ไปแว๊บกินบ่อยๆ นั่ง บขส จากหมอชิตถึงพระประแดงได้ด้วยรถเที่ยวเดียว สำหรับร้านนี้ผมก็ได้แวะทักทายค่อนข้างหลายครั้ง แต่ก็เป็นร้านแรกเหมือนกันจากทริปการเดินทางคนเดียวเพื่อพักผ่อน เป็นทริปที่เดินทางเพื่อพบเพื่อนบิทคอยเนอร์ด้วยกัน
+<br /><br />
+<a href="https://maps.app.goo.gl/jrDvm83PPNxiZ5Pa8" target="_blank" class="rounded-sm bg-gray-400 px-2 py-2 text-white">Google Map</a></p>
+<hr class="my-5" />
+
+<p><b class="text-xl mb-2">สุญญ- ไม่ใช่ร้านกาแฟ (Vacuumcoffee) </b>
+<br /><br />
+<img src="/blog/assets/image/blog/20250421-1/6.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+<div class="mb-4"><b>สถานที่:</b> ห้วยผึ้ง-กาฬสินธุ์</div>
+<p>      ร้านที่สองที่ได้ออกเดินทางแวะไปเยี่ยมเยือนตอนที่เจ้าของร้านยังไม่ทำโปรเจคห้วยผึ้งซิตี้ ร้านกาแฟในตอนที่ไปเป็นตอนทิ่เจ้าของร้านอาร์ตติสสุดๆ (หมายถึงตอนต้นปี 2024 ก่อนจะมี TBC2024 นะคุณมิกเอิ๊กๆ) คุยกันนานมากกว่าจะได้กินกาแฟแก้วหนึ่ง มีกาแฟแบบเดียวคืออเมริกาโน่ ใส่น้ำแข็งก้อนสี่เหลี่ยมก้อนใหญ่ก้อนเดียว หนำซ้ำให้ผู้ชื้อปั่นกาแฟเองด้วยส่วนเจ้าตัวโน้นไปปลูกผักหลังบ้าน (แซวๆ) แต่ปัจจุบันโมเม้นแบบนี้ไม่เห็นละนะ น่าจะมีหลากหลายเมนูมากขึ้น ณ ตอนนั้นต้องมีเวลาว่างมากพอที่จะคุยกับเจ้าของร้านคนนี้ และมันทำให้ผมรู้สึกว่าการแทบจะไม่เคยเจอร้านกาแฟแบบไหนทำแบบนี้ หากไม่แจ้งเจ้าตัวว่าจะแวะไปหานี่คงจะเป็นดวงแล้วละ ใช้ระบบวาสนาว่าร้านจะเปิดไหม ฮ่าๆ ส่วนตัวร้านสูญเป็นอีกร้านหนึ่งที่มีความประทับใจส่วนตัว มันเป็นร้านที่ไม่มีอะไรเลย ณ ตอนนั้นมีชั้นหนังสืออยู่ใต้ถุนบ้านโล่งๆ ปัจจุบันเองผมเองคงจะไม่เห็นลักษณะร้านแบบนี้อีกแล้ว เพราะกลับมาเยี่ยมเยือนตอนมีนาคม 2025 ร้านก็เปลี่ยนแปลงไปเยอะ เค้าโครงเดิมที่เคยมีก็หายไปละ แต่ก็เป็นอีกร้านหากท่านไหนอยากจะอยู่กับธรรมชาติใช้ชีวิตท้องถิ่นในพื้นที่ห้วยผึ้งก็แวะไปเที่ยวไปหากันได้ คุณมิกยินดีต้อนรับเสมอ (แต่ระวังระบบวาสนาจะกลับมาเยือนละ หากไม่ทักถามก่อน) 
+<br /><br />
+<a href="https://maps.app.goo.gl/hBMwQbeJY3Z5RoCt9" target="_blank" class="rounded-sm bg-gray-400 px-2 py-2 text-white">Google Map</a> | 
+<a href="https://btcmap.org/merchant/node:11396351093" target="_blank" class="rounded-sm px-2 py-2 bg-gray-400 text-white">BTC-Map</a></p>
+<hr class="my-5" />
+
+<p><b class="text-xl mb-2">อิสระดี Creative &amp; Co-Working Space</b>
+<br /><br />
+<img src="/blog/assets/image/blog/20250421-1/5.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+<div class="mb-4"><b>สถานที่:</b> เชียงราย</div>
+<p>      Co-Working Space สถานที่เอาไว้ประชุมพูดคุยแลกเปลี่ยนกันของพี่แอ็ดดี้ สมาชิกชาว Nostr อีกท่านหนึ่งภายในร้านก็จะมีอุปกรณ์ให้ใช้งานอย่างครบครันในการพูดคุยและประชุมแลกเปลี่ยน โดยสามารถติดต่อขอใช้งานพื้นที่ดังกล่าวผ่านช่องทาง Line จะค่อนข้างสะดวกมากที่สุด ประสบการณ์ส่วนตัวก็มีโอกาสแวะเวียนไปที่เชียงรายและก็เชิญชวนคุณวิน (<b class="underline">Vaz</b>) มาพูดคุยแลกเปลี่ยนเกี่ยวกับ Meeting <b class="underline text-blue-800">#CR101</b> เชียงรายซึ่งได้จัดไปเรียบร้อยแล้วในช่วงเดือนกุมพาพันธ์ 2568 ที่ผ่านมา ถือว่าเป็นสถานที่ที่สามารถมาขอเช่าสถานที่มาพูดคุยแลกเปลี่ยนกันได้แบบสบายๆ เริ่มต้นชั่วโมงละ 30 บาท มีสองห้องเลือกประเภทกันได้ครับ
+<br /><br />
+<a href="https://maps.app.goo.gl/UZrGrmDLimbkXApL7" target="_blank" class="rounded-sm bg-gray-400 px-2 py-2 text-white">Google Map</a> | 
+<a href="https://btcmap.org/merchant/node:11730805735" target="_blank" class="rounded-sm px-2 py-2 bg-gray-400 text-white">BTC-Map</a></p>
+<hr class="my-5" />
+
+<p><b class="text-xl mb-2">Chit Hole CNX -THAI CRAFT BEER </b>
+<br /><br />
+<img src="/blog/assets/image/blog/20250421-1/4.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+<div class="mb-4"><b>สถานที่:</b> นิมมาน-เชียงใหม่</div>
+<p>      ร้านเบียร์คราฟเจ้าของคือพี่ชิตที่เรารู้จักกันนี่เองเป็นร้านที่อยู่ตั้งใน มิมมานซึ่งเป็นสถานที่ที่เป็นจุดเริ่มต้นในงาน <b class="underline text-blue-800">#north101</b> และ <b class="underline text-blue-800">#north102</b> และก็จะมี 103,104 ไปบลาๆ สถานที่ที่ชาวบิทคอยเนอร์แวะเวียนไปเยี่ยมจิบเบียร์ซึ่งส่วนตัวก็ไปบ่อยๆ เงิน fiat หมดเมื่อไร อ้าวมี bitcoin อยู่ก็จ่ายสิครับ ฮ่าๆ มีโอกาสแวะไปหลายรอบเหมือนกันเชียงใหม่มันมีอะไรดีน้า ผมถึงไปบ่อยเกือบสองสามเดือนที หากมีโอกาสมาเชียงใหม่ก็อย่าพลาดนะ 
+<br /><br />
+<a href="https://maps.app.goo.gl/F2eEaXxJy7QEiqgs7" target="_blank" class="rounded-sm bg-gray-400 px-2 py-2 text-white">Google Map</a> | 
+<a href="https://btcmap.org/merchant/node:12313948644" target="_blank" class="rounded-sm px-2 py-2 bg-gray-400 text-white">BTC-Map</a></p>
+<hr class="my-5" />
+
+<p><b class="text-xl mb-2">Graz26 Café</b>
+<br /><br />
+<img src="/blog/assets/image/blog/20250421-1/8.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+<div class="mb-4"><b>สถานที่:</b> พะเยา</div>
+<p>      ร้านกาแฟเล็กๆ ในพื้นที่จังหวัดพะเยา เป็นร้านกาแฟเล็กๆ โดยพี่ X (<b class="underline">Graz26 Coffee</b>) ก็มีโอกาสได้ไปแวะบ่อยกว่าเพื่อน ก็อยู่ใกล้บ้านนี่หนา 555+ มีเมนูให้เลือกดริปกาแฟหลากหลายเมล็ดพันธ์ของกาแฟ และบางทีก็มีขนมขายบ้าน สถานที่ที่มีการจัด <b class="underline text-blue-800">#phayao101</b> ในช่วงงาน Blockmountain 2025 และ <b class="underline text-blue-800">#north102</b> พอดิบพอดี ร้านนี้ส่วนตัวก็ได้เจอโพสต์ในเมนสตรีมพอดีก็เลยแวะไปเยี่ยมชิมและชำระด้วย Bitcoin Lightning พอดี ปัจจุบันก็เป็นร้านประจำส่วนตัวที่ได้แอบแวะไปพูดคุยอยู่บ่อยๆ
+<br /><br />
+<a href="https://maps.app.goo.gl/xBRLSgMx4UBkjJWs6" target="_blank" class="rounded-sm bg-gray-400 px-2 py-2 text-white">Google Map</a> | 
+<a href="https://btcmap.org/merchant/node:11811329131" target="_blank" class="rounded-sm px-2 py-2 bg-gray-400 text-white">BTC-Map</a></p>
+<hr class="my-5" />
+
+<p><b class="text-xl mb-2">8 Oct Café</b>
+<br /><br />
+<img src="/blog/assets/image/blog/20250421-1/1.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+<div class="mb-4"><b>สถานที่:</b> อยุธยา</div>
+<p>      ร้านกาแฟ 8 ตุลาคม (8 ตุลาคาเฟ่) เป็นร้านเล็กๆ ในอยุธยาที่ส่วนตัวได้มีโอกาสแวะมาเที่ยวที่อยุธยากับ <b class="underline">เฮียหมู</b> สมาชิก Nostr ท่านหนึ่งที่ได้รู้จักตั้งแต่ผมได้เข้ามาอยู่ใน Nostr ใหม่ๆ ก่อนที่จะแวะเดินทางกันต่อก็ได้มีโอกาสแวะจิบกาแฟและทักทายพูดคุยกันนิดหน่อยๆ มีหลากหลายเมนูให้เลือกและมีขนมมีเค้ก ของกินเล่นด้วย มีเมล็ดกาแฟหลากหลายกลิ่นให้เลือกรสชาติของเมล็ดกาแฟ 
+<br /><br />
+<a href="https://maps.app.goo.gl/rbWK1bZSgL97jtAw8" target="_blank" class="rounded-sm bg-gray-400 px-2 py-2 text-white">Google Map</a> | 
+<a href="https://btcmap.org/merchant/node:12435579127" target="_blank" class="rounded-sm px-2 py-2 bg-gray-400 text-white">BTC-Map</a></p>
+<hr class="my-5" />
+
+<p><b class="text-xl mb-2">Chithole@Silom</b>
+<br /><br />
+<img src="/blog/assets/image/blog/20250421-1/3.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+<div class="mb-4"><b>สถานที่:</b> สีลม-กรุงเทพ</div>
+
+<p>      คงไม่ต้องพูดกันเยอะแล้วซิตโฮลอีกสาขาหนึ่งของพี่ชิตแต่อยู่ในพื้นที่สีลม พื้นที่ที่เป็นสถานที่ท่องเที่ยวกลางคืนที่โดดเด่นหลากหลาย ซึ่งแต่ละซอยตอนกลางคืนก็มีความแตกต่างกัน ไม่เชื่อลองไปสีลมซอย 2 สิฮะ เจ้าของร้ากาแฟแห่งหนึ่งเล่าให้ฟังฮ่าๆ (ร้านถัดไป) มีโอกาสได้ไปเนื่องจากอยากจะนัดเจอบิทคอยเนอร์หลายๆ ท่านซึ่งก็ขอขอบคุณทุกท่านที่แวะมาเยี่ยมเยือนทักทายทำให้ได้เรียนรู้เรื่องราวหลายๆ เรื่องเหมือนกัน (คราวหน้าผมแอบไปเลาะซอยชักหน่อยคงดี) สำหรับสาขานี้ก็เป็นเบียร์คราฟและมีดนตรีสดแสดงให้นักท่องเที่ยวได้แวะมาพูดคุยจิบเบียร์ตามประสากันครับ
+<br /><br />
+<a href="https://maps.app.goo.gl/1vdU1XNJCUz95cRh6" target="_blank" class="rounded-sm bg-gray-400 px-2 py-2 text-white">Google Map</a> | 
+<a href="https://btcmap.org/merchant/node:12640894703" target="_blank" class="rounded-sm px-2 py-2 bg-gray-400 text-white">BTC-Map</a></p>
+<hr class="my-5" />
+
+<p><b class="text-xl mb-2">GATTA CAfe (Park Silom) - Specialty Coffee </b>
+<br /><br />
+<img src="/blog/assets/image/blog/20250421-1/2.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+<div class="mb-4"><b>สถานที่:</b> สีลม-กรุงเทพ</div>
+<p>      ร้านกาแฟอีกร้านหนึ่งเจ้าของคือหมอเขต <b class="underline">Kaetkung</b> ปัจจุบันเปิดอยู่ประมาณ 4 สาขา สาขาที่ผมแวะไปชิมและจ่าย Lightning ก็สาขาสีลมหลังจากที่เมาค้างจากซอย 2 เมื่อคืน (ล้อเล่น) เช้าๆ ก่อนเดินทางต่อก็ได้มีโอกาสแว๊บเดินทางไปจิบกาแฟกันต่อ ร้านค่อนข้างเรียบหรูผสมผสานสไตล์ศิลปะที่เป็นเอกลักษณ์ของแต่ละสาขา สำหรับร้านก็มีกาแฟหลายเมนูให้เลือกและสามารถรับชำระด้วย Bitcoin ได้เช่นเดียวกัน
+<br /><br />
+<a href="https://maps.app.goo.gl/WSvuY9U9HFEZPurBA" target="_blank" class="rounded-sm bg-gray-400 px-2 py-2 text-white">Google Map</a> | 
+<a href="https://btcmap.org/merchant/node:12304859418" target="_blank" class="rounded-sm px-2 py-2 bg-gray-400 text-white">BTC-Map</a></p>
+<hr class="my-5" />
+
+<p><b class="text-xl mb-2">ก๋วยเตี๋ยวเนื้อต้นโพธิ์ - Ton Pho Beef Noodle </b>
+<br /><br />
+<img src="/blog/assets/image/blog/20250421-1/9.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+<div class="mb-4"><b>สถานที่:</b> นครพนม</div>
+<p>      กลับมานครพนมอีกครั้งหนึ่งพี่กาย <b class="underline">satuser</b> ได้แนะนำให้มาลองชิมร้านก๋วยเตี๋ยวเนื้อต้นโพธิ์ เป็นร้านก๋วยเตี๋ยวเนื้อที่มีเอกลักษณ์ เนื้อนุ่มๆ อร่อยๆ ซึ่งได้เปิดรับชำระด้วย bitcoin Lightning มีเมนูก๋วยจั๊บเนื้อ ก๋วยเตี๋ยวเนื้อสด/เปี่อย/เอ็น/ลูกชิ้นและเนื้อรวม สามารถสั่งลวกจิ้ม หรือเมนูอื่นๆ อย่างเช่นเสือร้องให้สไลด์หรือใบพายสไลด์ จริงๆ คราวหน้ามีโอกาสแวะไปทักทายพี่กายก็อาจจะแวะไปชิมอีกอย่างแน่นอน (อร่อยเพราะเนื้อจริงๆ) 
+<br /><br />
+<a href="https://maps.app.goo.gl/N3y41jMRe5yWE8P7A" target="_blank" class="rounded-sm bg-gray-400 px-2 py-2 text-white">Google Map</a> | 
+<a href="https://btcmap.org/merchant/node:12645496800" target="_blank" class="rounded-sm px-2 py-2 bg-gray-400 text-white">BTC-Map</a></p>
+<hr class="my-5" />
+
+<p><b class="text-xl mb-2">A.J.Pizza &amp; Steak House</b>
+<br /><br />
+<img src="/blog/assets/image/blog/20250421-1/10.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+<div class="mb-4"><b>สถานที่:</b> ห้วยผึ้ง-กาฬสินธุ์</div>
+<p>      อีกร้านหนึ่งในห้วยผึ้งกาฬสิทธิ์ เป็นร้านอาหารสไตล์ฝรั่งและมีที่พักในตัว มีอาหารที่ค่อนข้างหลากหลายพอสมควรได้มีแวะไปทานและอาจจะได้พักที่นั่นด้วยเช่นเดียวกันแต่ด้วยความที่ไกลจากร้านกาแฟของคุณมิกเลยไม่ได้พัก พื้นที่ร้านค่อนข้างจะเรียบง่ายมีสองโซนให้เลือกโซนห้องแอร์และ Airflow ลมธรรมชาติด้านลมธรรมชาติก็มีบาร์สำหรับการเปิดการคืนอีกด้วย เจ้าของร้านค่อนข้างใจดีสำหรับท่านไหนที่มีโอกาสแวะมาห้วยผึ้ง สถานที่นี้อาจจะตอบโจทย์ในด้านความเงียบสงบมีร้านอาหารมีที่พักสามารถพักอยู่ได้ยาวๆ อาจจะห่างจากตัวอำเภอนิดหนึ่งไม่มาก แวะมากันได้ครับ
+<br /><br />
+<a href="https://maps.app.goo.gl/pZGDyH4catvhqKP96" target="_blank" class="rounded-sm bg-gray-400 px-2 py-2 text-white">Google Map</a> | 
+<a href="https://btcmap.org/merchant/node:7660372723" target="_blank" class="rounded-sm px-2 py-2 bg-gray-400 text-white">BTC-Map</a></p>
+
+<hr class="my-5" />
+
+<p>      บางทีผมก็รู้สึกว่าการรวบรวมร้านที่เคยได้ไปเยี่ยมเยือนที่รับ Bitcoin Lighting นี่เริ่มเยอะขึ้นทุกทีหากดูใน BTC-Map การทำชาเลนท์ตามแวะเยี่ยมเยือนแต่ละร้านและไปทักทายและชำระด้วย Bitcoin เริ่มจะท้าทายมากยิ่งขึ้นชะแล้วสิ ปัจจุบันผ่านไปแค่ปีกว่าๆที่ผมได้เข้ามาอยู่ใน Nostr ผมเห็นพัฒนาการร้านค้าที่รับชำระด้วย Bitcoin Lightning มากขึ้นเรี่ยๆ สำหรับคนที่เก็บเป็นบิทคอยนั้นหากมีร้านเกิดขึ้นมากพอในพื้นที่ของตัวเอง ก็ไม่จำเป็นต้องแลกเป็นเงินใน Exchange อีกต่อไปสามารถนำไปแลกสินค้าและบริการในพื้นที่ต่างๆ ได้เลย ทีนี้ผมก็เริ่มตามไม่ทันชะละ หากให้เก็บทุกร้าน ถ้าทำได้คงชาเลนท์ตัวเองได้ไม่น้อย จะมีเหรียญรางวัลไหมน่า 555+ หลังจากนี้หากมีโอกาสแวะไปสถานที่ไหนในประเทศไทยแห่งนี้ ก็คงจะต้องแวะไปเยี่ยมเยือนและไปใช้ Bitcoin Lightning ชักหน่อยแล้วละ 
+<br /><br />
+ยิ่งเวลาผ่านไป ร้านค้าก็จะเยอะขึ้นเรี่ยๆ :)</p>
+
+          </article>
+          <div class="border-t mt-5">
+            <div class="flex justify-center my-2 space-x-4">
+              <div>
+                <a href="https://www.facebook.com/sharer.php?u=https://khunjibna.github.io/blog/article/2025/04/21/collection-stores-accept-bitcoin-lightning-my-personal.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/share.png" alt="SHARE FACEBOOK" title="SHARE FACEBOOK">
+                </a>
+              </div>
+            
+              <div>
+                <a href="https://twitter.com/share?url=https://khunjibna.github.io/blog/article/2025/04/21/collection-stores-accept-bitcoin-lightning-my-personal.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/sharetw.png" alt="SHARE TWITTER" title="SHARE TWITTER">
+                </a>
+              </div>
+            
+              <div>
+                <a href="https://social-plugins.line.me/lineit/share?url=https://khunjibna.github.io/blog/article/2025/04/21/collection-stores-accept-bitcoin-lightning-my-personal.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/shareline.png" alt="SHARE LINE" title="SHARE LINE">
+                </a>
+              </div>
+            </div>
+            
+            <!-- หมวดหมู่ -->
+            <span class="inline-flex items-center gap-1">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M7 7a1 1 0 011-1h2.586a1 1 0 01.707.293l6.414 6.414a1 1 0 010 1.414l-4.586 4.586a1 1 0 01-1.414 0L7.293 12.707A1 1 0 017 12V8z" />
+              </svg>
+              <span>Article</span>
+            </span>
+            
+          </div>
+        </div>
+
+
+        <div class="bg-white border px-2 py-2 mt-2">
+          <div class="mb-2 pl-2"><b>สามารถสนับสนุนบทความนี้ผ่าน (Zap) ขอบคุณครับ</b></div>
+          <!-- _includes/zap-widget.html -->
+<div class="max-w-sm mx-auto">
+  <!-- ปุ่มหลัก -->
+  <button id="zap-toggle" onclick="toggleZapForm()" 
+          class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded">
+    ⚡ สนับสนุน
+  </button>
+
+  <!-- แบบฟอร์ม Zap -->
+  <div id="zap-form" class="mt-4 border border-yellow-300 bg-yellow-50 p-4 rounded hidden break-words">
+    <label for="zap-amount" class="block mb-1 text-sm text-gray-700">💸 จำนวนที่ต้องการ (sats):</label>
+    <input id="zap-amount" type="number" min="1" step="1" value="21"
+           class="w-full p-2 border rounded mb-3">
+
+    <button onclick="fetchZapInvoice()"
+            class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-4 rounded">
+      🔄 สร้าง QR สำหรับ Zap
+    </button>
+
+    <div id="zap-result" class="mt-4 hidden text-center">
+      <p class="text-sm text-gray-600">📱 สแกน QR เพื่อสนับสนุน:</p>
+      <canvas id="zap-qr" class="mx-auto my-2"></canvas>
+      <p class="text-xs text-gray-400" id="zap-pr"></p>
+      <!-- 🔗 ลิงก์เปิดในแอป Lightning จะถูกเพิ่มตรงนี้ -->
+    </div>
+  </div>
+</div>
+
+<!-- QR Code CDN -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+
+<script>
+  function toggleZapForm() {
+    const form = document.getElementById('zap-form');
+    form.classList.toggle('hidden');
+  }
+
+  async function fetchZapInvoice() {
+    const sats = parseInt(document.getElementById('zap-amount').value);
+    const resultEl = document.getElementById('zap-result');
+    const qrCanvas = document.getElementById('zap-qr');
+    const prEl = document.getElementById('zap-pr');
+
+    if (isNaN(sats) || sats < 1) {
+      alert("⚠️ กรุณาใส่จำนวน sats ที่ถูกต้อง");
+      return;
+    }
+
+    const lnurl = "https://walletofsatoshi.com/.well-known/lnurlp/khunjibna"; // เช่น https://walletofsatoshi.com/.well-known/lnurlp/jib
+
+    try {
+      const lnurlRes = await fetch(lnurl);
+      const lnData = await lnurlRes.json();
+      const callback = lnData.callback;
+      const amountMsat = sats * 1000;
+
+      // ใส่ comment แบบกำหนดเอง
+      const invoiceRes = await fetch(`${callback}?amount=${amountMsat}&comment=${encodeURIComponent("Zap Article on Tamachirs.com")}`);
+      const invoiceData = await invoiceRes.json();
+
+      if (invoiceData.pr) {
+        resultEl.classList.remove("hidden");
+        QRCode.toCanvas(qrCanvas, "lightning:" + invoiceData.pr);
+        prEl.innerText = invoiceData.pr;
+
+        // 🆕 เพิ่มลิงก์สำหรับเปิดในแอป (เฉพาะมือถือ)
+        const existingLink = document.getElementById('zap-mobile-link');
+        if (existingLink) existingLink.remove();
+
+        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+          const mobileLink = document.createElement('a');
+          mobileLink.href = "lightning:" + invoiceData.pr;
+          mobileLink.innerText = "⚡ เปิดในแอป Lightning";
+          mobileLink.className = "mt-2 inline-block text-yellow-600 underline text-sm";
+          mobileLink.setAttribute("target", "_blank");
+          mobileLink.id = "zap-mobile-link";
+          resultEl.appendChild(mobileLink);
+        }
+      } else {
+        alert("ไม่สามารถสร้าง invoice ได้ 😢");
+      }
+    } catch (e) {
+      console.error(e);
+      alert("❌ เกิดข้อผิดพลาด: " + e.message);
+    }
+  }
+</script>
+
+        </div>
+      </main>
+
+
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-10 text-sm text-center text-gray-600 relative z-10">
+  <div class="mx-auto max-w-5xl rounded-2xl bg-white/80 backdrop-blur p-6 shadow-lg border border-gray-200">
+    <p class="font-semibold text-gray-800">© 2025 Tamachirs.com. All rights reserved.</p>
+    <p class="mt-2 flex flex-wrap gap-2 justify-center items-center text-gray-500">
+      <span class="text-red-500">♥</span> Crafted with
+      <a href="https://jekyllrb.com" target="_blank" class="font-semibold text-blue-700 hover:text-blue-900">Jekyll</a>
+      &
+      <a href="https://tailwindcss.com" target="_blank" class="font-semibold text-emerald-700 hover:text-emerald-900">Tailwind CSS</a>
+    </p>
+  </div>
+</footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('hidden');
+    }
+  </script>
+</body>
+
+</html>

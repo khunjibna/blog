@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- _includes/head.html -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <!-- Title -->
+    <title>Thailand Bitcoin Conference 2024 | Tamachirs.com</title>
+    <meta name="description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta name="author" content="Tamachirs.com">
+  
+    <!-- SEO & Social: Open Graph -->
+    <meta property="og:title" content="Thailand Bitcoin Conference 2024 | Tamachirs.com">
+    <meta property="og:description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khunjibna.github.io/blog/article/2024/09/19/review-to-tbc-2024.html">
+    <meta property="og:image" content="/blog/assets/image/web-banner.jpg">
+  
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Thailand Bitcoin Conference 2024 | Tamachirs.com">
+    <meta name="twitter:description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta name="twitter:image" content="/blog/assets/image/web-banner.jpg">
+  
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+  
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+    <!-- Nostr Tools -->
+    <script src="https://cdn.jsdelivr.net/npm/nostr-tools@2.12.0/lib/nostr.bundle.min.js"></script>
+    <script src="/blog/assets/js/nostr.js" defer></script>
+  
+    <!-- Google Fonts: Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --brand: #2563eb;
+        --brand-dark: #1e3a8a;
+        --surface: rgba(255, 255, 255, 0.9);
+        --muted: #94a3b8;
+      }
+
+      body {
+        font-family: 'Sarabun', sans-serif;
+        background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.14), transparent 30%),
+          radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.18), transparent 25%),
+          linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        color: #0f172a;
+      }
+
+      .page-shell::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(37, 99, 235, 0.07) 1px, transparent 0);
+        background-size: 22px 22px;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .glass-card {
+        background: var(--surface);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        background: linear-gradient(135deg, var(--brand), #22c55e);
+        color: #fff;
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        box-shadow: 0 15px 30px rgba(37, 99, 235, 0.25);
+        transition: transform 160ms ease, box-shadow 160ms ease, filter 200ms ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 36px rgba(34, 197, 94, 0.25);
+        filter: brightness(1.02);
+      }
+
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        color: #0f172a;
+        background: rgba(255, 255, 255, 0.6);
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+      }
+
+      .btn-ghost:hover {
+        border-color: rgba(37, 99, 235, 0.5);
+        box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+      }
+    </style>
+  </head>
+  
+
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+  <!-- เมนูส่วนหัว -->
+  <header class="bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 text-white shadow-lg sticky top-0 z-20">
+  <div class="container mx-auto flex justify-between items-center px-4 lg:px-6 py-4">
+    <div class="text-xl lg:text-2xl font-bold tracking-tight flex items-center space-x-2">
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">🌌</span>
+      <a href="/blog/" class="hover:text-sky-200 transition-colors">Tamachirs.com</a>
+    </div>
+
+
+    <!-- ปุ่มมือถือ -->
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="focus:outline-none rounded-full p-2 hover:bg-white/10 transition" aria-label="เปิดเมนู">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- เมนู Desktop -->
+    <nav class="hidden lg:flex space-x-2">
+      
+        <a href="/blog/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Home</a>
+      
+        <a href="/blog/about/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">About</a>
+      
+        <a href="/blog/article/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Article</a>
+      
+        <a href="/blog/note/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Note</a>
+      
+        <a href="/blog/project/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Project</a>
+      
+        <a href="/blog/contact/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Contact</a>
+      
+    </nav>
+  </div>
+
+  <!-- เมนู Mobile -->
+<div id="mobile-menu" class="hidden lg:hidden bg-gray-800/95 px-4 py-4 space-y-2 border-t border-white/10">
+  
+    <a href="/blog/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Home</a>
+  
+    <a href="/blog/about/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">About</a>
+  
+    <a href="/blog/article/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Article</a>
+  
+    <a href="/blog/note/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Note</a>
+  
+    <a href="/blog/project/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Project</a>
+  
+    <a href="/blog/contact/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Contact</a>
+  
+</div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    toggleBtn.addEventListener("click", function () {
+      mobileMenu.classList.toggle("hidden");
+    });
+  });
+</script>
+
+
+  <div class="container mx-auto mt-8 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 flex-grow">
+    <!-- โปรไฟล์ด้านซ้าย (4 ส่วนในหน้าจอใหญ่, 1 ส่วนในหน้าจอเล็ก) -->
+
+    <div class="lg:hidden mx-2">
+      <button onclick="toggleSidebar()" class="w-full bg-gray-200 px-4 py-2 rounded font-semibold">
+        ☰ เมนูโปรไฟล์
+      </button>
+    </div>
+
+
+    <div id="sidebar" class="hidden lg:block lg:w-1/3 xl:w-1/4 bg-white p-6 rounded-lg shadow-lg mx-2">
+      <div class="text-center space-y-4">
+  <img id="profile-picture" class="mx-auto rounded-full w-32 h-32 object-cover ring-4 ring-white shadow-lg" src="" alt="Profile Picture">
+  <div>
+    <h2 id="profile-name" class="text-2xl font-semibold mt-1">ชื่อ</h2>
+    <p id="profile-about" class="text-gray-600 mt-1">เกี่ยวกับ</p>
+  </div>
+
+  <div class="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
+    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold" id="followers"></span>
+    <span class="text-gray-400">•</span>
+    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-semibold" id="following"></span>
+  </div>
+
+  <!-- ลิงก์ Follow -->
+  <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a href="https://nostrudel.ninja/#/u/npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy" target="_blank" class="btn-primary">Follow</a>
+      <a href="https://github.com/khunjibna/blog" target="_blank" class="btn-ghost">Github</a>
+  </div>
+  
+
+  <!-- เส้นแบ่ง -->
+  <hr class="my-6 border-gray-200">
+
+  <!-- ปุ่มเต็มขนาดสำหรับ 3 ลิงก์ -->
+  <div class="space-y-4 text-left">
+      <div class="font-bold text-sm uppercase tracking-[0.2em] text-gray-500">มินิเกม</div>
+      <a href="/blog/app/random-character/" target="_blank" class="block w-full text-center bg-gradient-to-r from-gray-900 to-blue-900 text-white py-3 rounded-xl hover:from-blue-900 hover:to-emerald-700 transition shadow-lg">คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <!-- บทความด้านขวา (8 ส่วนในหน้าจอใหญ่, 1 ส่วนในหน้าจอเล็ก) -->
+    <div class="lg:w-2/3 xl:w-3/4">
+
+      <!-- Main post content -->
+      <main class="flex-1 px-2">
+
+        <!-- 🔗 Breadcrumb -->
+          <nav class="text-sm text-gray-500 mb-4">
+            <a href="/blog/" class="text-blue-600 hover:underline">Home</a>
+            
+            
+            &nbsp;&gt;&nbsp;
+            <a href="/blog/Article/" class="text-blue-600 hover:underline">
+              Article
+            </a>
+            
+          &nbsp;&gt;&nbsp;
+          <span class="text-gray-700">Thailand Bitcoin Conference 2024</span>
+        </nav>
+
+
+        <div class="bg-green-800 text-white px-6 py-6 break-words rounded mb-2">
+          <div class="font-bold text-lg ">
+              <h1>Thailand Bitcoin Conference 2024</h1>
+          </div>
+          <div class="flex items-center text-green-800 text-sm pt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+              <p class="ml-2 text-white"> <span>19/09/2024</span></p>
+          </div>
+      </div>
+
+
+
+        <div class="bg-white p-6 rounded border shadow-sm ">
+
+       
+          <!-- เนื้อหาโพสต์ -->
+          <article class="prose prose-indigo max-w-none break-words">
+            <p><img src="/blog/assets/image/blog/20240919-1/1.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+
+<p>      สำหรับผมเองแล้วงาน TBC2024 เป็นงานที่ผมเองรู้สึกว่า Mission บางอย่างผมได้ทำสำเร็จเรียบร้อยแล้ว ผมได้จบ Quest บางอย่างกับตัวเองหลังจากที่เริ่มเข้ามาใช้ Nostr ตลอดหนึ่งปีที่ผ่านมาผมเข้ามาเล่นใน Nostr มันมีอะไรเปลี่ยนแปลงไปเยอะมาก จากเดิมเป็นคนที่เรียบร้อยไม่ค่อยชอบพูดคุยกับใคร ในปีที่ผ่านมาและจนมาถึงปีนี้ มันมีอะไรเปลี่ยนแปลงตัวตนของผมมากขึ้นกับคนที่มีความเข้าใจเหมือนๆกันที่ได้มาพบเจอกัน ผมไม่รู้ตัวเลยนะนะ แต่ดันไปชอบไล่คุยถามคนนั้นคนนี้เต็มไปหมด ทักทายมั่วชั่วมาก ถ้าเป็นโลกปกตินี้ ใครวะทักกู แต่ภายในงานนั้น กลายเป็นว่าทักทายกันได้แบบสบายๆใจ เอ่อวะกูก็ทำได้เหมือนกันนี่หนา ด้วยความที่สิงสถิตอยู่ใน nostr เป็นส่วนใหญ่และเข้ามารังนก รังข้าวโพด และจบในรังผึ้ง มันคงจะสนิทกันเกินไปสำหรับบางท่านที่อยู่ในสถานที่ดังกล่าวจนกลายเป็นว่าปีนี้ ก็มีเพื่อนมาตั้งแต่ก่อนวันเริ่มงานกันเลยทีเดียว
+<br /><br />
+      ทั้งสองวันของงานจริงๆ MAIN STAGE นั้นผมแทบจะไม่ได้เข้าไปเลย เข้าไปฟังพี่ชิตและการสร้างคอมมูนิตี้ในไทย น่าจะประมาณนั้น ส่วนใหญ่ก็วนๆ อยู่ด้านนอกฮอลส่วน Workshop Stage ก็ได้ไปฟังและให้กำลังใจ <b> Nostr Development ของนิกเดฟ(ถั่ว) </b> และ <b> Bitcoin Diploma </b> เท่านั้นเองโน้นชอบจริงๆ ก็ไปเล่นบอร์ดเกม <b> Age of Bitcoin (ของ BitToon) </b> จากใจคนเลยไม่เล่นบอร์ดเกมมาก่อนเลย ยอมรับว่าถ้าตั้งใจศึกษามันนิดหนึ่งมันโครตสนุก มันเหมือนการจำลองสถานะการณ์การใช้ชีวิตจริงหลังเรียนจบ คุณสามารถเลือกทางเดินกับเส้นทางชีวิตอย่างไรตามที่คุณชอบเลย (คุณอย่างทำงาน/อยากขุด/อยากเทรด/อยากเรียน) คุณมีอิสระอย่างเต็มที่ แต่ในเกมกับชีวิตจริงมันก็ต่างกันแค่ว่า คุณไม่รู้หรอกว่าชีวิตจริงมันจะเป็นอย่างไร คุณสามารถตัดสินใจได้เพียงครั้งเดียวในชีวิต และการตัดสินใจของคุณมันจะส่งผลกระทบอย่างไรกับคนอื่นบ้างแค่นั้นเองแหละ รวมทั้งเวลาที่ผ่านไปเรี่ยๆ ตามสภาวะเงินที่เฟ้อขึ้นเรี่ยๆ แต่ในเกมยังพอเดาสถานะการณ์ได้เพื่อที่จะวางแผนในการตัดสินใจเพื่อเป้าหมายของคุณ ซึ่งทั้งสองวันนั้นผมก็ได้เข้าไปเล่นทั้งสองวัน มันสนุกมากจนผมรู้สึกว่าถ้าสินค้ามาจริง ผมก็คงได้สนับสนุนแน่นอน เพื่อว่าชักวันหนึ่งหากได้อยู่กับเพื่อนจะได้ใช้เกมนี้เพื่อให้เขาเข้าใจในสิ่งที่ผมจะสื่อให้เขาได้รับรู้ เขาจะรับรึไม่เป็นเรื่องของเขาแต่เราก็ช่วยเพื่อนอย่างเต็มที่ของเราแล้วละ (เกือบชนะเกมนี้ละจากผู้เล่น 4 คนระยะเวลาชั่วโมงกว่าๆ)
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/2.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" /></p>
+
+<p>      <b> สำหรับ Nostr Development  </b> ของนิกกี้เดฟ(ถั่ว) อันนี้หลังจากที่ได้เข้าไปฟังแล้ว มันเป็นเทคโนโลยีใหม่ที่ทำให้ต้องปรับเปลี่ยนแนวทางในการพัฒนา Client ต่างๆมากขึ้น มันมี Tools มากมายรองรับการเชื่อมต่อ Nips แล้วเพียงแค่อยากจะพัฒนาให้คนใช้งานได้อย่างไรบ้าง แต่ก็ยังมีข้อจำกัดบ้างในบางประเด็น สำหรับผมแล้วถือว่าเปิดโลกพอสมควร แค่ทำความเข้าใจกับมันไม่จำเป็นต้องสนใจ User ผู้ใช้งาน แค่นี้ก็ลดความยุ่งยากจัดการผู้ใช้งานมาระดับหนึ่งละ นักพัฒนาจะได้โพกัสในการพัฒนา Client เพื่อรองรับผู้ใช้งาน Nostr มาทดลองใช้งานทดลองเล่นตามกลไกลตลาด และหลังจากนี้ผมเชื่อว่าจะมี Client ใหม่ๆ ได้มาทดลองเล่นกันมากมายใน siamstr แห่งนี้ หลังจบ Workshop ก็เลี้ยงเบี้ยร์ นิกกี้เดฟ หนึ่งแก้ว(จากคอมเมนต์ใน nostr) แต่ก็ได้รางวัลจากการเข้าร่วมกิจกรรมของ Wherostr ทำให้งานนี้กำไร (+1000sats) เอิ๊กๆ ส่วนตัวเองก็แว๊บทักทายเป็นระยะๆ เสียดายนายน่าจะเอาถั่วมาด้วยนะ ไม่งั้นจะเป็นมีมกันเลยทีเดียว ส่วนตัวผมเองก็รู้แหละว่ามันน่าสนุกนะถ้าอยากจะลองฝึกฝนตัวเองมาลองพัฒนา Client สนุกๆ บน Nostr ที่ไม่จำเป็นต้องสนใจอะไร แค่ตัวเองอยากทำเพื่อสนอง Need ตัวเองก็น่าจะเพียงพอแล้ว ก็เพียงแค่ว่าอยากทำตอนไหนแค่นั้นเอง เมื่อไรก็ตอนนั้นแหละ เอิ๊กๆ 
+(ผมมีไฟแช็คพร้อมน้ำมันดีเชล พร้อมเผาตัวเองเสมอแหละ ถ้าผมต้องการ 555+)
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/3.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      <b> Bitcoin Diploma </b> เป็นอีก Session หนึ่งที่เข้าไปฟังไปเป็นกำลังใจให้แต่ก็ไม่นึกว่าคนจะเข้าเต็มห้องจนไม่มีที่นั่ง เป็น Session ที่ดีนะ แนะนำเกี่ยวกับการแปลหนังสือ Bitcoin Diploma และรวมทั้งสร้างแนวทางการสอน Bitcoin Diploma ในประเทศไทยเชื่อว่าอีกไม่นานก็จะมีผู้คนเข้ามาศึกษาและสร้างแนวร่วมเพื่อให้คนไทยเข้าใจระบบการเงินมากขึ้นและเข้าใจ bitcoin มากขึ้น สามารถนำหนังสือนี้ไปประยุกต์ในการทำสื่อการเรียนการสอนได้อีกมากมาย ก็ยังรอผลงานของไทยอยู่นะครัช :)
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/4.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      สำหรับการสร้างคอมมูนิตี้ในไทยนั้น ผมดีใจนะว่าการที่ผมเข้ามาอยู่ใน nostr นั้นเอง นับตั้งแต่ที่ได้ตามเข้ามาหลังงาน BTC2023 ที่ผ่านมาจนถึงปัจจุบันนั้น มันมีพัฒนาการมากขึ้น คนเข้ามาใช้งานและก็ออกไปเป็นอย่างธรรมชาติ ซึ่งในไทยเองก็ใช้แท๊ก siamstr เพื่อให้ชาวไทยใน nostr ได้มาติดตามโพสต์หรือ note ของผู้ใช้งานที่เข้ามาอาศัยอยู่ประจำและบางครั้งบางคราวเป็นอยู่รำไป มีกิจกรรมมากมายที่อยู่ใน nostr ที่อยู่ในนี้ มีเหตุการณ์ต่างๆ มากมายที่คนที่อยู่ประจำเห็นพัฒนาการหรือ meet up ตามสถานที่ต่างๆ มากมายที่พบปะกัน 
+<br /><br />
+      Session นี้ ผมได้เห็นมุมมองการสร้างคอมมูนิตี้ที่แตกต่างกัน ซึ่งแต่ละคนมองแบบไหนสุดท้ายตัวเราเองนี่แหละ ก็เลือกอยู่ในคอมมูนิตี้ที่เหมาะสมกับตัวเราก็เท่านั้นเอง และปล่อยให้กลไกลตามธรรมชาติทำงานของมันไป จากการอยู่ใน nostr มันเป็นจุดเริ่มต้นที่ทำให้คนที่ไม่รู้จักกันมาเจอกันในชีวิตจริง แค่นี้ผมก็รู้สึกว้าวแล้วนะ แต่สิ่งหนึ่งที่ต้องเทรดมันกับมาคือความเสี่ยงและเวลามันคุ้มค่าที่จะแลกกับมันหรือป่าวก็เท่านั้นเอง ผมเชื่อว่าอนาคตการสร้างคอมมูนิตี้ในหลายๆพื้นที่จากคนในพื้นที่ที่พร้อมมาพบเจอ ไม่ว่าจะเป็นกิจกรรมที่เกี่ยวข้องกับ bitcoin หรือไม่หากมีการนำแนวคิดของ bitcoin มาปรับใช้ภายในกิจกรรมภายในบริบทพื้นที่เหล่านั้น สร้างทางเลือกในการใช้งาน bitcoin ก็จะมีคนใหม่ๆเข้าร่วมและมาแลกเปลี่ยนประสบการณ์ต่างๆ ที่ได้พบเจอเพื่อกระจายองค์ความรู้ต่อไปเรี่ยๆ เพื่อให้แต่ละพื้นที่นำไปใช้ในบริบทดังกล่าวจากผู้คนจำนวนเล็กน้อย ณ ปัจจุบัน อนาคตก็จะเติบโตขึ้น เติบโตขึ้น ผมเชื่อว่าอย่างงั้นนะ
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/5.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      ภายในงานปีนี้บูธเบียร์ DJ-TAR นี่ยอมรับว่ามีหลายรสชาติมากบอกไม่ถูกว่ารสชาติไหนจะเข้าปากกูวะ แต่สัมผัสรสชาติมันมีความแตกต่างซึ่งผมเองก็ไม่รู้ว่ารสอะไรจะถูกปาก ผมก็ชิมมันไปทุกรสชาติมันนี่แหละ ผมเสียดายหมูปิ้งมากๆหมดไปชะก่อน อดกิน ภายในงานนี้มี welcome drink หนึ่งแก้วและ dinner party ก็อีกหนึ่งแก้วที่เหลือก็สอย เอาเข้าจริงก็กินไปเกือบ 9 แก้วเยอะอยู่นะ แต่ไม่รู้เพราะว่าพูดจนหายเมาหรือป่าวเลยไม่ค่อยมึนหัวเท่าไร ฮ่าๆ (ปิดท้ายงานก็ฟรีๆ เอ้าพี่เอาไปหนึ่งแก้วจะหมดละ) และโอเครผมก็ได้ชิมนมดิบจาก DJ-TAR ด้วยขอบคุณมากๆ (ผมก็ยังเป็นนักล่าตามหานมดิบเหมือนครั้งแรกที่ไปงาน north101 เหมือนเคย ทุกที่ที่ผมอยากไปผมอยากไปกินนมดิบเท่านั้นเว้ย ซึ่งยังเป็นมีมที่ไม่เคยเปลี่ยนไปเลย 555+)
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/6.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      สำหรับอาหารการกินนั้น ผมได้แวะซอปชิมหมดเลย Toffee Cake Chonburi/กาแฟดริปคุณมิก/ชีทเค้กคีโต ตำรับเอ๋/เบอเกอร์สมนึก (dinner party) แต่ละสินค้าที่นำมาขายเหล่านี้มีเอกลักษณะเฉพาะตัว ผมชอบนะที่ได้จ่ายด้วย lightning เพื่อสนับสนุนสินค้าต่างๆ ให้ชาวเพื่อนๆ ใน nostr และในส่วนของ dinner party นั้นอาหารมีเลือกเยอะนะแต่น้อยไปน้อย(ปริมาณ) ส่วนใหญ่ต่อแถวไปรอคิวเนื้อโน้นยาวเลย หลังจากที่ไม่ได้กินอะไรทั้งวันก็หาอะไรรองท้องไปพลางๆ ก็เลยสอยในส่วนที่คนไม่ได้หยิบกันและก็ได้กินเบอร์เกอร์สมนึกแล้ว ในช่วงนั้นก็ได้พูดคุยกับหลายๆ ท่านต่อจากช่วงเช้าที่ผ่านมา พอชักพักกลับมาดูอาหารอีกทีอ้าวหมดชะละ ฮ่าๆ แต่สอยเบียร์แทนจนมานั่งคุยกับหลายๆท่านด้านนอก ทั้งคุณบี, คุณ Pruk, nikydev เท่าที่ความทรงจำที่พอจำได้ ทุกคนต่างมีจุดร่วมกันและที่มาจนมาเจอกันภายในงานแห่งนี้ คุยจนเขาไล่ละ ก็พาคุณ Pruk ลากคอพากันกลับที่พัก (นึกถึงตอนเชียงใหม่ตอนนั้น)
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/7.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      สำหรับคุณมิกเอง อาจจะเป็นที่ผมได้ไปเยี่ยมชมที่ร้าน <b> สุญญ- ไม่ใช่ร้านกาแฟ </b> ณ ห้วยผึ้ง ณ สถานที่จริง แล้วเลยทำให้ผมชอบวนๆ อยู่แถวๆรอบบูธนั้น ผู้คนต่างเดินไปมารอการชงกาแฟดริป แอบไปเป็นผู้ช่วยปั่นกาแฟดริปสุ่มมาจากหลายที่หลายแก้วเหมือนกัน ไหนใครให้ผมปั่นให้เอา sats มา 555+ ไม่รู้สิเผื่อไว้คราวหน้าก็คงจะกลับไปแวะชิมที่ร้านอีกครั้ง ไปสนทนาธรรมและไปกางเต้นนอนบนเขา ถ้ามีโอกาสนะ ประโยคที่คุณมิกมักพูดกับผมเสมอเวลาเจอกัน รักษาสุขภาพให้ยืนยาวมากที่สุดนะ อะไรที่ไม่ได้ทำก็ทำมันซะ ก่อนที่จะไม่ได้ทำอีก (ซึ่งหลายอย่างก็ยังไม่ได้ทำ ฮาๆ จะพยายามรีบทำครัช)
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/8.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      ในช่วงวันงานช่วงเวลาหนึ่งพี่แชมป์กับคุณริทก็มานั่งคุยกันเรื่องแนวทางการพัฒนาโปรเจคที่แกส่งเข้าประกวด ผมเห็นมุมมองของการสร้างและพัฒนาโปรเจค Grants แล้วและเนื้อเรื่องแล้วทั้งของทั้ง พี่แชมป์กับคุณริทแล้ว มันสามารถสร้างจุดเชื่อมโยงบางอย่างได้ก็เลยมานั่งคุยถึงแนวทางที่กำลังอยากจะทำต่อในอนาคต แต่ละท่านก็เล่ากันในมุมมองเนื้อหาของเรื่องราวต่างๆ และอาจารย์อาร์มก็มาแนะนำแนวทางเหมือนกัน อยากได้อันนั้นอันนี้ (มาไหมมาช่วยอีกคนไหมอาร์ม ใยแมงมุมนี่อยากเอาไฟเผาทิ้งจริงๆ เหนียวตัวไปหมด) สำหรับผมมันน่าสนุกนะมันมีแนวทางการต่อยอดได้อยู่พอสมควร ผมเองอาจจะไม่ได้อะไรมากเพียงแค่อยากเล่าในมุมมองของผมที่อยากมาช่วยอะไรบางอย่างตามทักษะที่สามารถทำได้ ซึ่งผมเองจะอยู่ตรงไหนก็ลุ้นเอาละกัน // อย่าสปอยกันก่อนนะพี่แชมป์ คุณริท ทำหลายคนมันสนุกโว๊ย พี่แชมป์ได้กล่าวไว้
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/9.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      แต่ที่ขาดไม่ได้เลยที่ทำให้ทักษะการฟังและการพูดเพิ่มขึ้นโดยไม่รู้ตัวว่าเป็นไปได้อย่างไรคือแก๊งชาวรังม่วง รังข้าวโพด รังทั้งหลายที่ผมได้แอบเข้ามาฟังแบบเงียบๆ หรือคุยบ้างตามประสาหลากหลายเรื่อง จนมาพบกันในชีวิตจริงจาก meeting ก่อนที่จะมาถึงงาน TBC บางท่านก็พึ่งได้เจอครั้งแรกเหมือนกันอย่าง ปังปอนด์/ไม้/ตั๋ง/เสี่ย หรือเจอกันประจำก่อนมางานอย่าง หมออ่าน/พี่เจน/พี่แคท จริงๆจะกลายเป็นนักเลงกันในรังชะแล้ว ฮ่าๆ รู้สึกว่ามาในงานนี้ก็มาป่วนกันหน่อยๆ ถ้าไม่มีนี่ สีสันคงหายกันเยอะ ผมดีใจนะที่ได้เจอและได้แลกเปลี่ยนเรื่องราวบบางอย่าง จนจบงานก็ได้ไปจัดรายการสภายาดอง/สภาสาโถกันต่อข้างนอก เอ่อนะ
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/10.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      Mission ในใจผมมสามารถทำได้สำเร็จก็คือการได้เจอบุคคลยุคแรกๆของ nostr ได้มาพบปะหน้ากันอย่าง เฮียหมู โอเว่น และ เฮียตุ๊ก ที่ได้มาพูดคุยกันเจอหน้ากัน สำหรับผมเองดีใจมากๆที่ได้มีโอกาสพูดคุย และขออภัยที่ผมชอบป่วนพาไปแนะนำคนนั้นคนนี้เต็มไปหมด เพราะจำได้ว่าช่วงนั้น สามคนนี้ผมไม่รู้ด้วยซ้ำแต่ที่โดนใจคือ ชอบคอมเมนต์ต้อนรับผู้ใช้งาน nostr ในช่วงนั้น ผมก็คิดนะว่าสนิทกันได้ยังไงเนี้ย ทำให้มีสีสันในยุคแรกๆ ที่ผมได้เข้ามาติดตามและเห็นเห็นใน feed ไม่ซ้ำในแต่ละวัน ผมขอบคุณมากๆที่ได้เจอกันและแลกเปลี่ยนเรื่องราวบางอย่างถึงแม้จะเจอกันในช่วงเวลาสั้นๆ แต่ผมก็ดีใจมากที่ได้พบเจอ ขอบคุณมากครับ
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/12.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      และอีกๆหลายๆท่านที่ผมได้พบเจอและแลกเปลี่ยนมุมมองทางด้านต่างๆ มันเยอะมากจนผมจำไม่ค่อยได้ละ เป็นสองวันที่ตัวเองไม่รู้ว่าเอาพลังงานมาจากไหน แว๊บไปฟังไปทักทายนั่นนี่บ่อยๆ ตามที่ตัวเองสนใจ อาจจะมีบ้างเรื่องที่ต้องกลับไปคิดเหมือนกันแต่ก็นั่นแหละ ท้ายที่สุดแล้วก็ขึ้นกับตัวเราเองว่าตัดสินใจอย่างไร และก็ผ่านไปกลายเป็นความทรงจำที่ดีต่อกันไป
+<br /><br />
+<img src="/blog/assets/image/blog/20240919-1/11.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      ส่งท้ายนี้ ผมเองขอบคุณ <b> right shift </b> และทีมมากๆครับ ที่จัดงานสำหรับในปีนี้และทำให้หลายๆ คนได้มาพบเจอกัน สำหรับปีแรกของการจัดงานนั้นผมมาโดดเดี่ยวไม่ได้ทักทายใครเลย มานั่งเป็นนักเรียนเงียบๆ กลับไปแบบเหงาๆ พอหลังจากเข้าในทุ่งม่วงแห่งนี้ (nostr) และพบหลายเรื่องที่ได้รับรู้และลองเข้ามามีส่วนร่วมใน siamstr ก็ทำให้ผมได้รู้จักหลากหลายท่านมากได้มองเห็นมุมมองเปลี่ยนไปเยอะพอสมควร ปี 2024 นี้ก็เลยกลายเป็นปีที่ หากเทียบการเข้ามหาวิทยาลัยเป็นเด็กปีสองที่ไม่ต้องเข้าเรียนละ ไปจำตอนสอบ และไปนั่งพูดคุยแลกเปลี่ยน ไปขอติวกับคนอื่นตอนใกล้สอบแทน วันสุดท้ายของงานก็จบด้วยการกอดซึ่งผมเองก็ยกใครไม่ได้เหมือนกัน คราวหน้าถ้ามีโอกาสจะฟิตร่างกายไปยกใครชักคนให้ได้เอิ๊กๆ จากนี้ผมก็ไปรับค่าประสบการณ์ จาก NPC คนนั้นและเวลก็ขึ้นมาเวลหนึ่งพร้อมรางวัล ส่วนต่อไปนั้นก็อยู่ที่ตัวผมเองเลือกจะรับภาระกิจใหม่จาก NPC คนอื่นหรือเดินชมธรรมชาติไปเรี่ยๆ ตามระยะเวลาที่ผ่านไปก็เท่านั้น</p>
+
+          </article>
+          <div class="border-t mt-5">
+            <div class="flex justify-center my-2 space-x-4">
+              <div>
+                <a href="https://www.facebook.com/sharer.php?u=https://khunjibna.github.io/blog/article/2024/09/19/review-to-tbc-2024.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/share.png" alt="SHARE FACEBOOK" title="SHARE FACEBOOK">
+                </a>
+              </div>
+            
+              <div>
+                <a href="https://twitter.com/share?url=https://khunjibna.github.io/blog/article/2024/09/19/review-to-tbc-2024.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/sharetw.png" alt="SHARE TWITTER" title="SHARE TWITTER">
+                </a>
+              </div>
+            
+              <div>
+                <a href="https://social-plugins.line.me/lineit/share?url=https://khunjibna.github.io/blog/article/2024/09/19/review-to-tbc-2024.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/shareline.png" alt="SHARE LINE" title="SHARE LINE">
+                </a>
+              </div>
+            </div>
+            
+            <!-- หมวดหมู่ -->
+            <span class="inline-flex items-center gap-1">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M7 7a1 1 0 011-1h2.586a1 1 0 01.707.293l6.414 6.414a1 1 0 010 1.414l-4.586 4.586a1 1 0 01-1.414 0L7.293 12.707A1 1 0 017 12V8z" />
+              </svg>
+              <span>Article</span>
+            </span>
+            
+          </div>
+        </div>
+
+
+        <div class="bg-white border px-2 py-2 mt-2">
+          <div class="mb-2 pl-2"><b>สามารถสนับสนุนบทความนี้ผ่าน (Zap) ขอบคุณครับ</b></div>
+          <!-- _includes/zap-widget.html -->
+<div class="max-w-sm mx-auto">
+  <!-- ปุ่มหลัก -->
+  <button id="zap-toggle" onclick="toggleZapForm()" 
+          class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded">
+    ⚡ สนับสนุน
+  </button>
+
+  <!-- แบบฟอร์ม Zap -->
+  <div id="zap-form" class="mt-4 border border-yellow-300 bg-yellow-50 p-4 rounded hidden break-words">
+    <label for="zap-amount" class="block mb-1 text-sm text-gray-700">💸 จำนวนที่ต้องการ (sats):</label>
+    <input id="zap-amount" type="number" min="1" step="1" value="21"
+           class="w-full p-2 border rounded mb-3">
+
+    <button onclick="fetchZapInvoice()"
+            class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-4 rounded">
+      🔄 สร้าง QR สำหรับ Zap
+    </button>
+
+    <div id="zap-result" class="mt-4 hidden text-center">
+      <p class="text-sm text-gray-600">📱 สแกน QR เพื่อสนับสนุน:</p>
+      <canvas id="zap-qr" class="mx-auto my-2"></canvas>
+      <p class="text-xs text-gray-400" id="zap-pr"></p>
+      <!-- 🔗 ลิงก์เปิดในแอป Lightning จะถูกเพิ่มตรงนี้ -->
+    </div>
+  </div>
+</div>
+
+<!-- QR Code CDN -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+
+<script>
+  function toggleZapForm() {
+    const form = document.getElementById('zap-form');
+    form.classList.toggle('hidden');
+  }
+
+  async function fetchZapInvoice() {
+    const sats = parseInt(document.getElementById('zap-amount').value);
+    const resultEl = document.getElementById('zap-result');
+    const qrCanvas = document.getElementById('zap-qr');
+    const prEl = document.getElementById('zap-pr');
+
+    if (isNaN(sats) || sats < 1) {
+      alert("⚠️ กรุณาใส่จำนวน sats ที่ถูกต้อง");
+      return;
+    }
+
+    const lnurl = "https://walletofsatoshi.com/.well-known/lnurlp/khunjibna"; // เช่น https://walletofsatoshi.com/.well-known/lnurlp/jib
+
+    try {
+      const lnurlRes = await fetch(lnurl);
+      const lnData = await lnurlRes.json();
+      const callback = lnData.callback;
+      const amountMsat = sats * 1000;
+
+      // ใส่ comment แบบกำหนดเอง
+      const invoiceRes = await fetch(`${callback}?amount=${amountMsat}&comment=${encodeURIComponent("Zap Article on Tamachirs.com")}`);
+      const invoiceData = await invoiceRes.json();
+
+      if (invoiceData.pr) {
+        resultEl.classList.remove("hidden");
+        QRCode.toCanvas(qrCanvas, "lightning:" + invoiceData.pr);
+        prEl.innerText = invoiceData.pr;
+
+        // 🆕 เพิ่มลิงก์สำหรับเปิดในแอป (เฉพาะมือถือ)
+        const existingLink = document.getElementById('zap-mobile-link');
+        if (existingLink) existingLink.remove();
+
+        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+          const mobileLink = document.createElement('a');
+          mobileLink.href = "lightning:" + invoiceData.pr;
+          mobileLink.innerText = "⚡ เปิดในแอป Lightning";
+          mobileLink.className = "mt-2 inline-block text-yellow-600 underline text-sm";
+          mobileLink.setAttribute("target", "_blank");
+          mobileLink.id = "zap-mobile-link";
+          resultEl.appendChild(mobileLink);
+        }
+      } else {
+        alert("ไม่สามารถสร้าง invoice ได้ 😢");
+      }
+    } catch (e) {
+      console.error(e);
+      alert("❌ เกิดข้อผิดพลาด: " + e.message);
+    }
+  }
+</script>
+
+        </div>
+      </main>
+
+
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-10 text-sm text-center text-gray-600 relative z-10">
+  <div class="mx-auto max-w-5xl rounded-2xl bg-white/80 backdrop-blur p-6 shadow-lg border border-gray-200">
+    <p class="font-semibold text-gray-800">© 2025 Tamachirs.com. All rights reserved.</p>
+    <p class="mt-2 flex flex-wrap gap-2 justify-center items-center text-gray-500">
+      <span class="text-red-500">♥</span> Crafted with
+      <a href="https://jekyllrb.com" target="_blank" class="font-semibold text-blue-700 hover:text-blue-900">Jekyll</a>
+      &
+      <a href="https://tailwindcss.com" target="_blank" class="font-semibold text-emerald-700 hover:text-emerald-900">Tailwind CSS</a>
+    </p>
+  </div>
+</footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('hidden');
+    }
+  </script>
+</body>
+
+</html>

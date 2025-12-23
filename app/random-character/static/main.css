@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+    background: linear-gradient(90deg, #8e44ad, #f39c12);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    overflow-y: scroll;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container2 {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    /* จัดภาพให้อยู่ตรงกลางตามแนวนอน */
+    flex-wrap: wrap;
+    /* ให้ภาพแสดงผลต่อกันในแถวใหม่ถ้าขนาดหน้าจอเล็ก */
+    gap: 10px;
+    /* เพิ่มช่องว่างระหว่างภาพ */
+}
+
+.image-container img {
+    border-radius: 15px;
+    /* ทำให้กรอบรูปภาพมีขอบมน */
+    background: linear-gradient(45deg, #f39c12, #8e44ad);
+    /* พื้นหลังไล่สีจากส้มไปม่วง */
+    padding: 10px;
+    /* เพิ่มช่องว่างระหว่างรูปภาพและขอบเพื่อให้เห็นพื้นหลังชัดเจน */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* เพิ่มเงาเพื่อความสวยงาม */
+}
+
+#randomizeBtn {
+    flex-grow: 1;
+}
+
+#exportBtn {
+    flex-grow: 1;
+}

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- _includes/head.html -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <!-- Title -->
+    <title>#Korat102 เรื่องเล่าจากผู้ร่วมงาน | Tamachirs.com</title>
+    <meta name="description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta name="author" content="Tamachirs.com">
+  
+    <!-- SEO & Social: Open Graph -->
+    <meta property="og:title" content="#Korat102 เรื่องเล่าจากผู้ร่วมงาน | Tamachirs.com">
+    <meta property="og:description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khunjibna.github.io/blog/article/2024/07/19/korat102-experience-with-meeting.html">
+    <meta property="og:image" content="/blog/assets/image/web-banner.jpg">
+  
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="#Korat102 เรื่องเล่าจากผู้ร่วมงาน | Tamachirs.com">
+    <meta name="twitter:description" content="ประสบการณ์ | ไอที | เกม | ท่องเที่ยวและกิจกรรม">
+    <meta name="twitter:image" content="/blog/assets/image/web-banner.jpg">
+  
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/blog/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/apple-touch-icon.png">
+  
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+    <!-- Nostr Tools -->
+    <script src="https://cdn.jsdelivr.net/npm/nostr-tools@2.12.0/lib/nostr.bundle.min.js"></script>
+    <script src="/blog/assets/js/nostr.js" defer></script>
+  
+    <!-- Google Fonts: Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --brand: #2563eb;
+        --brand-dark: #1e3a8a;
+        --surface: rgba(255, 255, 255, 0.9);
+        --muted: #94a3b8;
+      }
+
+      body {
+        font-family: 'Sarabun', sans-serif;
+        background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.14), transparent 30%),
+          radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.18), transparent 25%),
+          linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        color: #0f172a;
+      }
+
+      .page-shell::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(37, 99, 235, 0.07) 1px, transparent 0);
+        background-size: 22px 22px;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .glass-card {
+        background: var(--surface);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        background: linear-gradient(135deg, var(--brand), #22c55e);
+        color: #fff;
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        box-shadow: 0 15px 30px rgba(37, 99, 235, 0.25);
+        transition: transform 160ms ease, box-shadow 160ms ease, filter 200ms ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 36px rgba(34, 197, 94, 0.25);
+        filter: brightness(1.02);
+      }
+
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        color: #0f172a;
+        background: rgba(255, 255, 255, 0.6);
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+      }
+
+      .btn-ghost:hover {
+        border-color: rgba(37, 99, 235, 0.5);
+        box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+      }
+    </style>
+  </head>
+  
+
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+  <!-- เมนูส่วนหัว -->
+  <header class="bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 text-white shadow-lg sticky top-0 z-20">
+  <div class="container mx-auto flex justify-between items-center px-4 lg:px-6 py-4">
+    <div class="text-xl lg:text-2xl font-bold tracking-tight flex items-center space-x-2">
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">🌌</span>
+      <a href="/blog/" class="hover:text-sky-200 transition-colors">Tamachirs.com</a>
+    </div>
+
+
+    <!-- ปุ่มมือถือ -->
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="focus:outline-none rounded-full p-2 hover:bg-white/10 transition" aria-label="เปิดเมนู">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- เมนู Desktop -->
+    <nav class="hidden lg:flex space-x-2">
+      
+        <a href="/blog/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Home</a>
+      
+        <a href="/blog/about/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">About</a>
+      
+        <a href="/blog/article/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Article</a>
+      
+        <a href="/blog/note/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Note</a>
+      
+        <a href="/blog/project/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Project</a>
+      
+        <a href="/blog/contact/" class="px-4 py-2 rounded-full hover:bg-white/10 transition">Contact</a>
+      
+    </nav>
+  </div>
+
+  <!-- เมนู Mobile -->
+<div id="mobile-menu" class="hidden lg:hidden bg-gray-800/95 px-4 py-4 space-y-2 border-t border-white/10">
+  
+    <a href="/blog/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Home</a>
+  
+    <a href="/blog/about/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">About</a>
+  
+    <a href="/blog/article/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Article</a>
+  
+    <a href="/blog/note/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Note</a>
+  
+    <a href="/blog/project/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Project</a>
+  
+    <a href="/blog/contact/" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition">Contact</a>
+  
+</div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    toggleBtn.addEventListener("click", function () {
+      mobileMenu.classList.toggle("hidden");
+    });
+  });
+</script>
+
+
+  <div class="container mx-auto mt-8 flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 flex-grow">
+    <!-- โปรไฟล์ด้านซ้าย (4 ส่วนในหน้าจอใหญ่, 1 ส่วนในหน้าจอเล็ก) -->
+
+    <div class="lg:hidden mx-2">
+      <button onclick="toggleSidebar()" class="w-full bg-gray-200 px-4 py-2 rounded font-semibold">
+        ☰ เมนูโปรไฟล์
+      </button>
+    </div>
+
+
+    <div id="sidebar" class="hidden lg:block lg:w-1/3 xl:w-1/4 bg-white p-6 rounded-lg shadow-lg mx-2">
+      <div class="text-center space-y-4">
+  <img id="profile-picture" class="mx-auto rounded-full w-32 h-32 object-cover ring-4 ring-white shadow-lg" src="" alt="Profile Picture">
+  <div>
+    <h2 id="profile-name" class="text-2xl font-semibold mt-1">ชื่อ</h2>
+    <p id="profile-about" class="text-gray-600 mt-1">เกี่ยวกับ</p>
+  </div>
+
+  <div class="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
+    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold" id="followers"></span>
+    <span class="text-gray-400">•</span>
+    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-semibold" id="following"></span>
+  </div>
+
+  <!-- ลิงก์ Follow -->
+  <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a href="https://nostrudel.ninja/#/u/npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy" target="_blank" class="btn-primary">Follow</a>
+      <a href="https://github.com/khunjibna/blog" target="_blank" class="btn-ghost">Github</a>
+  </div>
+  
+
+  <!-- เส้นแบ่ง -->
+  <hr class="my-6 border-gray-200">
+
+  <!-- ปุ่มเต็มขนาดสำหรับ 3 ลิงก์ -->
+  <div class="space-y-4 text-left">
+      <div class="font-bold text-sm uppercase tracking-[0.2em] text-gray-500">มินิเกม</div>
+      <a href="/blog/app/random-character/" target="_blank" class="block w-full text-center bg-gradient-to-r from-gray-900 to-blue-900 text-white py-3 rounded-xl hover:from-blue-900 hover:to-emerald-700 transition shadow-lg">คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <!-- บทความด้านขวา (8 ส่วนในหน้าจอใหญ่, 1 ส่วนในหน้าจอเล็ก) -->
+    <div class="lg:w-2/3 xl:w-3/4">
+
+      <!-- Main post content -->
+      <main class="flex-1 px-2">
+
+        <!-- 🔗 Breadcrumb -->
+          <nav class="text-sm text-gray-500 mb-4">
+            <a href="/blog/" class="text-blue-600 hover:underline">Home</a>
+            
+            
+            &nbsp;&gt;&nbsp;
+            <a href="/blog/Article/" class="text-blue-600 hover:underline">
+              Article
+            </a>
+            
+          &nbsp;&gt;&nbsp;
+          <span class="text-gray-700">#Korat102 เรื่องเล่าจากผู้ร่วมงาน</span>
+        </nav>
+
+
+        <div class="bg-green-800 text-white px-6 py-6 break-words rounded mb-2">
+          <div class="font-bold text-lg ">
+              <h1>#Korat102 เรื่องเล่าจากผู้ร่วมงาน</h1>
+          </div>
+          <div class="flex items-center text-green-800 text-sm pt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+              <p class="ml-2 text-white"> <span>19/07/2024</span></p>
+          </div>
+      </div>
+
+
+
+        <div class="bg-white p-6 rounded border shadow-sm ">
+
+       
+          <!-- เนื้อหาโพสต์ -->
+          <article class="prose prose-indigo max-w-none break-words">
+            <p><img src="/blog/assets/image/blog/20240719-1/1.jpg" alt="คำอธิบายภาพ" class="mx-auto rounded-xl mb-6" loading="lazy" />
+      ตอนแรกแค่คอมเมนต์เล่นๆ ว่าจะไปยังไม่ได้ตัดสินใจจะไปอย่างเป็นทางการ ตอนที่เปิดให้ลงทะเบียนไปก็ไม่คิดด้วยซ้ำว่าจะกลายเป็นคนแรกที่ลงทะเบียนในแบบฟอร์มไปงาน <b class="underline text-blue-800">#korat102</b> ชะงั้น (มึงต้องโทษตัวเองเว้ยที่รีบกรอกแบบฟอร์ม/ใจง่ายจังวะ) ไหนๆก็ลงทะเบียนแล้ว คงต้องไปแล้วละ เราจะไป sats ในงานนั้น และอีกเหตุผลหนึ่งก็ไปฉลองวันเกิดย้อนหลังตัวเองด้วย ช่วงนั้นก็ลุ้นๆว่าจะมีงานชนอะไรหรือไม่จนถึงวันที่เดินทางจริงๆ
+<br /><br />
+      เริ่มต้นจากการเดินทางเวลา 18.00 น. ของวันที่ 12 นั่งรถโดยสารเข้าหมอชิตและนั่งรถไฟต่อไปปากช่องโดยมีเสียงเพลงที่ชอบและสปอยอนิเมะนรกตลอดทางจนมาถึงปากช่อง เวลา 09.00 น. ของเช้าอีกวัน (ระยเวลา 15 ชั่วโมง ที่นั่งอยู่บนรถและรถไฟแมร่งทรมาณตูดชิบหาย/เจ็บก้นกบ/เมื่อยคอ ในใจนั่งคิดกูมาทำอะไรที่นี้ ชอบทรมาณตัวเองสินะ) แต่ระหว่างทางตอนนั่งรถไฟผมก็เห็นสิ่งก่อสร้างรถไฟความเร็วสูงที่ขนานกับเส้นทางรถไฟเดิม (มันสูงจังเลยว้า) แต่ก็คิดว่าการเดินทางหลังจากการสร้างทางรถไฟเสร็จน่าจะเพิ่มความสะดวกให้คนได้เดินทางได้สะดวกสบายยิ่งขึ้น
+<br /><br />
+      พอถึงสถานีแล้วก็นั่งอาบแดดแปบหนึ่ง คุณวิน <b class="underline">Win Vee</b> ก็มารับไปยังร้านกาแฟที่ไปนัดหมายไว้ตอน 10 โมง เป็นเจ้าภาพที่ดีมากยิ้มแย้มแจ่มใส เราเดินทางมายังร้าน Ja-Kae Coffee Space เป็นสองคนแรก ช่วง 9.30 น. ก็นั่งคุยกันชักพักและก็ทยอยๆ เข้ามาในร้านกัน แต่ละคนก็สั่งกาแฟกัน แอบมีกิจกรรมแซวเล็กๆ ขำๆทายว่าใครไม่สั่งอเมริกาโน่ก็ออกจากสมาคมไป ก็ขำๆกัน คุยกันเพลินๆ จากนั้นผมก็ได้ทดลองเล่นเครื่องกระปุกออมสิน ของพี่ <b class="underline">Eddie Paradorn</b> ซึ่งเป็นอุปกรณ์ใช้สำหรับภายในครอบครัวให้ลูกหลานหยอดแลกกับ SATS ซึ่งตอนแรกผมก็ไม่เข้าใจการทำงานมัน (อ่อผมเข้าใจผิดนี่เอง) แปบหนึ่งก่อนเดินทางไปกินข้าวก็ได้พูดคุยกับ <b class="underline">Richter</b> เกี่ยวกับดอกไม้ที่ปลูกไว้และสรรพคุณในการใช้งานพูดคุยแลกเปลี่ยนกันเล็กน้อย พอเกือบเที่ยงวันก็หลายคนยังไม่ได้กินข้าวอะไรมาก็ย้ายไปไปกินที่ร้านเบอเกอร์ Bigger’ Burger &amp; steak และมีท่านหนึ่งสั่งเบียร์มากินกันก่อนเลย และแต่ละท่านก็มาทักทายผมสลับกันไป ก็คุยเรื่องนั้นนี่ตามประสากันไป 
+<br /><br />
+      จากนั้นก็เดินทางไปยังที่พัก คราวนี้ผมแอบเกาะกับรถบัสกับ Right Shift ไปยังที่พัก Nowadays pool villa khaoyai ระหว่างเดินทางก็แวะชื้อของเล็กน้อยก่อนที่จะเข้าที่พัก ก่อนที่จะต่างคนจะเริ่มกิจกรรมกัน แยกย้ายตามประสาแต่ละคนก็ทยอยๆกันเข้ามา ก็ได้ทักทายหลายๆท่านแนะนำตัว สลับเข้าห้องบ้างเปิดเพลงร้องเพลงกันบ้าง ประเดิมด้วยเบียร์ที่มีให้เลือกอยู่ 2 แบรน ราคาแพงอยู่นะ ราคา 2,100 sats และ 2,400 sats แต่ก็จัดมา ก็ได้พูดคุยแนะนำตัวกันเล็กน้อย ช่วงนี้ก็เริ่มจิบเบียร์กันละจัดมาหนึ่งกระป๋อง
+<br /><br />
+      ผมก็ได้พูดคุยทักทายหลายๆท่านที่อยู่ที่นั่งด้านหน้าสระน้ำ และได้สอบถามพี่เอก <b class="underline">Ekaphol</b> เรื่องเดินเขาใหญ่ พี่เอกก็ชวนผมไปแต่ก็ไม่ได้ไปเพราะตื่นเลทหน่อยหนึ่ง 555+ (แต่คราวหน้าท่าจะไม่พลาด** อยากเดินแบบกางเต้นนอนชักคืน ฮ่าๆ) และ พี่เป็ด <b class="underline">ped66</b> ก็มาแว๊บมาทักทายก่อนที่จะเริ่มกิจกรรมพิเศษของพี่เป็ด ฝากดูแลทางนี้ด้วยนะ และพี่เป็ดก็เข้าห้องเริ่มกิจกรรมกันไป พี่แชมป์ <b class="underline">PIGROCK</b> ก็เอาซองจดหมายสุ่มมาแจกให้กับทุกๆท่าน ต่างคนต่างแกะซองออกมาก็ได้คละกันไป จนพี่เป็ดจบกิจกรรมผมเองก็ไปถามสปอยจากคนร่วมกิจกรรมซึ่งแต่ละท่านก็ไม่บอกชะด้วยฮ่าๆ ก็เลยถามพี่เป็ดแทนพร้อมจิบเบียร์พูดคุยไป ซึ่งผมก็ได้ตกกระกอนบางอย่างในสิ่งที่พี่เป็ดพูด มันก็แค่นี้เองสินะ มองบรรยากาศรอบๆ กินเนื้อจิบเบียร์ คุยกับหลายๆท่าน ชักพักก็พาตัวเองลงสระ ซึ่งคุณวินก็ว่ายอยู่ก่อนละไปสไลด์เดอร์ ว่ายน้ำไปกลับ เหมือนออกกำลังกายทั้งๆ ทีตัวเองก็เหนื่อยกับการเดินทางมาตลอดทั้งคืนที่ผ่านมา ในใจนั่งคิดอย่างอยู่ในน้ำนานๆจังเลยเว้ย ลืมความเหนื่อยให้หมดกับสิ่งที่ผ่านมา ลอยละล่องในสระชักพักก็กลับห้องว่ายน้ำแต่งตัวละก็มาจิบเบียร์ ร้องเพลงสลับกันไป ชักพักพี่แชมป์ก็เอาเสื้อผ้าลายพิเศษมาจำหน่าย ผมก็เลือกดูกะจะชื้อ ก็คิดว่าจะชื้อตอนเช้าอีกวันแต่กลายเป็นว่าพี่แชมป์น่าจะกลับก่อน (พลาดเลยกูเหมือนกับเจอใครครั้งเดียวในชีวิตแล้วอยากคุยด้วย แต่ไม่กล้าทัก 555+) 
+<br /><br />
+      ช่วงเย็นๆจนถึงมืดผมก็ขึ้นไปด้านบนสลับลงมาห้องคาราโอเกะเพื่อเติมเบียร์บ้างอะไรบ้าง ด้านบนก็เสวนาประสาทั่วไปในบรรยากาศอันเงียบสงบและมีลมเย็นมาเป็นพักๆ เสียงเพลงบรรเลงกีตาร์และแคนเป็นอะไรที่ผ่อนคลายและอยากเชิ้งด้วยเลย ส่วนด้านล่างก็เฮฮาปาจิงโก๊ะร้องเพลงเต็มที่ นึกไม่ออกว่าคุยอะไรกันบ้างละ มึนเบียร์+เหล้าพิเศษจาก <b class="underline">Jingjo</b>, <b class="underline"> pango</b> และนักร้องสลับวงกันไป <b class="underline">Richter</b>, <b class="underline">nickydev</b>, <b class="underline">Xsara8</b>  (ตัวเองก็จัดไปเพลงหลายเพลงเหมือนกันแต่ที่จำได้ก็ ฮานิบ่ะเอ้ย / ไปขายนา เหียก่อน 😄 ) และขอให้น้องอิทร้องเพลงโปรด Saint Seiya ทำเอาขนลุกในช่วงที่ร้องสุดยอดจริง ช่วงนั้นด้านล่างก็มีแจกรางวัลจากผู้ที่จ่ายด้วย lighting ส่วนพี่แจ็ค <b class="underline">Jakk Goodday</b> ก็วีดีโอคลอมาทักทายทุกคนๆ ผ่านไปจนดึกหลายๆท่านที่อยู่ด้านบนก็ลงมาละมาหากับข้าวรอบดึก (นึกว่าข้าวผัดจะหายไปที่ไหนได้กุ้งในข้าวผัดหายไป) ช่วงนี้เหมือนตัวเองได้สลับอารมณ์ต่างๆ ช้าบ้างเร็วบ้างตามสติที่มีที่อยู่ในช่วงเวลานั้น
+<br /><br />
+      แต่ละท่านก็ได้แยกย้ายกันออกไป ไม่แน่ใจ <b class="underline">nickydev</b> เมาจริงหรือเล่นเลย แต่เจ้าตัวบอกไม่ไหวละ เลยต้องแบกคอไปที่ห้องแล้วให้เจ้าตัวเลือกเตียงเอง(โยนทิ้งตัวลงนอน) และผมก็กลับมาห้องส่วนกลางอีกครั้ง จนเหลือเพียงไม่กี่ท่าน ก็นั่งพูดคุยต่อกับ <b class="underline">xyzy</b>, <b class="underline">พยัคฆ์หมอบ</b>, <b class="underline">chontit</b>, <b class="underline">Bosthai</b> และ <b class="underline">Richter</b> น่าจะเรื่องการเรียนของลูกๆ ที่มีเพลงธรรมดาคลออยู่ด้านหลังพร้อมเบียร์และกับแกล้ม ผมก็คุยถามพี่ใหญ่อย่างสนุกสนานพอสมควร (ทักษะที่มนุษย์ควรจะมีในปัจจุบันกลับเป็นสิ่งที่หายไป ได้เห็นมุมมองการเปรียบเทียบคนสมัยก่อนและสมัยนี้) ผมนั่งฟังด้านในแต่ด้านนอกก็เหมือนมีสภายาแดงนิดๆ หน่อย อยากแยกร่างไปฟังด้านนอกจังเลยวุ๊ย จากนั้นคุณบีเริ่มง่วงขอแยกไปนอนผมก็ขอตามไปด้วย ฮ่าๆ ไอ้เราก็ง่วงๆ แต่ก็อยากฟังต่อแต่ฝืนตัวเองไม่ไหว 
+<br /><br />
+      เช้าตื่นมาตอนนั้นแสงแยงเข้าตาละ เหมือนเฮียนิกก็เหมือนแว๊บตื่นไปเปิดแอร์และกลับมานอนต่อ ลืมเปิดแอร์ก่อนนอนฮะ(ขอโทษครับ) ชักพักผมก็ตื่นก็เขากำลังจะออกไปตัวเองก็วูบต่อชักพักก็ตื่นมาเจออาจารย์ขิงออกมาหน้าห้องพร้อมกันพอดี กรุ๊ปที่เดินทางไปเขาใหญ่เขาก็ออกเดินทางกันละเลยไม่ได้ไป ผมก็เลยไปหาน้ำกิน และเดินเหยียบก้อนหินที่เรียงตามขอบสระ(อย่างเจ็บ/แต่ก็นวดเท้าได้ดี) จากนั้นก็ขึ้นไปรับแสงด้านบน คุณบีก็ขึ้นมาด้านบนพูดคุยเรื่องแหวน ผมก็จิบเบียร์แก้แฮงค์ยามเช้าอีกกระป๋อง แอบงีบด้านบนจนชักพักแดดลงมาก็ลงมาด้านล่างเหมือนเดิม ชักพักกาแฟดริปยามเช้าก็มา เอาเข้าจริงดื่มกาแฟจำได้น่าจะประมาณ 4-5 แก้วกันเลย(ดื่มอย่างเยอะ แต่สมองเบลอๆไปละเหมือนกัน) จากนั้นก็จิบข้าวต้ม ผมก็เห็นพี่ใหญ่ก็ลงน้ำรอบเช้าอีกรอบก็นั่งคุยกันชักพักใหญ่ๆเลย จากนั้นทุกๆท่านที่ไปเขาใหญ่ก็กลับเข้ามา ผมเองก็เตรียมเก็บของ และได้รับของฝากดอกไม้จาก <b class="underline">Richter</b> และพริกไทยจาก <b class="underline">pango</b> ขอบคุณครับ แล้วพอถึงเวลาแล้วก็ถ่ายรูปหมู่เป็นที่ระลึกก่อนแต่ละท่านจะเดินทางกลับ ก่อนกลับก็กอดกันตามประสากันไป 
+<br /><br /></p>
+
+<ul class="list-disc pl-6 text-gray-700 ml-8">
+  <li>ขอบคุณทีมงานปรุงเนื้อทุกท่าน ถึงอาจจะทำตกพื้นบ้างก็ไม่เป็นไรฮะ(แซวเน้อ) กินได้หมดแหละ😄</li>
+  <li>ขอบคุณ <b class="underline">Win Vee</b> มากครับ สำหรับการจัดงาน <b class="underline text-blue-800">#korat102</b> ในครั้งนี้ ถ้าไม่ได้จัดงานนี้ปากช่องและโคราชผมก็คงไม่ได้มา 😉 </li>
+  <li>ขอบคุณ <b class="underline">unh</b> สำหรับภาพบรรยากาศ ถึงแม้จะไม่ได้ค่อยคุยกันเลย ถ้าขาดภาพบรรยากาศผมก็ลืมช่วงเวลานั้นเหมือนกันครับ ความเมาทำให้ลืมบางอย่างได้เหมือนกัน เอิ๊กๆ🍺 😃 </li>
+</ul>
+
+<hr class="my-5" />
+
+<p>🚌 🚌 <b>ภาคต่อเนื่องอันนี้ข้ามกันไปได้</b> 🚌 🚌 
+<br /><br />
+      ผมเองก็จะเดินทางไปตัวเมืองโคราชต่อเพื่อพักต่ออีกคืน เมื่อคืนในวันงานพี่เจน <b class="underline">Thita@98</b> และครูโบว์ <b class="underline">Chonlada</b> ก็แว๊บๆถามผมละว่าผมจะไปโคราชต่อ ก็เลยให้ผมติดรถไปด้วย ผมก็ตอบตกลงแต่ตอนเช้าวันนั้นก็แทบไม่ได้คุยกันเลย ผมก็เตรียมจะชื้อตั๋วรถไฟละ ตอนสิบโมงเช้า เปิดแอพมาอ้าวไม่ให้จองออนไลน์ชะละ ก็คิดแหละว่าออกจากที่พักโดยติดขอติดรถคุณวินไปส่งที่สถานีรถไฟ เพื่อไปชื้อตั๋วเหมือนเคย ซึ่งตอนนั้นเอากระเป๋าเข้ารถคุณวินละ ผมก็เจอพี่เจนพอดีก็ถามผมว่าจะไปโคราชรึ ติดรถด้วยกันนี่มา ก็ต้องย้ายกระเป๋าไปยังรถครูโบว์ ช่วงระหว่างเดินทางพี่เจนก็หิวก็เลยทักคุณวินไปกินข้าวก่อน ร้านลาบชักร้านหนึ่งนี่แหละ จากนั้นครูโบว์ก็ไปส่งผมกับพี่เจนมาจนถึงโคราชและส่งที่อนุสาวรีย์ท้าวสุรนารี (ย่าโม) ระหว่างทางก็คุยกันเพลินๆ ขอโทษที่พูดเยอะไปหน่อย(อย่าไปสนใจเลย เอิ๊กๆ) หลังจากถึงลานย่าโมเรียบร้อยแล้ว ผมก็ได้แยกกับพี่เจน ไปเข้าที่พักที่แต่ละคนได้จองกันไว้
+<br /><br />
+      ยามเย็นผมก็มาไหว้ย่าโม และลองลอดประตูชุมพล เห็นว่ามีตำนานประตูชุมพล เชื่อว่าใครมาลอดซุ้มประตูนี้แล้วจะได้มาอยู่โคราช (เลยลอดไป 1 ครั้ง/ไม่กล้าลอด 3 ครั้ง ฮ่าๆ กลัวจะได้แฟนที่นี้ ฮ่าๆ) ตอนนั้นก็พี่เจนก็แว๊บมาไหว้ย่าโมพอดี ก็เลยได้นั่งคุยกัน ก็เดินไปเจอร้านนมดิบก็ไปกินก็แวะคุยกันยาวเลยในบริเวณแถวนั้น ความรู้สึกตอนนั้นผมเองเหมือนอยู่ในรังนกแต่อันนี้เจอกันต่อหน้า ( ลุคพี่เจนก็เหมือนกับในรังนกก็ยังคงเดิมไม่เปลี่ยน ) ก็ได้พูดคุยกันหลายๆเรื่องส่วนใหญ่ก็ธรรมมะ เจตสิก และอื่นๆ บางเรื่องผมก็เข้าใจบ้างไม่เข้าใจบ้างตามประสา บางเรื่องผมก็พึ่งรู้จากพี่เจนเหมือนกัน ขอบคุณครับ จากนั้นก็เดินทางกลับที่พักก็แยกย้ายกันไปนอน
+<br /><br />
+      ก่อนที่จะเดินทางกลับ ผมก็คิดละว่าจะนั่งรถไปสถานีขนส่ง เช้าๆมาคุณเอ็ม <b class="underline">chontit</b> ก็ทักมาสอบถามว่าเดินทางกี่โมง ผมเดินทางเที่ยงวันครับ คุณเอ็มก็อาสามารับไปส่งที่สถานีขนส่งแห่งที่ 2 ก่อนเดินทางกลับก็แวะร้านกาแฟละมุนก่อนกลับ ระหว่างเดินทางผมก็ถามเรื่องความเชื่อเรื่องประตูชุมพล เอาเข้าจริงมันก็มีความเกี่ยวข้องนะสำหรับคุณเอ็มเองที่เคยไปลอดประตูชุมพล ( พอถึงร้านก็ลองชิมกาแฟประจำร้าน คนเสริฟนี่ดีจริงๆเลยเชียว มีแซวมีมุกให้ชงตลอดเหมือนชวนให้มาที่ร้านอีก ผมคงพูดเยอะและกินน้ำเยอะด้วยแหละ ) ช่วงระยะเกือบหนึ่งชั่วโมงที่คุยที่ร้าน ผมก็ได้เล่าเรื่องประสบการณ์การเดินทางส่วนตัวช่วงมีนาคมที่ผ่านมาและสิ่งที่ได้จากการเดินทางในครั้งนั้น และก็แลกเปลี่ยนเรื่องระบบราชการนิดหน่อย จากนั้น คุณเอ็มก็ส่งผมมาสถานีขนส่งใหม่จนถึงทางขึ้นรถและก็ลาจากกันก่อนที่ผมนั่งรถกลับบ้าน ( มีแพลนอยู่ว่าจะกลับมาอีกรอบแน่ๆ อันเนื่องมาจากค้างคาเรื่องเดินที่เขาใหญ่กับร้านเนื้อในโคราช อยากลองกิน/หาเหตุอีกละ พอๆที่จะอยากไปนครพนมอีกรอบเลย เง้อ/ก่อนไม่ได้เที่ยว ฮ่าๆ )
+<br /><br />
+      ระยะเวลาที่ 12 ชั่วโมงในการเดินทางกลับบ้านของผมเอง ผมก็มานั่งทบทวนในสิ่งที่ผ่านไปในงาน <b class="underline text-blue-800">#korat102</b> ที่ผ่านมา ผมก็มองไปยังหน้าต่างบนรถโดยสารที่กำลังเคลื่อนที่ออกไป ผ่านทุ่งนาภูเขา ผ่านชุมชน ผ่านเมือง เหตุการณ์ที่ผ่านมามันก็ช่างผ่านไปรวดเร็วเหลือเกิน หลังจากจบงานนี้ระหว่างการเดินทาง ผมรู้สึกนิ่งมากขึ้น ผมมองปัจจุบันมากขึ้น แต่ก็วางแพลนคร่าวๆ ถึงอนาคตและเป้าหมายที่อยากจะทำ แต่ละคนมีหน้าที่ของตัวเองเพื่อเอาตัวรอดในชีวิตที่มีความยากในปัจจุบัน เป็นเราเองหรือระบบที่ทำให้เราใช้ชีวิตยากขึ้น? สำหรับการเดินทางนั่งรถไปกลับระยะเวลารวมวันกว่าๆ (28 ชั่วโมง) เกือบ 1500km ที่ผมนั่งรถโดยสารประจำทางสำหรับผมเองก็ถือว่าคุ้มค่าในการเดินทางมาครั้งนี้จริงๆ ถึงแม้จะบ่นกับตัวเองว่าเมื่อยตัวชิบหาย ขอบคุณครับ :)</p>
+
+          </article>
+          <div class="border-t mt-5">
+            <div class="flex justify-center my-2 space-x-4">
+              <div>
+                <a href="https://www.facebook.com/sharer.php?u=https://khunjibna.github.io/blog/article/2024/07/19/korat102-experience-with-meeting.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/share.png" alt="SHARE FACEBOOK" title="SHARE FACEBOOK">
+                </a>
+              </div>
+            
+              <div>
+                <a href="https://twitter.com/share?url=https://khunjibna.github.io/blog/article/2024/07/19/korat102-experience-with-meeting.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/sharetw.png" alt="SHARE TWITTER" title="SHARE TWITTER">
+                </a>
+              </div>
+            
+              <div>
+                <a href="https://social-plugins.line.me/lineit/share?url=https://khunjibna.github.io/blog/article/2024/07/19/korat102-experience-with-meeting.html"
+                   target="_blank" rel="noopener noreferrer">
+                  <img src="/blog/assets/share/shareline.png" alt="SHARE LINE" title="SHARE LINE">
+                </a>
+              </div>
+            </div>
+            
+            <!-- หมวดหมู่ -->
+            <span class="inline-flex items-center gap-1">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M7 7a1 1 0 011-1h2.586a1 1 0 01.707.293l6.414 6.414a1 1 0 010 1.414l-4.586 4.586a1 1 0 01-1.414 0L7.293 12.707A1 1 0 017 12V8z" />
+              </svg>
+              <span>Article</span>
+            </span>
+            
+          </div>
+        </div>
+
+
+        <div class="bg-white border px-2 py-2 mt-2">
+          <div class="mb-2 pl-2"><b>สามารถสนับสนุนบทความนี้ผ่าน (Zap) ขอบคุณครับ</b></div>
+          <!-- _includes/zap-widget.html -->
+<div class="max-w-sm mx-auto">
+  <!-- ปุ่มหลัก -->
+  <button id="zap-toggle" onclick="toggleZapForm()" 
+          class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded">
+    ⚡ สนับสนุน
+  </button>
+
+  <!-- แบบฟอร์ม Zap -->
+  <div id="zap-form" class="mt-4 border border-yellow-300 bg-yellow-50 p-4 rounded hidden break-words">
+    <label for="zap-amount" class="block mb-1 text-sm text-gray-700">💸 จำนวนที่ต้องการ (sats):</label>
+    <input id="zap-amount" type="number" min="1" step="1" value="21"
+           class="w-full p-2 border rounded mb-3">
+
+    <button onclick="fetchZapInvoice()"
+            class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-4 rounded">
+      🔄 สร้าง QR สำหรับ Zap
+    </button>
+
+    <div id="zap-result" class="mt-4 hidden text-center">
+      <p class="text-sm text-gray-600">📱 สแกน QR เพื่อสนับสนุน:</p>
+      <canvas id="zap-qr" class="mx-auto my-2"></canvas>
+      <p class="text-xs text-gray-400" id="zap-pr"></p>
+      <!-- 🔗 ลิงก์เปิดในแอป Lightning จะถูกเพิ่มตรงนี้ -->
+    </div>
+  </div>
+</div>
+
+<!-- QR Code CDN -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+
+<script>
+  function toggleZapForm() {
+    const form = document.getElementById('zap-form');
+    form.classList.toggle('hidden');
+  }
+
+  async function fetchZapInvoice() {
+    const sats = parseInt(document.getElementById('zap-amount').value);
+    const resultEl = document.getElementById('zap-result');
+    const qrCanvas = document.getElementById('zap-qr');
+    const prEl = document.getElementById('zap-pr');
+
+    if (isNaN(sats) || sats < 1) {
+      alert("⚠️ กรุณาใส่จำนวน sats ที่ถูกต้อง");
+      return;
+    }
+
+    const lnurl = "https://walletofsatoshi.com/.well-known/lnurlp/khunjibna"; // เช่น https://walletofsatoshi.com/.well-known/lnurlp/jib
+
+    try {
+      const lnurlRes = await fetch(lnurl);
+      const lnData = await lnurlRes.json();
+      const callback = lnData.callback;
+      const amountMsat = sats * 1000;
+
+      // ใส่ comment แบบกำหนดเอง
+      const invoiceRes = await fetch(`${callback}?amount=${amountMsat}&comment=${encodeURIComponent("Zap Article on Tamachirs.com")}`);
+      const invoiceData = await invoiceRes.json();
+
+      if (invoiceData.pr) {
+        resultEl.classList.remove("hidden");
+        QRCode.toCanvas(qrCanvas, "lightning:" + invoiceData.pr);
+        prEl.innerText = invoiceData.pr;
+
+        // 🆕 เพิ่มลิงก์สำหรับเปิดในแอป (เฉพาะมือถือ)
+        const existingLink = document.getElementById('zap-mobile-link');
+        if (existingLink) existingLink.remove();
+
+        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+          const mobileLink = document.createElement('a');
+          mobileLink.href = "lightning:" + invoiceData.pr;
+          mobileLink.innerText = "⚡ เปิดในแอป Lightning";
+          mobileLink.className = "mt-2 inline-block text-yellow-600 underline text-sm";
+          mobileLink.setAttribute("target", "_blank");
+          mobileLink.id = "zap-mobile-link";
+          resultEl.appendChild(mobileLink);
+        }
+      } else {
+        alert("ไม่สามารถสร้าง invoice ได้ 😢");
+      }
+    } catch (e) {
+      console.error(e);
+      alert("❌ เกิดข้อผิดพลาด: " + e.message);
+    }
+  }
+</script>
+
+        </div>
+      </main>
+
+
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-10 text-sm text-center text-gray-600 relative z-10">
+  <div class="mx-auto max-w-5xl rounded-2xl bg-white/80 backdrop-blur p-6 shadow-lg border border-gray-200">
+    <p class="font-semibold text-gray-800">© 2025 Tamachirs.com. All rights reserved.</p>
+    <p class="mt-2 flex flex-wrap gap-2 justify-center items-center text-gray-500">
+      <span class="text-red-500">♥</span> Crafted with
+      <a href="https://jekyllrb.com" target="_blank" class="font-semibold text-blue-700 hover:text-blue-900">Jekyll</a>
+      &
+      <a href="https://tailwindcss.com" target="_blank" class="font-semibold text-emerald-700 hover:text-emerald-900">Tailwind CSS</a>
+    </p>
+  </div>
+</footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('hidden');
+    }
+  </script>
+</body>
+
+</html>
