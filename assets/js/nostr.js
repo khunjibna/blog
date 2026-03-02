@@ -277,12 +277,37 @@ function renderArticlePreview(naddr, container) {
         const article = JSON.parse(data[2].content);
         const card = document.createElement('div');
         card.className = "bg-gray-50 border border-gray-200 rounded-lg p-4 space-y-2";
-        card.innerHTML = `
-          <div class="font-semibold text-lg">${article.title || 'ไม่มีชื่อบทความ'}</div>
-          <div class="text-sm text-gray-600">${article.summary || ''}</div>
-          ${article.image ? `<img src="${article.image}" class="rounded w-full max-w-md mt-2">` : ''}
-          <div><a href="https://njump.me/${naddr}" target="_blank" class="text-blue-600 underline">อ่านบทความฉบับเต็ม</a></div>
-        `;
+
+        // Title
+        const titleDiv = document.createElement('div');
+        titleDiv.className = "font-semibold text-lg";
+        titleDiv.textContent = article.title || 'ไม่มีชื่อบทความ';
+        card.appendChild(titleDiv);
+
+        // Summary
+        const summaryDiv = document.createElement('div');
+        summaryDiv.className = "text-sm text-gray-600";
+        summaryDiv.textContent = article.summary || '';
+        card.appendChild(summaryDiv);
+
+        // Image (optional)
+        if (article.image && typeof article.image === 'string') {
+          const img = document.createElement('img');
+          img.src = article.image;
+          img.className = "rounded w-full max-w-md mt-2";
+          card.appendChild(img);
+        }
+
+        // Link to full article
+        const linkWrapper = document.createElement('div');
+        const link = document.createElement('a');
+        link.href = "https://njump.me/" + naddr;
+        link.target = "_blank";
+        link.className = "text-blue-600 underline";
+        link.textContent = "อ่านบทความฉบับเต็ม";
+        linkWrapper.appendChild(link);
+        card.appendChild(linkWrapper);
+
         container.appendChild(card);
         ws.close();
       }
