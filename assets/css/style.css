@@ -28,6 +28,9 @@ body {
     radial-gradient(circle at top left, rgba(209, 233, 209, 0.5), transparent 28%),
     linear-gradient(180deg, #fdfbf7 0%, var(--bg) 100%);
   line-height: 1.85;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -490,7 +493,7 @@ a {
 }
 
 .site-footer {
-  margin-top: 24px;
+  margin-top: auto;
   background: var(--surface-soft);
   border-top: 1px solid rgba(122, 123, 117, 0.12);
 }
