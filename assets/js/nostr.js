@@ -352,7 +352,8 @@ function displayNoteOrImage(noteContent, createdAt) {
     const iframe = document.createElement("iframe");
     iframe.src = `https://www.youtube.com/embed/${youtubeMatch[1]}`;
     iframe.width = "100%";
-    iframe.height = "630";
+    iframe.style.aspectRatio = "16/9";
+    iframe.style.minHeight = "350px";
     iframe.className = "w-full rounded-lg";
     iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
     iframe.allowFullscreen = true;
