@@ -1,18 +1,52 @@
-<footer class="site-footer">
-  <div class="site-footer-inner">
-    <div class="footer-brand-block">
-      <div class="footer-brand">{{ site.title }}</div>
-      <p>{{ site.tagline }}</p>
+<footer class="sp-footer">
+  <!-- Footer Widgets Area -->
+  <div class="sp-footer-widgets">
+    <div class="sp-footer-widgets-inner">
+      <div class="sp-footer-col">
+        <h4 class="sp-footer-heading">{{ site.title }}</h4>
+        <p class="sp-footer-about">{{ site.description }}</p>
+        <div class="sp-footer-social">
+          {% if site.nostr.npub %}
+            <a href="https://njump.me/{{ site.nostr.npub }}" class="sp-footer-social-link" aria-label="Nostr" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </a>
+          {% endif %}
+          {% if site.lightning.lnurl %}
+            <a href="{{ site.lightning.lnurl }}" class="sp-footer-social-link" aria-label="Lightning" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+            </a>
+          {% endif %}
+          <a href="{{ '/contact/' | relative_url }}" class="sp-footer-social-link" aria-label="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="sp-footer-col">
+        <h4 class="sp-footer-heading">เมนู</h4>
+        <ul class="sp-footer-links">
+          {% for item in site.footer_links %}
+            <li><a href="{% if item.url contains '://' or item.url contains 'mailto:' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="sp-footer-col">
+        <h4 class="sp-footer-heading">บทความล่าสุด</h4>
+        <ul class="sp-footer-links">
+          {% for post in site.posts limit:4 %}
+            <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
+  </div>
 
-    <nav class="footer-nav" aria-label="Footer navigation">
-      {% for item in site.footer_links %}
-        <a href="{% if item.url contains '://' or item.url contains 'mailto:' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a>
-      {% endfor %}
-    </nav>
-
-    <div class="footer-meta">
-      <p>&copy; {{ "now" | date: "%Y" }} {{ site.title }}.</p>
+  <!-- Footer Bottom Bar -->
+  <div class="sp-footer-bottom">
+    <div class="sp-footer-bottom-inner">
+      <p>&copy; {{ "now" | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+      <p class="sp-footer-powered">Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a></p>
     </div>
   </div>
 </footer>
