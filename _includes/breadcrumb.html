@@ -1,0 +1,26 @@
+{% unless page.url == '/' %}
+<div class="breadcrumb-bar">
+  <div class="breadcrumb-bar-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ '/' | relative_url }}">หน้าแรก</a>
+      {% if page.categories and page.categories.size > 0 %}
+        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <a href="{{ '/archive/' | relative_url }}">{{ page.categories[0] }}</a>
+      {% elsif page.url contains '/archive' %}
+        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <span>บทความ</span>
+      {% elsif page.url contains '/about' %}
+        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <span>เกี่ยวกับเรา</span>
+      {% elsif page.url contains '/contact' %}
+        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <span>ติดต่อเรา</span>
+      {% endif %}
+      {% if page.date %}
+        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <span>{{ page.title | truncate: 60 }}</span>
+      {% endif %}
+    </nav>
+  </div>
+</div>
+{% endunless %}
