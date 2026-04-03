@@ -19,8 +19,8 @@ nostr:
   npub: npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy
 
 lightning:
-  lnurl: ""
-  default_zap: 100
+  lnurl: "https://walletofsatoshi.com/.well-known/lnurlp/khunjibna"
+  default_zap: 21
 
 navigation:
   - title: หน้าแรก

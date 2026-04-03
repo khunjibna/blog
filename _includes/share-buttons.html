@@ -49,7 +49,7 @@
       var lnRes   = await fetch(lnurl);
       var lnData  = await lnRes.json();
       var invRes  = await fetch(lnData.callback + '?amount=' + (sats * 1000) +
-                    '&comment=' + encodeURIComponent('Zap from {{ site.title }}'));
+                    '&comment=' + encodeURIComponent('Zap from ' + {{ site.title | jsonify }}));
       var invData = await invRes.json();
 
       if (invData.pr) {
