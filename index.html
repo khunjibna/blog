@@ -39,7 +39,7 @@ title: Home
           <img src="{{ featured.image | default: '/assets/image/web-banner.jpg' | relative_url }}" alt="{{ featured.title }}" loading="lazy">
         </a>
         <div class="home-feature-body">
-          <p class="eyebrow">{{ featured.date | date: "%d %b %Y" }}</p>
+          <p class="eyebrow">{% include thai-date.html date=featured.date %}</p>
           <h3><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h3>
           <p>{{ featured.summary | default: featured.excerpt | strip_html | truncate: 170 }}</p>
         </div>
@@ -53,7 +53,7 @@ title: Home
             <img src="{{ post.image | default: '/assets/image/web-banner.jpg' | relative_url }}" alt="{{ post.title }}" loading="lazy">
           </a>
           <div class="home-side-body">
-            <p class="eyebrow">{{ post.date | date: "%d %b %Y" }}</p>
+            <p class="eyebrow">{% include thai-date.html date=post.date %}</p>
             <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
             <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 90 }}</p>
           </div>
