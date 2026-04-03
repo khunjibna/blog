@@ -23,19 +23,19 @@ lightning:
   default_zap: 100
 
 navigation:
-  - title: Stories
+  - title: บทความ
     url: /
-  - title: About
+  - title: เกี่ยวกับบล็อก
     url: /about/
-  - title: Archive
+  - title: คลังบทความ
     url: /archive/
 
 footer_links:
-  - title: Stories
+  - title: บทความ
     url: /
-  - title: About
+  - title: เกี่ยวกับบล็อก
     url: /about/
-  - title: Archive
+  - title: คลังบทความ
     url: /archive/
   - title: GitHub
     url: https://github.com/khunjibna/blog
