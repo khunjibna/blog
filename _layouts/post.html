@@ -43,27 +43,28 @@
               {{ content }}
             </div>
 
+            {% assign full_url = site.url | append: site.baseurl | append: page.url %}
             <div class="post-share-row">
               <a class="share-btn share-facebook"
-                 href="https://www.facebook.com/sharer.php?u={{ page.url | absolute_url }}"
+                 href="https://www.facebook.com/sharer.php?u={{ full_url | uri_escape }}"
                  target="_blank" rel="noopener noreferrer">Facebook</a>
               <a class="share-btn share-twitter"
-                 href="https://twitter.com/share?url={{ page.url | absolute_url }}&text={{ page.title | uri_escape }}"
+                 href="https://twitter.com/share?url={{ full_url | uri_escape }}&text={{ page.title | uri_escape }}"
                  target="_blank" rel="noopener noreferrer">Twitter / X</a>
               <a class="share-btn share-line"
-                 href="https://social-plugins.line.me/lineit/share?url={{ page.url | absolute_url }}"
+                 href="https://social-plugins.line.me/lineit/share?url={{ full_url | uri_escape }}"
                  target="_blank" rel="noopener noreferrer">LINE</a>
               <button class="share-btn share-copy-link" onclick="copyPostLink(this)">
                 🔗 คัดลอกลิงก์
               </button>
             </div>
             <div class="post-url-display">
-              <span>{{ page.url | absolute_url }}</span>
+              <span>{{ full_url }}</span>
             </div>
 
             <script>
               function copyPostLink(btn) {
-                var url = '{{ page.url | absolute_url }}';
+                var url = '{{ full_url }}';
                 if (navigator.clipboard) {
                   navigator.clipboard.writeText(url).then(function () {
                     btn.textContent = '✅ คัดลอกแล้ว!';
