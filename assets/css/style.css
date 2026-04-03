@@ -116,8 +116,15 @@ a {
 .sp-brand {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   text-decoration: none;
   flex-shrink: 0;
+}
+
+.sp-brand-logo {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 
 .sp-brand-title {
