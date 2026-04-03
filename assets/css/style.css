@@ -1026,7 +1026,7 @@ a {
   color: #e8ffe8;
 }
 .post-banner-title {
-  font-family: "Noto Serif Thai", serif;
+  font-family: "Kanit", sans-serif;
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   font-weight: 700;
   line-height: 1.3;
