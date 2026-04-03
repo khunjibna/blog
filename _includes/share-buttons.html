@@ -1,10 +1,15 @@
 <!-- _includes/share-buttons.html — Zap / Lightning widget -->
 <div class="zap-widget">
-  <button id="zap-toggle" onclick="toggleZapForm()" class="zap-btn">
+  <button id="zap-toggle" onclick="openZapModal()" class="zap-btn">
     ⚡ สนับสนุน
   </button>
+</div>
 
-  <div id="zap-form" class="zap-form" hidden>
+<!-- Zap Modal -->
+<div class="zap-modal-overlay" id="zap-modal" hidden>
+  <div class="zap-modal">
+    <button class="zap-modal-close" onclick="closeZapModal()" aria-label="ปิด">&times;</button>
+    <h3 class="zap-modal-title">⚡ สนับสนุนด้วย Lightning</h3>
     <label for="zap-amount" class="zap-label">💸 จำนวนที่ต้องการ (sats):</label>
     <input id="zap-amount" type="number" min="1" step="1"
            value="{{ site.lightning.default_zap | default: 100 }}"
@@ -23,10 +28,20 @@
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js" defer></script>
 <script>
-  function toggleZapForm() {
-    var form = document.getElementById('zap-form');
-    if (form) form.hidden = !form.hidden;
+  function openZapModal() {
+    var modal = document.getElementById('zap-modal');
+    if (modal) { modal.hidden = false; document.body.style.overflow = 'hidden'; }
   }
+  function closeZapModal() {
+    var modal = document.getElementById('zap-modal');
+    if (modal) { modal.hidden = true; document.body.style.overflow = ''; }
+  }
+  document.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'zap-modal') closeZapModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeZapModal();
+  });
 
   async function fetchZapInvoice() {
     var sats = parseInt(document.getElementById('zap-amount').value, 10);
