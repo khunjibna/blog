@@ -43,6 +43,279 @@ a {
   padding: 40px 0 56px;
 }
 
+/* ═══════════════════════════════════════
+   Sparkling-style Top Bar
+   ═══════════════════════════════════════ */
+.sp-topbar {
+  background: #222;
+  color: #ccc;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.sp-topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: min(1400px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 6px 0;
+}
+
+.sp-topbar-text {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.sp-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sp-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.sp-social-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ═══════════════════════════════════════
+   Sparkling-style Main Header
+   ═══════════════════════════════════════ */
+.sp-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  backdrop-filter: none;
+}
+
+.sp-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  width: min(1400px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 0;
+  min-height: 64px;
+}
+
+.sp-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.sp-brand-title {
+  font-family: "Noto Serif Thai", serif;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  transition: color 180ms ease;
+}
+
+.sp-brand:hover .sp-brand-title {
+  color: var(--accent-dim);
+}
+
+/* ── Navigation ── */
+.sp-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  margin-left: auto;
+}
+
+.sp-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 20px 18px;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #444;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.sp-nav a:hover {
+  color: var(--accent);
+  background: rgba(80, 100, 82, 0.04);
+}
+
+.sp-nav a.active,
+.sp-nav a[aria-current="page"] {
+  color: var(--accent);
+}
+
+.sp-nav a.active::after,
+.sp-nav a[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 18px;
+  right: 18px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 3px 3px 0 0;
+}
+
+/* ── Header Actions ── */
+.sp-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sp-search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  color: #555;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.sp-search-btn:hover {
+  background: rgba(80, 100, 82, 0.08);
+  color: var(--accent);
+}
+
+/* ── Hamburger Button ── */
+.sp-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px;
+  transition: background 180ms ease;
+}
+
+.sp-menu-btn:hover {
+  background: rgba(80, 100, 82, 0.06);
+}
+
+.sp-menu-btn span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #444;
+  border-radius: 2px;
+  transition: transform 250ms ease, opacity 200ms ease;
+}
+
+.sp-menu-btn.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.sp-menu-btn.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.sp-menu-btn.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile Menu ── */
+.sp-mobile-menu {
+  display: none;
+  background: #fff;
+  border-top: 1px solid #e8e8e8;
+}
+
+.sp-mobile-menu.is-open {
+  display: block;
+}
+
+.sp-mobile-menu-inner {
+  width: min(100%, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 12px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sp-mobile-menu-inner a {
+  display: block;
+  padding: 11px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #444;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.sp-mobile-menu-inner a:hover,
+.sp-mobile-menu-inner a.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .sp-topbar-text {
+    display: none;
+  }
+
+  .sp-topbar-inner {
+    justify-content: flex-end;
+    width: min(100%, calc(100% - 32px));
+  }
+
+  .sp-header-inner {
+    width: min(100%, calc(100% - 32px));
+    min-height: 56px;
+  }
+
+  .sp-nav {
+    display: none;
+  }
+
+  .sp-search-btn {
+    display: none;
+  }
+
+  .sp-menu-btn {
+    display: flex;
+  }
+
+  .sp-brand-title {
+    font-size: 1.3rem;
+  }
+}
+
 .site-header,
 .site-footer,
 .hero,
@@ -1228,9 +1501,9 @@ a {
 /* ════════════════════════════════════════
    Design Home + Header Refresh
    ════════════════════════════════════════ */
-.site-header {
-  background: rgba(251, 249, 244, 0.82);
-  backdrop-filter: blur(12px);
+.site-header.sp-header {
+  background: #fff;
+  backdrop-filter: none;
 }
 
 .site-header-inner {
@@ -1238,35 +1511,7 @@ a {
   padding: 18px 0;
 }
 
-.brand-title {
-  font-style: normal;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-
-.site-nav {
-  justify-content: center;
-  gap: 38px;
-}
-
-.site-nav a {
-  font-size: 0.84rem;
-  letter-spacing: 0.06em;
-}
-
-.site-actions {
-  min-width: 40px;
-  justify-content: flex-end;
-}
-
-.mobile-menu-btn {
-  border: 1px solid var(--border);
-  background: var(--surface-soft);
-}
-
-.mobile-menu-btn span {
-  width: 18px;
-}
+/* old brand/nav overrides removed — now using .sp-* classes */
 
 .bottom-nav {
   position: fixed;

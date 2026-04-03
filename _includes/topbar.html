@@ -1,41 +1,71 @@
-<header class="site-header">
-  <div class="site-header-inner">
-    <a class="brand" href="{{ '/' | relative_url }}">
-      <span class="brand-title">{{ site.title }}</span>
+<!-- ── Top Bar ──────────────────────────────────────── -->
+<div class="sp-topbar">
+  <div class="sp-topbar-inner">
+    <div class="sp-topbar-left">
+      <span class="sp-topbar-text">{{ site.tagline }}</span>
+    </div>
+    <div class="sp-topbar-right">
+      {% if site.nostr.npub %}
+        <a href="https://njump.me/{{ site.nostr.npub }}" class="sp-social-link" aria-label="Nostr" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        </a>
+      {% endif %}
+      {% if site.lightning.lnurl %}
+        <a href="{{ site.lightning.lnurl }}" class="sp-social-link" aria-label="Lightning" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+        </a>
+      {% endif %}
+      <a href="{{ '/contact/' | relative_url }}" class="sp-social-link" aria-label="Email">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── Main Header ─────────────────────────────────── -->
+<header class="site-header sp-header">
+  <div class="sp-header-inner">
+    <a class="sp-brand" href="{{ '/' | relative_url }}">
+      <span class="sp-brand-title">{{ site.title }}</span>
     </a>
 
-    <nav class="site-nav" aria-label="Main navigation">
+    <nav class="sp-nav" id="sp-nav" aria-label="Main navigation">
       {% for item in site.navigation %}
-        <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
+        <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active" aria-current="page"{% endif %}>{{ item.title }}</a>
       {% endfor %}
     </nav>
 
-    <div class="site-actions">
-      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false">
+    <div class="sp-header-actions">
+      <button class="sp-search-btn" id="sp-search-btn" aria-label="ค้นหา">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="sp-menu-btn" id="sp-menu-btn" aria-label="เปิดเมนู" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-    <div class="mobile-menu-inner">
+  <!-- Mobile Menu -->
+  <nav class="sp-mobile-menu" id="sp-mobile-menu" aria-label="Mobile navigation">
+    <div class="sp-mobile-menu-inner">
       {% for item in site.navigation %}
-        <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
+        <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active" aria-current="page"{% endif %}>{{ item.title }}</a>
       {% endfor %}
     </div>
   </nav>
-
-  <nav class="bottom-nav" aria-label="Mobile quick navigation">
-    {% for item in site.navigation %}
-      <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
-    {% endfor %}
-  </nav>
 </header>
+
+<!-- ── Bottom Nav (Mobile) ─────────────────────────── -->
+<nav class="bottom-nav" aria-label="Mobile quick navigation">
+  {% for item in site.navigation %}
+    <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
+  {% endfor %}
+</nav>
 
 <script>
   (function () {
-    var btn = document.getElementById('mobile-menu-btn');
-    var menu = document.getElementById('mobile-menu');
+    var btn = document.getElementById('sp-menu-btn');
+    var menu = document.getElementById('sp-mobile-menu');
     if (!btn || !menu) return;
     btn.addEventListener('click', function () {
       var isOpen = menu.classList.toggle('is-open');
