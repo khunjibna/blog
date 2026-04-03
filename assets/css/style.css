@@ -1658,37 +1658,7 @@ a {
 
 /* old brand/nav overrides removed — now using .sp-* classes */
 
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 60;
-  display: none;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-  padding: 10px 12px;
-  background: rgba(251, 249, 244, 0.9);
-  backdrop-filter: blur(14px);
-  border-top: 1px solid var(--border);
-}
-
-.bottom-nav a {
-  text-decoration: none;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  text-align: center;
-  padding: 9px 6px;
-  color: var(--muted);
-  border-radius: 999px;
-}
-
-.bottom-nav a[aria-current="page"] {
-  background: var(--accent-soft);
-  color: var(--accent);
-}
+/* bottom-nav removed */
 
 .home-hero-design {
   margin-bottom: 40px;
@@ -1937,11 +1907,6 @@ a {
 
   .site-main {
     padding-top: 18px;
-    padding-bottom: 78px;
-  }
-
-  .bottom-nav {
-    display: grid;
   }
 }
 
