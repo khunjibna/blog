@@ -1,25 +1,72 @@
----
-layout: default
----
-<article class="post-layout">
-  <header class="post-header">
-    <p class="eyebrow">{% include thai-date.html date=page.date %}</p>
-    <h1>{{ page.title }}</h1>
-    {% if page.summary or page.description %}
-      <p class="post-summary">{{ page.summary | default: page.description }}</p>
-    {% endif %}
-    {% if page.image %}
-      <figure class="post-cover">
-        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
-      </figure>
-    {% endif %}
-  </header>
+<!doctype html>
+<html lang="{{ site.lang | default: 'th' }}">
+  {% include head.html %}
+  <body data-npub="{{ site.nostr.npub | default: '' }}">
+    {% include topbar.html %}
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+    <div class="layout-shell">
+      <div class="layout-columns">
+        <aside class="layout-sidebar-col">
+          {% include sidebar.html %}
+          {% include share-buttons.html %}
+        </aside>
 
-  <p class="post-back">
-    <a href="{{ '/' | relative_url }}">← กลับหน้าแรก</a>
-  </p>
-</article>
+        <main class="layout-content-col">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="{{ '/' | relative_url }}">Home</a>
+            {% if page.categories and page.categories.size > 0 %}
+              <span class="breadcrumb-sep" aria-hidden="true">›</span>
+              <a href="{{ '/' | relative_url }}">{{ page.categories[0] }}</a>
+            {% endif %}
+            <span class="breadcrumb-sep" aria-hidden="true">›</span>
+            <span>{{ page.title | truncate: 60 }}</span>
+          </nav>
+
+          <div class="post-header-banner">
+            <h1 class="post-banner-title">{{ page.title }}</h1>
+            <div class="post-banner-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <span>{% include thai-date.html date=page.date %}</span>
+            </div>
+          </div>
+
+          <div class="post-content-card">
+            {% if page.image %}
+              <figure class="post-cover">
+                <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
+              </figure>
+            {% endif %}
+
+            <div class="post-content">
+              {{ content }}
+            </div>
+
+            <div class="post-share-row">
+              <a class="share-btn share-facebook"
+                 href="https://www.facebook.com/sharer.php?u={{ page.url | absolute_url }}"
+                 target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a class="share-btn share-twitter"
+                 href="https://twitter.com/share?url={{ page.url | absolute_url }}&text={{ page.title | uri_escape }}"
+                 target="_blank" rel="noopener noreferrer">Twitter / X</a>
+              <a class="share-btn share-line"
+                 href="https://social-plugins.line.me/lineit/share?url={{ page.url | absolute_url }}"
+                 target="_blank" rel="noopener noreferrer">LINE</a>
+            </div>
+
+            {% if page.categories %}
+              <div class="post-categories">
+                {% for cat in page.categories %}
+                  <span class="post-category-tag">{{ cat }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </main>
+      </div>
+    </div>
+
+    {% include footer.html %}
+  </body>
+</html>

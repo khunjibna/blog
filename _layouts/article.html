@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'th' }}">
+  {% include head.html %}
+  <body data-npub="{{ site.nostr.npub | default: '' }}">
+    {% include topbar.html %}
+
+    <div class="layout-shell">
+      <div class="layout-columns">
+        <aside class="layout-sidebar-col">
+          {% include sidebar.html %}
+        </aside>
+
+        <main class="layout-content-col">
+          <div class="article-section-heading">
+            <p class="eyebrow">{{ page.title }}</p>
+            <h2>Collected Stories</h2>
+            <p>{{ site.posts | size }} บทความ</p>
+          </div>
+
+          <div class="article-grid">
+            {% for post in site.posts %}
+              <a href="{{ post.url | relative_url }}" class="article-card">
+                <img class="article-card-img"
+                     src="{{ post.image | default: '/assets/image/web-banner.jpg' | relative_url }}"
+                     alt="{{ post.title }}"
+                     loading="lazy">
+                <div class="article-card-body">
+                  <p class="article-card-date">{% include thai-date.html date=post.date %}</p>
+                  <h3 class="article-card-title">{{ post.title }}</h3>
+                  <p class="article-card-summary">
+                    {{ post.summary | default: post.excerpt | strip_html | truncatewords: 20 }}
+                  </p>
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+
+          {{ content }}
+        </main>
+      </div>
+    </div>
+
+    {% include footer.html %}
+  </body>
+</html>
