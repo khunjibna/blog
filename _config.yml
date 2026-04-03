@@ -1,4 +1,4 @@
-title: The Sanctuary
+title: Khunjibna's Blog
 description: Curated narrative on travel, stillness, and intentional living.
 url: "https://khunjibna.github.io"
 baseurl: "/blog"
@@ -7,7 +7,7 @@ timezone: Asia/Bangkok
 permalink: /:categories/:year/:month/:day/:title/
 
 author:
-  name: Napat
+  name: Khunjibna
   bio: Essays, travel notes, and quiet observations collected with intention.
   email: hello@example.com
 
