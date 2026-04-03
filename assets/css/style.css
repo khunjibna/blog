@@ -82,12 +82,15 @@ a {
 }
 
 .brand-title,
+.footer-brand {
+  font-family: "Noto Serif Thai", serif;
+}
+
 .hero h1,
 .section-heading h2,
 .post-card h3,
-.post-header h1,
-.footer-brand {
-  font-family: "Noto Serif Thai", serif;
+.post-header h1 {
+  font-family: "Kanit", sans-serif;
 }
 
 .brand-title {
@@ -1124,7 +1127,7 @@ a {
    ════════════════════════════════════════ */
 .article-section-heading { margin-bottom: 20px; }
 .article-section-heading h2 {
-  font-family: "Noto Serif Thai", serif;
+  font-family: "Kanit", sans-serif;
   font-size: 1.6rem;
   margin: 0 0 4px;
 }
@@ -1171,7 +1174,7 @@ a {
   margin: 0 0 6px;
 }
 .article-card-title {
-  font-family: "Noto Serif Thai", serif;
+  font-family: "Kanit", sans-serif;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
