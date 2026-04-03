@@ -33,12 +33,6 @@
           </div>
 
           <div class="post-content-card">
-            {% if page.image %}
-              <figure class="post-cover">
-                <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
-              </figure>
-            {% endif %}
-
             <div class="post-content">
               {{ content }}
             </div>
