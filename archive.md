@@ -37,7 +37,7 @@ sidebar: true
     </article>
     {% endif %}
 
-    <div class="blog-post-grid">
+    <div class="blog-post-grid blog-post-grid-3">
       {% for post in site.posts offset:1 %}
       <article class="blog-post-entry blog-post-card">
         {% if post.image %}

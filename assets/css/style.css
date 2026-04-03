@@ -2016,7 +2016,7 @@ a {
 
 .blog-post-title {
   margin: 0 0 10px;
-  font-family: "Noto Serif Thai", serif;
+  font-family: "Kanit", sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   line-height: 1.4;
@@ -2085,6 +2085,10 @@ a {
   transform: scale(1.03);
 }
 
+.blog-post-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 /* ── More Button ── */
 .blog-more-wrap {
   text-align: center;
@@ -2136,8 +2140,15 @@ a {
   }
 }
 
+@media (max-width: 960px) {
+  .blog-post-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 600px) {
-  .blog-post-grid {
+  .blog-post-grid,
+  .blog-post-grid-3 {
     grid-template-columns: 1fr;
   }
 
