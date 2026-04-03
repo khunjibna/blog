@@ -23,22 +23,24 @@ lightning:
   default_zap: 100
 
 navigation:
-  - title: บทความ
+  - title: หน้าแรก
     url: /
-  - title: เกี่ยวกับบล็อก
-    url: /about/
-  - title: คลังบทความ
+  - title: บทความ
     url: /archive/
+  - title: เกี่ยวกับเรา
+    url: /about/
+  - title: ติดต่อเรา
+    url: /contact/
 
 footer_links:
-  - title: บทความ
+  - title: หน้าแรก
     url: /
-  - title: เกี่ยวกับบล็อก
-    url: /about/
-  - title: คลังบทความ
+  - title: บทความ
     url: /archive/
-  - title: GitHub
-    url: https://github.com/khunjibna/blog
+  - title: เกี่ยวกับเรา
+    url: /about/
+  - title: ติดต่อเรา
+    url: /contact/
 
 cta:
   label: Subscribe
