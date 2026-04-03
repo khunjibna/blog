@@ -2,8 +2,8 @@ const relayUrls = [
   "wss://relay.damus.io",
   "wss://nos.lol",
   "wss://nostr.wine",
-  "wss://relay.notoshi.win",
-  "wss://relay.siamdev.cc/"
+  "wss://relayrs.notoshi.win",
+  "wss://sign.siamstr.com"
 ];
 
 const publicKey = "0f9da41389e1239d267c43105ecfc92273079e80c2d4b09e1d1e172701bd07d7";
