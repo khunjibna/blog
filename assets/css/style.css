@@ -1405,6 +1405,9 @@ a {
   gap: 28px;
   align-items: start;
 }
+.layout-columns-right {
+  grid-template-columns: 1fr 280px;
+}
 .layout-sidebar-col {
   position: sticky;
   top: calc(90px + 20px);

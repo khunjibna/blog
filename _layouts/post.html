@@ -5,12 +5,7 @@
     {% include topbar.html %}
 
     <div class="layout-shell">
-      <div class="layout-columns">
-        <aside class="layout-sidebar-col">
-          {% include sidebar.html %}
-          {% include share-buttons.html %}
-        </aside>
-
+      <div class="layout-columns layout-columns-right">
         <main class="layout-content-col">
           <nav class="breadcrumb" aria-label="Breadcrumb">
             <a href="{{ '/' | relative_url }}">Home</a>
@@ -84,6 +79,11 @@
             {% endif %}
           </div>
         </main>
+
+        <aside class="layout-sidebar-col">
+          {% include sidebar.html %}
+          {% include share-buttons.html %}
+        </aside>
       </div>
     </div>
 

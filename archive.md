@@ -13,32 +13,8 @@ sidebar: true
       <p>{{ site.posts | size }} บทความ</p>
     </div>
 
-    {% assign featured = site.posts.first %}
-    {% assign rest = site.posts | offset: 1 %}
-
-    {% if featured %}
-    <article class="blog-post-entry blog-post-featured">
-      {% if featured.image %}
-      <a href="{{ featured.url | relative_url }}" class="blog-post-thumb">
-        <img src="{{ featured.image | relative_url }}" alt="{{ featured.title }}" loading="lazy">
-      </a>
-      {% endif %}
-      <div class="blog-post-body">
-        <div class="blog-post-meta">
-          <time>{% include thai-date.html date=featured.date %}</time>
-          {% if featured.categories.size > 0 %}
-            <span class="blog-post-cat">{{ featured.categories | first }}</span>
-          {% endif %}
-        </div>
-        <h2 class="blog-post-title"><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
-        <p class="blog-post-excerpt">{{ featured.summary | default: featured.excerpt | strip_html | truncate: 200 }}</p>
-        <a href="{{ featured.url | relative_url }}" class="blog-read-more">อ่านต่อ &rarr;</a>
-      </div>
-    </article>
-    {% endif %}
-
-    <div class="blog-post-grid blog-post-grid-3">
-      {% for post in site.posts offset:1 %}
+    <div class="blog-post-grid">
+      {% for post in site.posts %}
       <article class="blog-post-entry blog-post-card">
         {% if post.image %}
         <a href="{{ post.url | relative_url }}" class="blog-post-thumb">
