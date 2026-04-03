@@ -1,0 +1,37 @@
+---
+layout: default
+title: Home
+---
+<section class="hero">
+  <div>
+    <p class="eyebrow">Personal Blog</p>
+    <h1>Thoughtful writing with a simple custom Jekyll setup.</h1>
+    <p class="hero-copy">
+      หน้าแรกตัวอย่างนี้แสดงรายการบทความล่าสุด พร้อมโครง layout ที่ปรับต่อได้ง่ายโดยไม่ต้องพึ่ง theme สำเร็จรูป
+    </p>
+  </div>
+  <aside class="hero-card">
+    <p>เขียนเรื่องเทคโนโลยี งานออกแบบ และบันทึกการทดลองส่วนตัวในรูปแบบที่อ่านง่าย</p>
+  </aside>
+</section>
+
+<section class="post-list-section">
+  <div class="section-heading">
+    <h2>Latest Posts</h2>
+    <p>{{ site.posts | size }} published article{% if site.posts.size != 1 %}s{% endif %}</p>
+  </div>
+
+  <div class="post-list">
+    {% for post in site.posts %}
+      <article class="post-card">
+        <p class="eyebrow">{{ post.date | date: "%d %b %Y" }}</p>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        {% if post.description %}
+          <p>{{ post.description }}</p>
+        {% else %}
+          <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>
