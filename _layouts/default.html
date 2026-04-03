@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 150 }}{% else %}{{ site.description }}{% endif %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   </head>
   <body>
-    <div class="page-shell">
-      <header class="site-header">
+    <header class="site-header">
+      <div class="site-header-inner">
         <a class="brand" href="{{ '/' | relative_url }}">
-          <span class="brand-mark">SJ</span>
-          <span>
-            <strong>{{ site.title }}</strong>
-            <small>{{ site.description }}</small>
-          </span>
+          <span class="brand-title">{{ site.title }}</span>
         </a>
 
         <nav class="site-nav" aria-label="Main navigation">
@@ -23,15 +22,37 @@
             <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
           {% endfor %}
         </nav>
-      </header>
 
+        <div class="site-actions">
+          <a class="site-search" href="{{ '/archive/' | relative_url }}">Search</a>
+          <a class="site-cta" href="{{ site.cta.url }}">{{ site.cta.label }}</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-shell">
       <main class="site-main">
         {{ content }}
       </main>
-
-      <footer class="site-footer">
-        <p>{{ site.title }}. Built with Jekyll.</p>
-      </footer>
     </div>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="footer-brand-block">
+          <div class="footer-brand">{{ site.title }}</div>
+          <p>{{ site.tagline }}</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          {% for item in site.footer_links %}
+            <a href="{% if item.url contains '://' or item.url contains 'mailto:' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a>
+          {% endfor %}
+        </nav>
+
+        <div class="footer-meta">
+          <p>&copy; 2026 {{ site.title }}.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

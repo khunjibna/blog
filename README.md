@@ -30,26 +30,15 @@ bundle exec jekyll serve
 
 รีโปนี้ถูกตั้งค่าให้ deploy เป็น project page ของ `khunjibna/blog` แล้ว โดยใช้ GitHub Actions และ `baseurl: "/blog"`
 
-หลัง push ขึ้น `main` ให้เปิดใช้งาน GitHub Pages ใน repository settings โดยเลือก source เป็น GitHub Actions หากยังไม่ถูกเปิดให้อัตโนมัติ
-# 📝 My Personal Blog
+หลัง push ขึ้น `main` ระบบจะ build และ deploy อัตโนมัติผ่าน workflow ใน `.github/workflows/pages.yml`
 
-ยินดีต้อนรับสู่บล็อกส่วนตัวของผมครับ! พื้นที่นี้ใช้สำหรับบันทึกเรื่องราว ประสบการณ์การทำงาน และบทความด้านเทคโนโลยีต่างๆ โดยรันบน **GitHub Pages**
+เว็บไซต์ที่เผยแพร่อยู่ตอนนี้:
 
-## 🚀 Tech Stack
-- **Framework:** [ระบุเครื่องมือที่ใช้ เช่น Jekyll, Hugo, Astro, หรือ Plain HTML]
-- **Styling:** [เช่น Tailwind CSS, Sass]
-- **Deployment:** GitHub Actions / GitHub Pages
+- `https://khunjibna.github.io/blog/`
 
-## 📂 โครงสร้างภายใน Repository
-- `/posts` : ไฟล์เนื้อหาบทความทั้งหมด (Markdown)
-- `/assets` : รูปภาพและไฟล์ประกอบต่างๆ
-- `/theme` : ส่วนการตั้งค่าดีไซน์ของบล็อก
+## Tech Stack
 
-## 🛠️ การรันบนเครื่อง Local (Optional)
-หากต้องการลองรันบล็อกนี้บนเครื่องตัวเอง:
-1. Clone repository นี้ลงไป
-2. รันคำสั่ง `[ระบุคำสั่ง เช่น npm install หรือ bundle install]`
-3. เปิดด้วย `[ระบุคำสั่ง เช่น npm run dev หรือ jekyll serve]`
-
----
-© 2026 [ชื่อของคุณ] - ขอบคุณที่แวะมาอ่านครับ!
+- Jekyll 4
+- Markdown ผ่าน kramdown
+- Custom HTML layout และ CSS แบบไม่ใช้ธีมสำเร็จรูป
+- GitHub Actions สำหรับ deploy ไป GitHub Pages

@@ -1,5 +1,5 @@
-title: Sample Journal
-description: A clean Jekyll starter blog with a custom layout.
+title: The Sanctuary
+description: Curated narrative on travel, stillness, and intentional living.
 url: ""
 baseurl: "/blog"
 lang: th
@@ -8,14 +8,33 @@ permalink: /:categories/:year/:month/:day/:title/
 
 author:
   name: Napat
-  bio: Frontend notes, experiments, and essays on building on the web.
+  bio: Essays, travel notes, and quiet observations collected with intention.
   email: hello@example.com
 
+tagline: Curated Narrative Since 2018
+repository_url: https://github.com/khunjibna/blog
+
 navigation:
-  - title: Home
+  - title: Stories
     url: /
   - title: About
     url: /about/
+  - title: Archive
+    url: /archive/
+
+footer_links:
+  - title: Stories
+    url: /
+  - title: About
+    url: /about/
+  - title: Archive
+    url: /archive/
+  - title: GitHub
+    url: https://github.com/khunjibna/blog
+
+cta:
+  label: Subscribe
+  url: mailto:hello@example.com
 
 markdown: kramdown
 kramdown:
