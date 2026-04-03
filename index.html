@@ -1,69 +1,36 @@
 ---
 layout: default
 title: Home
+sidebar: true
 ---
-{% assign featured = site.posts.first %}
-{% assign latest_side = site.posts | slice: 1, 3 %}
 
-{% if featured %}
-<section class="home-hero-design">
-  <a class="home-hero-link" href="{{ featured.url | relative_url }}">
-    <img
-      class="home-hero-image"
-      src="{{ featured.image | default: '/assets/image/web-banner.jpg' | relative_url }}"
-      alt="{{ featured.title }}"
-      loading="lazy">
-    <div class="home-hero-overlay"></div>
-    <div class="home-hero-content">
-      <span class="home-hero-pill">Featured Story</span>
-      <h1>{{ featured.title }}</h1>
-      <p>{{ featured.summary | default: featured.excerpt | strip_html | truncate: 180 }}</p>
-    </div>
-  </a>
-</section>
-{% endif %}
+<div class="blog-home">
+  <div class="blog-home-main">
 
-<section class="home-latest-design">
-  <div class="home-latest-head">
-    <div>
-      <h2>บทความล่าสุด</h2>
-      <p>เรื่องเล่าจากการเดินทาง การทดลองใช้เทคโนโลยี และบันทึกจากชุมชนที่เจอระหว่างทาง</p>
-    </div>
-    <a href="{{ '/archive/' | relative_url }}">ดูบทความทั้งหมด</a>
-  </div>
-
-  <div class="home-latest-grid">
-    {% if featured %}
-      <article class="home-feature-card">
-        <a href="{{ featured.url | relative_url }}" class="home-feature-media">
-          <img src="{{ featured.image | default: '/assets/image/web-banner.jpg' | relative_url }}" alt="{{ featured.title }}" loading="lazy">
-        </a>
-        <div class="home-feature-body">
-          <p class="eyebrow">{% include thai-date.html date=featured.date %}</p>
-          <h3><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h3>
-          <p>{{ featured.summary | default: featured.excerpt | strip_html | truncate: 170 }}</p>
+    {% for post in site.posts %}
+    <article class="blog-post-entry{% if forloop.first %} blog-post-featured{% endif %}">
+      {% if post.image %}
+      <a href="{{ post.url | relative_url }}" class="blog-post-thumb">
+        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+      </a>
+      {% endif %}
+      <div class="blog-post-body">
+        <div class="blog-post-meta">
+          <time>{% include thai-date.html date=post.date %}</time>
+          {% if post.categories.size > 0 %}
+            <span class="blog-post-cat">{{ post.categories | first }}</span>
+          {% endif %}
         </div>
-      </article>
-    {% endif %}
+        <h2 class="blog-post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p class="blog-post-excerpt">{{ post.summary | default: post.excerpt | strip_html | truncate: 200 }}</p>
+        <a href="{{ post.url | relative_url }}" class="blog-read-more">อ่านต่อ &rarr;</a>
+      </div>
+    </article>
+    {% endfor %}
 
-    <div class="home-side-list">
-      {% for post in latest_side %}
-        <article class="home-side-card">
-          <a href="{{ post.url | relative_url }}" class="home-side-media">
-            <img src="{{ post.image | default: '/assets/image/web-banner.jpg' | relative_url }}" alt="{{ post.title }}" loading="lazy">
-          </a>
-          <div class="home-side-body">
-            <p class="eyebrow">{% include thai-date.html date=post.date %}</p>
-            <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
-            <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 90 }}</p>
-          </div>
-        </article>
-      {% endfor %}
-    </div>
   </div>
-</section>
 
-<section class="home-quote-design">
-  <p class="home-quote-mark">“</p>
-  <p class="home-quote-text">ความสงบไม่ใช่การไม่มีพายุ แต่คือการที่เรายังรักษาใจให้มั่นคงได้ท่ามกลางพายุนั้น</p>
-</section>
+  <aside class="blog-home-sidebar">
+    {% include sidebar.html %}
+  </aside>
+</div>
