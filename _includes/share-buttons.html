@@ -6,7 +6,7 @@
 </div>
 
 <!-- Zap Modal -->
-<div class="zap-modal-overlay" id="zap-modal" hidden>
+<div class="zap-modal-overlay" id="zap-modal">
   <div class="zap-modal">
     <button class="zap-modal-close" onclick="closeZapModal()" aria-label="ปิด">&times;</button>
     <h3 class="zap-modal-title">⚡ สนับสนุนด้วย Lightning</h3>
@@ -30,11 +30,11 @@
 <script>
   function openZapModal() {
     var modal = document.getElementById('zap-modal');
-    if (modal) { modal.hidden = false; document.body.style.overflow = 'hidden'; }
+    if (modal) { modal.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
   }
   function closeZapModal() {
     var modal = document.getElementById('zap-modal');
-    if (modal) { modal.hidden = true; document.body.style.overflow = ''; }
+    if (modal) { modal.classList.remove('is-open'); document.body.style.overflow = ''; }
   }
   document.addEventListener('click', function(e) {
     if (e.target && e.target.id === 'zap-modal') closeZapModal();

@@ -823,12 +823,16 @@ a {
   position: fixed;
   inset: 0;
   z-index: 100;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
   padding: 20px;
+}
+
+.zap-modal-overlay.is-open {
+  display: flex;
 }
 
 .zap-modal {
