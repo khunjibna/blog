@@ -1123,3 +1123,357 @@ a {
     padding: 20px 0 40px;
   }
 }
+
+/* ════════════════════════════════════════
+   Design Home + Header Refresh
+   ════════════════════════════════════════ */
+.site-header {
+  background: rgba(251, 249, 244, 0.82);
+  backdrop-filter: blur(12px);
+}
+
+.site-header-inner {
+  width: min(1400px, calc(100% - 48px));
+  padding: 18px 0;
+}
+
+.brand-title {
+  font-style: normal;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.site-nav {
+  justify-content: center;
+  gap: 38px;
+}
+
+.site-nav a {
+  font-size: 0.84rem;
+  letter-spacing: 0.06em;
+}
+
+.site-actions {
+  min-width: 40px;
+  justify-content: flex-end;
+}
+
+.mobile-menu-btn {
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+}
+
+.mobile-menu-btn span {
+  width: 18px;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: none;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(251, 249, 244, 0.9);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--border);
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  text-align: center;
+  padding: 9px 6px;
+  color: var(--muted);
+  border-radius: 999px;
+}
+
+.bottom-nav a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.home-hero-design {
+  margin-bottom: 40px;
+}
+
+.home-hero-link {
+  position: relative;
+  display: block;
+  aspect-ratio: 21 / 9;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.home-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 420ms ease;
+}
+
+.home-hero-link:hover .home-hero-image {
+  transform: scale(1.03);
+}
+
+.home-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 12, 10, 0.08) 24%, rgba(10, 12, 10, 0.58) 100%);
+}
+
+.home-hero-content {
+  position: absolute;
+  left: clamp(16px, 4vw, 48px);
+  right: clamp(16px, 4vw, 48px);
+  bottom: clamp(18px, 5vw, 48px);
+  color: #f8fff8;
+}
+
+.home-hero-pill {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(209, 233, 209, 0.9);
+  color: var(--accent-dim);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.home-hero-content h1 {
+  margin: 0;
+  font-family: "Noto Serif Thai", serif;
+  font-size: clamp(1.5rem, 3.8vw, 3rem);
+  line-height: 1.24;
+}
+
+.home-hero-content p {
+  margin: 10px 0 0;
+  font-size: clamp(0.88rem, 1.6vw, 1.02rem);
+  max-width: 70ch;
+  color: rgba(248, 255, 248, 0.9);
+}
+
+.home-latest-design {
+  margin-bottom: 48px;
+}
+
+.home-latest-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.home-latest-head h2 {
+  margin: 0;
+  font-family: "Noto Serif Thai", serif;
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+}
+
+.home-latest-head p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.home-latest-head a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(80, 100, 82, 0.2);
+  padding-bottom: 2px;
+}
+
+.home-latest-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+.home-feature-card,
+.home-side-card {
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+}
+
+.home-feature-media,
+.home-side-media {
+  display: block;
+  overflow: hidden;
+}
+
+.home-feature-media {
+  aspect-ratio: 16 / 9;
+}
+
+.home-side-card {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: stretch;
+}
+
+.home-side-media {
+  height: 100%;
+}
+
+.home-feature-media img,
+.home-side-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 280ms ease;
+}
+
+.home-feature-card:hover img,
+.home-side-card:hover img {
+  transform: scale(1.04);
+}
+
+.home-feature-body {
+  padding: 18px 20px 20px;
+}
+
+.home-side-list {
+  display: grid;
+  gap: 12px;
+}
+
+.home-side-body {
+  padding: 14px 14px 12px;
+}
+
+.home-feature-body h3,
+.home-side-body h4 {
+  margin: 0;
+  font-family: "Noto Serif Thai", serif;
+  line-height: 1.35;
+}
+
+.home-feature-body h3 {
+  font-size: 1.28rem;
+}
+
+.home-side-body h4 {
+  font-size: 1rem;
+}
+
+.home-feature-body h3 a,
+.home-side-body h4 a {
+  text-decoration: none;
+}
+
+.home-feature-body p,
+.home-side-body p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.home-quote-design {
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: clamp(22px, 5vw, 64px);
+  background: linear-gradient(180deg, rgba(209, 233, 209, 0.2) 0%, rgba(251, 249, 244, 0.7) 100%);
+  text-align: center;
+}
+
+.home-quote-mark {
+  margin: 0;
+  font-family: "Noto Serif Thai", serif;
+  font-size: 4rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.home-quote-text {
+  margin: 6px auto 18px;
+  font-family: "Noto Serif Thai", serif;
+  font-size: clamp(1.2rem, 2.4vw, 2rem);
+  line-height: 1.5;
+  max-width: 32ch;
+}
+
+.home-subscribe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.home-subscribe p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.home-subscribe-btn {
+  text-decoration: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #e8ffe8;
+  padding: 9px 20px;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .home-latest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-side-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .site-header {
+    top: 0;
+  }
+
+  .site-main {
+    padding-top: 18px;
+    padding-bottom: 78px;
+  }
+
+  .bottom-nav {
+    display: grid;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header-inner {
+    width: min(100%, calc(100% - 28px));
+    padding: 14px 0;
+  }
+
+  .brand-title {
+    font-size: 1.34rem;
+  }
+
+  .home-hero-link {
+    aspect-ratio: 5 / 4;
+  }
+
+  .home-side-card {
+    grid-template-columns: 96px 1fr;
+  }
+
+  .home-side-body,
+  .home-feature-body {
+    padding: 12px;
+  }
+}

@@ -11,7 +11,6 @@
     </nav>
 
     <div class="site-actions">
-      <a class="site-cta" href="{{ site.cta.url }}">{{ site.cta.label }}</a>
       <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -23,7 +22,19 @@
       {% for item in site.navigation %}
         <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
       {% endfor %}
+      {% if site.cta.url and site.cta.label %}
+        <a href="{{ site.cta.url }}">{{ site.cta.label }}</a>
+      {% endif %}
     </div>
+  </nav>
+
+  <nav class="bottom-nav" aria-label="Mobile quick navigation">
+    {% for item in site.navigation %}
+      <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
+    {% endfor %}
+    {% if site.cta.url and site.cta.label %}
+      <a href="{{ site.cta.url }}">{{ site.cta.label }}</a>
+    {% endif %}
   </nav>
 </header>
 
