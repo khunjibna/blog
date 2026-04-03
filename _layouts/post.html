@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="post-layout">
   <header class="post-header">
-    <p class="eyebrow">{{ page.date | date: "%d %b %Y" }}</p>
+    <p class="eyebrow">{% include thai-date.html date=page.date %}</p>
     <h1>{{ page.title }}</h1>
     {% if page.summary or page.description %}
       <p class="post-summary">{{ page.summary | default: page.description }}</p>
@@ -20,6 +20,6 @@ layout: default
   </div>
 
   <p class="post-back">
-    <a href="{{ '/' | relative_url }}">Back to all posts</a>
+    <a href="{{ '/' | relative_url }}">← กลับหน้าแรก</a>
   </p>
 </article>

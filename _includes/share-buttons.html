@@ -1,0 +1,78 @@
+<!-- _includes/share-buttons.html — Zap / Lightning widget -->
+<div class="zap-widget">
+  <button id="zap-toggle" onclick="toggleZapForm()" class="zap-btn">
+    ⚡ สนับสนุน
+  </button>
+
+  <div id="zap-form" class="zap-form" hidden>
+    <label for="zap-amount" class="zap-label">💸 จำนวนที่ต้องการ (sats):</label>
+    <input id="zap-amount" type="number" min="1" step="1"
+           value="{{ site.lightning.default_zap | default: 100 }}"
+           class="zap-input">
+    <button onclick="fetchZapInvoice()" class="zap-submit">
+      🔄 สร้าง QR สำหรับ Zap
+    </button>
+
+    <div id="zap-result" class="zap-result" hidden>
+      <p>📱 สแกน QR เพื่อสนับสนุน:</p>
+      <canvas id="zap-qr" class="zap-qr-canvas"></canvas>
+      <p id="zap-pr" class="zap-invoice"></p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js" defer></script>
+<script>
+  function toggleZapForm() {
+    var form = document.getElementById('zap-form');
+    if (form) form.hidden = !form.hidden;
+  }
+
+  async function fetchZapInvoice() {
+    var sats = parseInt(document.getElementById('zap-amount').value, 10);
+    var resultEl = document.getElementById('zap-result');
+    var qrCanvas  = document.getElementById('zap-qr');
+    var prEl      = document.getElementById('zap-pr');
+
+    if (isNaN(sats) || sats < 1) {
+      alert('⚠️ กรุณาใส่จำนวน sats ที่ถูกต้อง');
+      return;
+    }
+
+    var lnurl = '{{ site.lightning.lnurl }}';
+    if (!lnurl) {
+      alert('⚠️ ยังไม่ได้ตั้งค่า Lightning LNURL ใน _config.yml');
+      return;
+    }
+
+    try {
+      var lnRes   = await fetch(lnurl);
+      var lnData  = await lnRes.json();
+      var invRes  = await fetch(lnData.callback + '?amount=' + (sats * 1000) +
+                    '&comment=' + encodeURIComponent('Zap from {{ site.title }}'));
+      var invData = await invRes.json();
+
+      if (invData.pr) {
+        resultEl.hidden = false;
+        QRCode.toCanvas(qrCanvas, 'lightning:' + invData.pr);
+        prEl.textContent = invData.pr;
+
+        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+          var link = document.getElementById('zap-mobile-link');
+          if (!link) {
+            link = document.createElement('a');
+            link.id        = 'zap-mobile-link';
+            link.className = 'zap-mobile-link';
+            resultEl.appendChild(link);
+          }
+          link.href        = 'lightning:' + invData.pr;
+          link.textContent = '⚡ เปิดในแอป Lightning';
+        }
+      } else {
+        alert('ไม่สามารถสร้าง invoice ได้ 😢');
+      }
+    } catch (e) {
+      alert('เกิดข้อผิดพลาด: ' + e.message);
+    }
+  }
+</script>

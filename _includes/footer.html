@@ -1,0 +1,18 @@
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand-block">
+      <div class="footer-brand">{{ site.title }}</div>
+      <p>{{ site.tagline }}</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      {% for item in site.footer_links %}
+        <a href="{% if item.url contains '://' or item.url contains 'mailto:' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="footer-meta">
+      <p>&copy; {{ "now" | date: "%Y" }} {{ site.title }}.</p>
+    </div>
+  </div>
+</footer>

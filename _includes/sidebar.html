@@ -1,0 +1,36 @@
+<div class="sidebar-profile">
+  <img id="profile-picture"
+       class="sidebar-avatar"
+       src="{{ '/assets/image/web-banner.jpg' | relative_url }}"
+       alt="{{ site.author.name }}">
+  <h2 id="profile-name" class="sidebar-name">{{ site.author.name }}</h2>
+  <p id="profile-about" class="sidebar-bio">{{ site.author.bio }}</p>
+
+  <div class="sidebar-stats">
+    <span id="followers" class="sidebar-stat"></span>
+    <span id="following" class="sidebar-stat"></span>
+  </div>
+
+  <div class="sidebar-actions">
+    {% if site.nostr.npub %}
+      <a href="https://nostrudel.ninja/#/u/{{ site.nostr.npub }}"
+         target="_blank" rel="noopener"
+         class="sidebar-btn-primary">Follow on Nostr</a>
+    {% endif %}
+    {% if site.repository_url %}
+      <a href="{{ site.repository_url }}"
+         target="_blank" rel="noopener"
+         class="sidebar-btn-ghost">GitHub</a>
+    {% endif %}
+  </div>
+
+  <hr class="sidebar-divider">
+
+  <div class="sidebar-links">
+    <div class="sidebar-links-label">มินิเกม</div>
+    <a href="{{ '/app/random-character/' | relative_url }}"
+       class="sidebar-link-block">
+      คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?
+    </a>
+  </div>
+</div>

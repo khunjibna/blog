@@ -1,0 +1,42 @@
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-title">{{ site.title }}</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      {% for item in site.navigation %}
+        <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="site-actions">
+      <a class="site-search" href="{{ '/archive/' | relative_url }}">Search</a>
+      <a class="site-cta" href="{{ site.cta.url }}">{{ site.cta.label }}</a>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="เปิดเมนู" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-menu" id="mobile-menu" hidden aria-label="Mobile navigation">
+    <div class="mobile-menu-inner">
+      {% for item in site.navigation %}
+        <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
+      {% endfor %}
+    </div>
+  </nav>
+</header>
+
+<script>
+  (function () {
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function () {
+      var isOpen = !menu.hidden;
+      menu.hidden = isOpen;
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  })();
+</script>

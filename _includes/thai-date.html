@@ -1,0 +1,6 @@
+{% assign months = "มกราคม,กุมภาพันธ์,มีนาคม,เมษายน,พฤษภาคม,มิถุนายน,กรกฎาคม,สิงหาคม,กันยายน,ตุลาคม,พฤศจิกายน,ธันวาคม" | split: "," %}
+{% assign day         = include.date | date: "%-d" %}
+{% assign month_index = include.date | date: "%-m" | minus: 1 %}
+{% assign month_thai  = months[month_index] %}
+{% assign year_thai   = include.date | date: "%Y" | plus: 543 %}
+{{ day }} {{ month_thai }} {{ year_thai }}

@@ -13,6 +13,14 @@ author:
 
 tagline: Curated Narrative Since 2018
 repository_url: https://github.com/khunjibna/blog
+og_image: /assets/image/web-banner.jpg
+
+nostr:
+  npub: npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy
+
+lightning:
+  lnurl: ""
+  default_zap: 100
 
 navigation:
   - title: Stories
@@ -50,3 +58,4 @@ defaults:
       type: posts
     values:
       layout: post
+      sidebar: true
