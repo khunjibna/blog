@@ -1989,29 +1989,6 @@ a {
   transform: scale(1.03);
 }
 
-/* Regular post — horizontal card */
-.blog-post-entry:not(.blog-post-featured) {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-}
-
-.blog-post-entry:not(.blog-post-featured) .blog-post-thumb {
-  display: block;
-  overflow: hidden;
-  height: 100%;
-}
-
-.blog-post-entry:not(.blog-post-featured) .blog-post-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 300ms ease;
-}
-
-.blog-post-entry:not(.blog-post-featured):hover .blog-post-thumb img {
-  transform: scale(1.03);
-}
-
 /* Post body */
 .blog-post-body {
   padding: 22px 24px;
@@ -2079,6 +2056,75 @@ a {
   color: var(--accent-dim);
 }
 
+/* ── Post Grid (2 columns) ── */
+.blog-post-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.blog-post-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-post-card .blog-post-thumb {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.blog-post-card .blog-post-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.blog-post-card:hover .blog-post-thumb img {
+  transform: scale(1.03);
+}
+
+/* ── More Button ── */
+.blog-more-wrap {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.blog-more-btn {
+  display: inline-block;
+  padding: 12px 36px;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.blog-more-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── Archive Heading ── */
+.blog-archive-heading {
+  margin-bottom: 8px;
+}
+
+.blog-archive-heading h1 {
+  font-family: "Noto Serif Thai", serif;
+  font-size: 1.8rem;
+  margin: 0 0 4px;
+}
+
+.blog-archive-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
 /* ── Responsive ── */
 @media (max-width: 960px) {
   .blog-home {
@@ -2091,12 +2137,8 @@ a {
 }
 
 @media (max-width: 600px) {
-  .blog-post-entry:not(.blog-post-featured) {
+  .blog-post-grid {
     grid-template-columns: 1fr;
-  }
-
-  .blog-post-entry:not(.blog-post-featured) .blog-post-thumb {
-    aspect-ratio: 16 / 9;
   }
 
   .blog-post-body {
@@ -2106,5 +2148,4 @@ a {
   .blog-post-featured .blog-post-title {
     font-size: 1.3rem;
   }
-}
 }

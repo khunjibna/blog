@@ -7,26 +7,56 @@ sidebar: true
 <div class="blog-home">
   <div class="blog-home-main">
 
-    {% for post in site.posts %}
-    <article class="blog-post-entry{% if forloop.first %} blog-post-featured{% endif %}">
-      {% if post.image %}
-      <a href="{{ post.url | relative_url }}" class="blog-post-thumb">
-        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+    {% assign featured = site.posts.first %}
+    {% assign rest = site.posts | slice: 1, 2 %}
+
+    {% if featured %}
+    <article class="blog-post-entry blog-post-featured">
+      {% if featured.image %}
+      <a href="{{ featured.url | relative_url }}" class="blog-post-thumb">
+        <img src="{{ featured.image | relative_url }}" alt="{{ featured.title }}" loading="lazy">
       </a>
       {% endif %}
       <div class="blog-post-body">
         <div class="blog-post-meta">
-          <time>{% include thai-date.html date=post.date %}</time>
-          {% if post.categories.size > 0 %}
-            <span class="blog-post-cat">{{ post.categories | first }}</span>
+          <time>{% include thai-date.html date=featured.date %}</time>
+          {% if featured.categories.size > 0 %}
+            <span class="blog-post-cat">{{ featured.categories | first }}</span>
           {% endif %}
         </div>
-        <h2 class="blog-post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-        <p class="blog-post-excerpt">{{ post.summary | default: post.excerpt | strip_html | truncate: 200 }}</p>
-        <a href="{{ post.url | relative_url }}" class="blog-read-more">อ่านต่อ &rarr;</a>
+        <h2 class="blog-post-title"><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
+        <p class="blog-post-excerpt">{{ featured.summary | default: featured.excerpt | strip_html | truncate: 200 }}</p>
+        <a href="{{ featured.url | relative_url }}" class="blog-read-more">อ่านต่อ &rarr;</a>
       </div>
     </article>
-    {% endfor %}
+    {% endif %}
+
+    <div class="blog-post-grid">
+      {% for post in rest %}
+      <article class="blog-post-entry blog-post-card">
+        {% if post.image %}
+        <a href="{{ post.url | relative_url }}" class="blog-post-thumb">
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+        </a>
+        {% endif %}
+        <div class="blog-post-body">
+          <div class="blog-post-meta">
+            <time>{% include thai-date.html date=post.date %}</time>
+            {% if post.categories.size > 0 %}
+              <span class="blog-post-cat">{{ post.categories | first }}</span>
+            {% endif %}
+          </div>
+          <h2 class="blog-post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <p class="blog-post-excerpt">{{ post.summary | default: post.excerpt | strip_html | truncate: 120 }}</p>
+          <a href="{{ post.url | relative_url }}" class="blog-read-more">อ่านต่อ &rarr;</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="blog-more-wrap">
+      <a href="{{ '/archive/' | relative_url }}" class="blog-more-btn">ดูบทความทั้งหมด &rarr;</a>
+    </div>
 
   </div>
 
