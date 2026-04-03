@@ -16,13 +16,20 @@ permalink: /archive/
   <div class="post-list">
     {% for post in site.posts %}
       <article class="post-card">
+        {% if post.image %}
+          <a class="post-card-media" href="{{ post.url | relative_url }}">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+          </a>
+        {% endif %}
+        <div class="post-card-content">
         <p class="eyebrow">{{ post.date | date: "%d %b %Y" }}</p>
         <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        {% if post.description %}
-          <p>{{ post.description }}</p>
+        {% if post.summary or post.description %}
+          <p>{{ post.summary | default: post.description }}</p>
         {% else %}
           <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
         {% endif %}
+        </div>
       </article>
     {% endfor %}
   </div>

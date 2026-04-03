@@ -5,8 +5,13 @@ layout: default
   <header class="post-header">
     <p class="eyebrow">{{ page.date | date: "%d %b %Y" }}</p>
     <h1>{{ page.title }}</h1>
-    {% if page.description %}
-      <p class="post-summary">{{ page.description }}</p>
+    {% if page.summary or page.description %}
+      <p class="post-summary">{{ page.summary | default: page.description }}</p>
+    {% endif %}
+    {% if page.image %}
+      <figure class="post-cover">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
+      </figure>
     {% endif %}
   </header>
 

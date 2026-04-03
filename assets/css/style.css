@@ -22,12 +22,12 @@ html {
 
 body {
   margin: 0;
-  font-family: "Manrope", sans-serif;
+  font-family: "Noto Sans Thai", sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at top left, rgba(209, 233, 209, 0.5), transparent 28%),
     linear-gradient(180deg, #fdfbf7 0%, var(--bg) 100%);
-  line-height: 1.7;
+  line-height: 1.85;
 }
 
 a {
@@ -84,7 +84,7 @@ a {
 .post-card h3,
 .post-header h1,
 .footer-brand {
-  font-family: "Noto Serif", serif;
+  font-family: "Noto Serif Thai", serif;
 }
 
 .brand-title {
@@ -227,8 +227,33 @@ a {
 }
 
 .post-card {
+  overflow: hidden;
   padding: 24px;
   border-radius: 24px;
+}
+
+.post-card-media {
+  display: block;
+  margin: -24px -24px 18px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+.post-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 220ms ease;
+}
+
+.post-card:hover .post-card-media img {
+  transform: scale(1.03);
+}
+
+.post-card-content {
+  display: grid;
+  gap: 0.35rem;
 }
 
 .post-card a,
@@ -241,6 +266,18 @@ a {
   margin: 0 auto;
   padding: 34px;
   border-radius: 30px;
+}
+
+.post-cover {
+  margin: 1.5rem 0 0;
+}
+
+.post-cover img {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 24px;
 }
 
 .post-header {
@@ -259,6 +296,198 @@ a {
 .post-content h3 {
   margin-top: 2em;
   line-height: 1.2;
+}
+
+.post-content p,
+.post-content li,
+.post-summary,
+.hero-copy,
+.hero-card p {
+  letter-spacing: 0.01em;
+}
+
+.post-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.post-content a {
+  color: var(--accent-dim);
+}
+
+.post-content hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+.post-content .mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-content .rounded-xl {
+  border-radius: 20px;
+}
+
+.post-content .rounded-sm,
+.post-content .rounded {
+  border-radius: 10px;
+}
+
+.post-content .mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.post-content .mb-4 {
+  margin-bottom: 1rem;
+}
+
+.post-content .mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.post-content .mt-2 {
+  margin-top: 0.5rem;
+}
+
+.post-content .my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.post-content .my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.post-content .ml-8,
+.post-content .pl-6 {
+  padding-left: 1.5rem;
+}
+
+.post-content .px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.post-content .px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.post-content .py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.post-content .py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.post-content .text-xl {
+  font-size: 1.35rem;
+  line-height: 1.45;
+}
+
+.post-content .text-md {
+  font-size: 1rem;
+}
+
+.post-content .underline {
+  text-decoration: underline;
+}
+
+.post-content .text-white,
+.post-content .text-whlie {
+  color: #fff;
+}
+
+.post-content .text-gray-700,
+.post-content .text-gray-800 {
+  color: #4b5563;
+}
+
+.post-content .text-green-800 {
+  color: #166534;
+}
+
+.post-content .text-blue-600,
+.post-content .text-blue-800 {
+  color: #1d4ed8;
+}
+
+.post-content .text-purple-800 {
+  color: #6b21a8;
+}
+
+.post-content .text-red-600,
+.post-content .text-red-800 {
+  color: #b91c1c;
+}
+
+.post-content .bg-gray-400,
+.post-content .bg-green-50,
+.post-content .bg-red-50,
+.post-content .bg-red-200 {
+  display: inline-block;
+  border: 1px solid rgba(122, 123, 117, 0.2);
+}
+
+.post-content .bg-gray-400 {
+  background: var(--accent);
+  color: #fff;
+}
+
+.post-content .bg-green-50 {
+  background: #f0fdf4;
+}
+
+.post-content .bg-red-50 {
+  background: #fef2f2;
+}
+
+.post-content .bg-red-200 {
+  background: #fecaca;
+}
+
+.post-content .border,
+.post-content .border-b,
+.post-content .border-t {
+  border-color: var(--border);
+}
+
+.post-content .border {
+  border-style: solid;
+  border-width: 1px;
+}
+
+.post-content .border-b {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.post-content .border-t {
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.post-content .block {
+  display: block;
+}
+
+.post-content .list-disc {
+  list-style: disc;
+}
+
+.post-content .w-full {
+  width: 100%;
+}
+
+.post-content .h-full {
+  height: 100%;
 }
 
 .post-content ul,
@@ -330,6 +559,14 @@ a {
 
   .post-list {
     grid-template-columns: 1fr;
+  }
+
+  .post-card {
+    padding: 20px;
+  }
+
+  .post-card-media {
+    margin: -20px -20px 16px;
   }
 
   .hero,
