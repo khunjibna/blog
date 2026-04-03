@@ -899,7 +899,17 @@ a {
   height: 2px;
   background: var(--text);
   border-radius: 2px;
-  transition: opacity 160ms ease;
+  transition: transform 250ms ease, opacity 200ms ease;
+}
+
+.mobile-menu-btn.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.mobile-menu-btn.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.mobile-menu-btn.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .mobile-menu-btn:hover span {
@@ -907,8 +917,13 @@ a {
 }
 
 .mobile-menu {
+  display: none;
   background: var(--surface);
   border-top: 1px solid var(--border);
+}
+
+.mobile-menu.is-open {
+  display: block;
 }
 
 .mobile-menu-inner {

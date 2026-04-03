@@ -17,14 +17,11 @@
     </div>
   </div>
 
-  <nav class="mobile-menu" id="mobile-menu" hidden aria-label="Mobile navigation">
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
     <div class="mobile-menu-inner">
       {% for item in site.navigation %}
         <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
       {% endfor %}
-      {% if site.cta.url and site.cta.label %}
-        <a href="{{ site.cta.url }}">{{ site.cta.label }}</a>
-      {% endif %}
     </div>
   </nav>
 
@@ -32,9 +29,6 @@
     {% for item in site.navigation %}
       <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
     {% endfor %}
-    {% if site.cta.url and site.cta.label %}
-      <a href="{{ site.cta.url }}">{{ site.cta.label }}</a>
-    {% endif %}
   </nav>
 </header>
 
@@ -44,9 +38,10 @@
     var menu = document.getElementById('mobile-menu');
     if (!btn || !menu) return;
     btn.addEventListener('click', function () {
-      var isOpen = !menu.hidden;
-      menu.hidden = isOpen;
-      btn.setAttribute('aria-expanded', String(!isOpen));
+      var isOpen = menu.classList.toggle('is-open');
+      btn.classList.toggle('is-open', isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
+      btn.setAttribute('aria-label', isOpen ? 'ปิดเมนู' : 'เปิดเมนู');
     });
   })();
 </script>
