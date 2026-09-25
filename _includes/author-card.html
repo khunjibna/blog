@@ -1,0 +1,24 @@
+<section class="author-card" aria-label="เกี่ยวกับผู้เขียน">
+  <img id="profile-picture" class="author-avatar"
+       src="{{ '/assets/image/web-banner.jpg' | relative_url }}"
+       alt="{{ site.author.name }}" width="88" height="88" loading="lazy">
+  <div>
+    <p class="author-label">เขียนโดย</p>
+    <h2 id="profile-name" class="author-name">{{ site.author.name }}</h2>
+    <p id="profile-about" class="author-bio">{{ site.author.bio }}</p>
+    <div class="author-stats">
+      <span id="followers"></span>
+      <span id="following"></span>
+    </div>
+  </div>
+  <div class="author-actions">
+    {% if site.lightning.lnurl %}
+      <button class="btn btn-zap" type="button" data-zap-open>⚡ สนับสนุน</button>
+    {% endif %}
+    {% if site.nostr.npub %}
+      <a class="btn btn-ghost" href="https://njump.me/{{ site.nostr.npub }}" target="_blank" rel="noopener">ติดตามบน Nostr</a>
+    {% endif %}
+  </div>
+</section>
+
+{% if site.lightning.lnurl %}{% include zap.html %}{% endif %}

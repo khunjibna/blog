@@ -1,0 +1,4 @@
+{%- comment -%} ภาษาไทยไม่เว้นวรรคระหว่างคำ จึงนับจากจำนวนตัวอักษร (~900 ตัว/นาที) {%- endcomment -%}
+{%- assign chars = include.content | strip_html | strip_newlines | size -%}
+{%- assign minutes = chars | divided_by: 900 | plus: 1 -%}
+อ่าน {{ minutes }} นาที

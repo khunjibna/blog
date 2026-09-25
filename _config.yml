@@ -15,6 +15,12 @@ tagline: Curated Narrative Since 2018
 repository_url: https://github.com/khunjibna/blog
 og_image: /assets/image/web-banner.jpg
 
+# ข้อความส่วนหัวของหน้าแรก
+home:
+  eyebrow: Life · Creativity · Stories
+  headline: บันทึกชีวิต ความคิดสร้างสรรค์ และเรื่องเล่าระหว่างทาง
+  intro: เรื่องเล่าจากการเดินทาง การใช้ Bitcoin Lightning ในชีวิตจริง และความคิดเล็ก ๆ ที่อยากเก็บไว้
+
 nostr:
   npub: npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy
 
@@ -42,10 +48,6 @@ footer_links:
   - title: ติดต่อเรา
     url: /contact/
 
-cta:
-  label: Subscribe
-  url: mailto:hello@example.com
-
 markdown: kramdown
 kramdown:
   input: GFM
@@ -61,3 +63,9 @@ defaults:
     values:
       layout: post
       sidebar: true
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .vscode

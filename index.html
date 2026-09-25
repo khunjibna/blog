@@ -1,66 +1,78 @@
 ---
 layout: default
-title: Home
+title: หน้าแรก
 sidebar: true
 ---
+{% assign featured = site.posts.first %}
+{% assign oldest = site.posts.last %}
+{% assign first_year = oldest.date | date: "%Y" | plus: 543 %}
 
-<div class="blog-home">
-  <div class="blog-home-main">
-
-    {% assign featured = site.posts.first %}
-    {% assign rest = site.posts | slice: 1, 2 %}
-
-    {% if featured %}
-    <article class="blog-post-entry blog-post-featured">
-      {% if featured.image %}
-      <a href="{{ featured.url | relative_url }}" class="blog-post-thumb">
-        <img src="{{ featured.image | relative_url }}" alt="{{ featured.title }}" loading="lazy">
-      </a>
-      {% endif %}
-      <div class="blog-post-body">
-        <div class="blog-post-meta">
-          <time>{% include thai-date.html date=featured.date %}</time>
-          {% if featured.categories.size > 0 %}
-            <span class="blog-post-cat">{{ featured.categories | first }}</span>
-          {% endif %}
-        </div>
-        <h2 class="blog-post-title"><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
-        <p class="blog-post-excerpt">{{ featured.summary | default: featured.excerpt | strip_html | truncate: 200 }}</p>
-        <a href="{{ featured.url | relative_url }}" class="blog-read-more">อ่านต่อ &rarr;</a>
+<section class="home-hero">
+  <div class="container home-hero-grid">
+    <div>
+      <p class="eyebrow">{{ site.home.eyebrow | default: site.tagline }}</p>
+      <h1>{{ site.home.headline | default: site.description }}</h1>
+    </div>
+    <div class="home-hero-side">
+      <p>{{ site.home.intro | default: site.author.bio }}</p>
+      <ul class="hero-stats">
+        <li><strong>{{ site.posts | size }}</strong><span>บทความ</span></li>
+        <li><strong>{{ first_year }}</strong><span>เริ่มเขียนตั้งแต่</span></li>
+      </ul>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ '/archive/' | relative_url }}">อ่านบทความทั้งหมด</a>
+        <button class="btn btn-ghost" type="button" data-search-open>ค้นหา</button>
       </div>
-    </article>
-    {% endif %}
+    </div>
+  </div>
+</section>
 
-    <div class="blog-post-grid">
-      {% for post in rest %}
-      <article class="blog-post-entry blog-post-card">
-        {% if post.image %}
-        <a href="{{ post.url | relative_url }}" class="blog-post-thumb">
-          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
-        </a>
-        {% endif %}
-        <div class="blog-post-body">
-          <div class="blog-post-meta">
-            <time>{% include thai-date.html date=post.date %}</time>
-            {% if post.categories.size > 0 %}
-              <span class="blog-post-cat">{{ post.categories | first }}</span>
-            {% endif %}
-          </div>
-          <h2 class="blog-post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-          <p class="blog-post-excerpt">{{ post.summary | default: post.excerpt | strip_html | truncate: 120 }}</p>
-          <a href="{{ post.url | relative_url }}" class="blog-read-more">อ่านต่อ &rarr;</a>
-        </div>
-      </article>
+{% if featured %}
+<section class="container" aria-label="บทความล่าสุด">
+  <a class="featured-card" href="{{ featured.url | relative_url }}">
+    <span class="card-media">
+      <img src="{{ featured.image | default: site.og_image | relative_url }}" alt="" fetchpriority="high">
+    </span>
+    <span class="card-body">
+      <span class="featured-badge">เรื่องล่าสุด</span>
+      <span class="card-meta">
+        <time datetime="{{ featured.date | date_to_xmlschema }}">{% include thai-date.html date=featured.date long=true %}</time>
+        <span class="dot" aria-hidden="true"></span>
+        <span>{% include reading-time.html content=featured.content %}</span>
+      </span>
+      <h2 class="card-title">{{ featured.title }}</h2>
+      <p class="card-summary">{{ featured.summary | default: featured.excerpt | strip_html | strip }}</p>
+    </span>
+  </a>
+</section>
+{% endif %}
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Stories</p>
+        <h2>เรื่องราวก่อนหน้านี้</h2>
+      </div>
+      <a class="link-arrow" href="{{ '/archive/' | relative_url }}">ดูทั้งหมด
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="post-grid">
+      {% for post in site.posts offset: 1 limit: 6 %}
+        {% include post-card.html post=post %}
       {% endfor %}
     </div>
-
-    <div class="blog-more-wrap">
-      <a href="{{ '/archive/' | relative_url }}" class="blog-more-btn">ดูบทความทั้งหมด &rarr;</a>
-    </div>
-
   </div>
+</section>
 
-  <aside class="blog-home-sidebar">
-    {% include sidebar.html %}
-  </aside>
-</div>
+<section class="container">
+  {% include author-card.html %}
+  <a class="author-extra" href="{{ '/app/random-character/' | relative_url }}">
+    <span aria-hidden="true">🎲</span>
+    <div>
+      <strong>มินิเกม: คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?</strong>
+      <small>สุ่มตัวละครสนุก ๆ แล้วแชร์ให้เพื่อน</small>
+    </div>
+  </a>
+</section>

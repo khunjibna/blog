@@ -1,0 +1,15 @@
+{% assign p = include.post %}
+<a class="post-card" href="{{ p.url | relative_url }}">
+  <span class="card-media">
+    <img src="{{ p.image | default: site.og_image | relative_url }}" alt="" loading="lazy">
+  </span>
+  <span class="card-body">
+    <span class="card-meta">
+      <time datetime="{{ p.date | date_to_xmlschema }}">{% include thai-date.html date=p.date %}</time>
+      <span class="dot" aria-hidden="true"></span>
+      <span>{% include reading-time.html content=p.content %}</span>
+    </span>
+    <h3 class="card-title">{{ p.title }}</h3>
+    <p class="card-summary">{{ p.summary | default: p.excerpt | strip_html | strip }}</p>
+  </span>
+</a>

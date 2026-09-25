@@ -1,6 +1,4 @@
-{% assign months = "มกราคม,กุมภาพันธ์,มีนาคม,เมษายน,พฤษภาคม,มิถุนายน,กรกฎาคม,สิงหาคม,กันยายน,ตุลาคม,พฤศจิกายน,ธันวาคม" | split: "," %}
-{% assign day         = include.date | date: "%-d" %}
-{% assign month_index = include.date | date: "%-m" | minus: 1 %}
-{% assign month_thai  = months[month_index] %}
-{% assign year_thai   = include.date | date: "%Y" | plus: 543 %}
-{{ day }} {{ month_thai }} {{ year_thai }}
+{%- assign months = "ม.ค.,ก.พ.,มี.ค.,เม.ย.,พ.ค.,มิ.ย.,ก.ค.,ส.ค.,ก.ย.,ต.ค.,พ.ย.,ธ.ค." | split: "," -%}
+{%- if include.long -%}{%- assign months = "มกราคม,กุมภาพันธ์,มีนาคม,เมษายน,พฤษภาคม,มิถุนายน,กรกฎาคม,สิงหาคม,กันยายน,ตุลาคม,พฤศจิกายน,ธันวาคม" | split: "," -%}{%- endif -%}
+{%- assign month_index = include.date | date: "%-m" | minus: 1 -%}
+{{ include.date | date: "%-d" }} {{ months[month_index] }} {{ include.date | date: "%Y" | plus: 543 }}
