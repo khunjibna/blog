@@ -1,0 +1,33 @@
+<dialog class="zap-dialog" id="zap-dialog"
+        data-lnurl="{{ site.lightning.lnurl }}"
+        data-comment="Zap from {{ site.title | escape }}">
+  <button class="icon-btn" type="button" data-zap-close aria-label="ปิด">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <h3>⚡ สนับสนุนด้วย Lightning</h3>
+  <p>ถ้าชอบบทความ ส่ง sats มาเป็นกำลังใจให้คนเขียนได้เลย</p>
+
+  <div class="zap-presets" role="group" aria-label="จำนวนที่แนะนำ">
+    <button type="button" data-sats="21">21</button>
+    <button type="button" data-sats="100">100</button>
+    <button type="button" data-sats="500">500</button>
+    <button type="button" data-sats="1000">1k</button>
+  </div>
+  <label class="zap-amount">
+    <span class="visually-hidden">จำนวน sats</span>
+    <input class="input" id="zap-amount" type="number" min="1" step="1" inputmode="numeric"
+           value="{{ site.lightning.default_zap | default: 21 }}">
+    <span aria-hidden="true">sats</span>
+  </label>
+  <button class="btn btn-zap" type="button" id="zap-submit">สร้าง QR สำหรับ Zap</button>
+  <p class="zap-status" id="zap-status" role="status"></p>
+
+  <div class="zap-result" id="zap-result" hidden>
+    <canvas id="zap-qr"></canvas>
+    <p class="zap-invoice" id="zap-pr"></p>
+    <div class="hero-actions" style="justify-content:center">
+      <a class="btn btn-primary" id="zap-open-wallet" href="#">เปิดในวอลเล็ต</a>
+      <button class="btn btn-ghost" type="button" id="zap-copy">คัดลอก invoice</button>
+    </div>
+  </div>
+</dialog>

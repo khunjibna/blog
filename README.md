@@ -7,7 +7,10 @@
 - `_config.yml` ตั้งค่าชื่อเว็บ คำอธิบาย เมนู และ permalink
 - `_layouts/` layout สำหรับหน้าเว็บและบทความ
 - `_posts/` บทความตัวอย่าง
-- `assets/css/style.css` style หลักของเว็บไซต์
+- `_includes/` ส่วนประกอบของหน้า (header, footer, การ์ดบทความ, การ์ดผู้เขียน, ค้นหา, Zap)
+- `assets/css/style.css` design system หลัก (สีดึงจากโลโก้ รองรับ light / dark mode)
+- `assets/js/site.js` สลับธีม เมนูมือถือ ค้นหา (`/` หรือ `Ctrl+K`) กรองบทความ แถบความคืบหน้าการอ่าน และ Zap
+- `search.json` ดัชนีสำหรับค้นหาบทความ (Jekyll สร้างให้อัตโนมัติ)
 
 ## เริ่มต้นใช้งาน
 
@@ -22,7 +25,7 @@ bundle exec jekyll serve
 
 ## การแก้ไขเบื้องต้น
 
-- เปลี่ยนข้อมูลเว็บไซต์ใน `_config.yml`
+- เปลี่ยนข้อมูลเว็บไซต์ใน `_config.yml` (ข้อความหัวหน้าแรกอยู่ที่ `home:`)
 - เพิ่มบทความใหม่ใน `_posts/` โดยตั้งชื่อไฟล์รูปแบบ `YYYY-MM-DD-title.md`
 - ปรับหน้าตาใน `assets/css/style.css`
 
