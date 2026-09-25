@@ -1,240 +1,283 @@
+---
+# ประมวลผลผ่าน Jekyll เพื่อสร้างรายการรูปตัวละครจากโฟลเดอร์อัตโนมัติ
+layout: null
+---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"
-        integrity="sha384-HtMZLkYo+pR5/u7zCzXxMJP6QoNnQJt1qkHM0EaOPvGDIzaVZbmYr/TlvUZ/sKAg" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+    <title>คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ? | {{ site.title }}</title>
+    <meta name="description" content="มินิเกมสุ่มตัวละคร #siamstr 5 ตัว แล้วบันทึกเป็นรูปไว้แชร์ให้เพื่อน">
+    <meta property="og:title" content="คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?">
+    <meta property="og:description" content="มินิเกมสุ่มตัวละคร #siamstr 5 ตัว แล้วบันทึกเป็นรูปไว้แชร์ให้เพื่อน">
+    <meta property="og:image" content="{{ '/assets/image/blog/20250427-1/1.jpg' | absolute_url }}">
+    <meta name="theme-color" content="#5b2d6e">
+    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
     <link href="static/main.css" rel="stylesheet">
-
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
-        crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <nav class="navbar">
+        <a href="{{ '/' | relative_url }}">← กลับหน้าบล็อก</a>
+        <a href="https://github.com/khunjibna" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
 
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <a href="https://khunjibna.github.io/blog/" class="mr-4 text-white hover:text-black">หน้าแรก</a>
-        <a href="https://github.com/khunjibna" target="_blank" rel="noopener noreferrer"
-            class="mr-4 text-white hover:text-black">Github</a>
-    </div>
+    <main class="card">
+        <h1>คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?</h1>
+        <p class="subtitle">กดสุ่มแล้วรับ 5 ตัวละครจาก <span id="total"></span> ตัว แล้วบันทึกเป็นรูปไว้แชร์</p>
 
-    <!-- Container -->
-    <div class="container2">
-        <!-- คำถามที่เพิ่มขึ้น -->
-        <h2 class="text-2xl font-bold mb-4">คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?</h2>
-
-        <!-- ปุ่มสุ่ม และปุ่มบันทึกให้อยู่ในแถวเดียวกัน -->
-        <div class="button-container">
-            <button id="randomizeBtn"
-                class="bg-blue-500 text-white py-2 px-4 rounded">สุ่มบุคคลที่จะอยากให้ไปป้ายยา</button>
-            <button id="exportBtn" class="bg-green-500 text-white py-2 px-4 rounded"
-                disabled>บันทึกรูปภาพเพื่อแชร์</button>
+        <div class="button-row">
+            <button id="randomizeBtn" class="btn btn-primary" type="button">🎲 สุ่มคนที่จะพาไปป้ายยา</button>
+            <button id="exportBtn" class="btn btn-secondary" type="button" disabled>🖼️ สร้างรูปเพื่อแชร์</button>
         </div>
 
-        <!-- กล่องสำหรับแสดงภาพที่สุ่ม -->
-        <div id="imageContainer"
-            class="image-container grid gap-4 mt-4 mb-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center"></div>
+        <div id="imageContainer" class="image-grid" aria-live="polite">
+            <p class="placeholder">ยังไม่ได้สุ่ม — กดปุ่มด้านบนเลย!</p>
+        </div>
 
-        <!-- ซ่อน canvas สำหรับรวมภาพ -->
-        <canvas id="canvas" style="display: none;"></canvas>
+        <div id="result" class="result" hidden>
+            <img id="preview" alt="รูปรวมตัวละครที่สุ่มได้">
+            <div class="button-row">
+                <a id="downloadBtn" class="btn btn-download" download="siamstr-random.png">⬇️ ดาวน์โหลดรูป</a>
+                <button id="shareBtn" class="btn btn-secondary" type="button" hidden>📤 แชร์</button>
+            </div>
+            <p class="hint">ถ้าดาวน์โหลดไม่ได้ (เช่นเปิดในแอป LINE) ให้กดค้างที่รูปด้านบนแล้วเลือกบันทึกรูป</p>
+        </div>
+    </main>
 
-        <!-- กล่องสำหรับดาวน์โหลด -->
-        <div id="downloadContainer" class="mt-2"></div>
-    </div>
-
-    <div class="container" style="padding: 10px; text-align: left;">
-        <div class="whitespace-normal">เป็นแอพที่สุ่มตัวละครจากผลงานภาพของ: <a
-                href="https://nostr.band/npub16unl8g9ucanlpfvp94sdjdv2f4mukm2ywmgrywnrfdgt98qwrrdq0qcn35"
-                target="_blank" rel="noopener noreferrer" class="font-bold" style="color: aqua;">PIGROCK</a></div>
-                <div class="whitespace-normal">ร่วมสนับสนุนผลงานผ่านทาง: <a
-                    href="https://geyser.fund/project/siamstrscartoon"
-                    target="_blank" rel="noopener noreferrer" class="font-bold" style="color: aqua;">https://geyser.fund/project/siamstrscartoon</a></div>        
-        <div class="whitespace-normal underline">ใช้สำหรับจัดกิจกรรมภายในชุมชน #siamstr เท่านั้น
-            กรณีที่นำรูปภาพจากการรวมภาพ ไปใช้ที่อื่นโดยเจตนาใดๆก็ตามที่เกิดความเสียหายกับเจ้าของในภาพ
-            ผู้จัดทำแอพนี้จะไม่รับผิดชอบใดๆทั้งสิ้น </div>
-        <div class="whitespace-normal">ติดต่อสอบถามผู้พัฒนา (Patch 03092024): <a
-                href="https://nostr.band/npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy"
-                target="_blank" rel="noopener noreferrer" class="font-bold text-black"
-                style="color: aqua;">khunjibna</a></div>
-    </div>
+    <footer class="credits">
+        <p>เป็นแอปที่สุ่มตัวละครจากผลงานภาพของ:
+            <a href="https://njump.me/npub16unl8g9ucanlpfvp94sdjdv2f4mukm2ywmgrywnrfdgt98qwrrdq0qcn35"
+                target="_blank" rel="noopener noreferrer">PIGROCK</a></p>
+        <p>ร่วมสนับสนุนผลงานผ่านทาง:
+            <a href="https://geyser.fund/project/siamstrscartoon" target="_blank"
+                rel="noopener noreferrer">geyser.fund/project/siamstrscartoon</a></p>
+        <p class="notice">ใช้สำหรับจัดกิจกรรมภายในชุมชน #siamstr เท่านั้น
+            กรณีที่นำรูปภาพจากการรวมภาพไปใช้ที่อื่นโดยเจตนาใด ๆ ก็ตามที่เกิดความเสียหายกับเจ้าของในภาพ
+            ผู้จัดทำแอปนี้จะไม่รับผิดชอบใด ๆ ทั้งสิ้น</p>
+        <p>ติดต่อสอบถามผู้พัฒนา (Patch 25092026):
+            <a href="https://njump.me/{{ site.nostr.npub }}" target="_blank"
+                rel="noopener noreferrer">khunjibna</a></p>
+    </footer>
 
     <script>
-        const imageUrls = [];
+        (function () {
+            "use strict";
 
-        for (let i = 1; i <= 125; i++) {
-            const imageName = 'static/character/' + i.toString().padStart(3, '0') + '.webp';
-            imageUrls.push(imageName);
-        }
+            // รายการรูปสร้างอัตโนมัติจากไฟล์ .webp ในโฟลเดอร์ static/character
+            // (เพิ่มรูปใหม่ได้เลยโดยไม่ต้องแก้โค้ด)
+            var IMAGE_URLS = [
+                {%- assign chars = site.static_files | where_exp: "f", "f.path contains '/app/random-character/static/character/'" | where: "extname", ".webp" | sort: "path" -%}
+                {%- for f in chars %}
+                "static/character/{{ f.name }}"{% unless forloop.last %},{% endunless %}
+                {%- endfor %}
+            ];
 
-        const imageContainer = $('#imageContainer');
-        const canvas = $('#canvas')[0]; // เข้าถึง canvas อย่างถูกต้อง
-        const ctx = canvas.getContext('2d');
+            var PICK_COUNT = 5;
+            var TILE = 240;          // ขนาดช่องต่อรูปบน canvas
+            var PADDING = 30;        // ขอบซ้าย/ขวา
+            var QUESTION = "คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?";
+            var ANSWER = "และนี่คือคนที่คุณจะพาไปป้ายยาส้มเพื่อนของคุณ";
+            var FOOTER_LEFT = "Thailand Bitcoin Conference 2024";
+            var FOOTER_RIGHT = "#siamstr";
 
-        $('#randomizeBtn').on('click', function () {
-            imageContainer.empty();
-            $('#downloadContainer').empty(); // Clear previous download button
-            const selectedImages = [];
+            var container = document.getElementById("imageContainer");
+            var randomizeBtn = document.getElementById("randomizeBtn");
+            var exportBtn = document.getElementById("exportBtn");
+            var result = document.getElementById("result");
+            var preview = document.getElementById("preview");
+            var downloadBtn = document.getElementById("downloadBtn");
+            var shareBtn = document.getElementById("shareBtn");
 
-            while (selectedImages.length < 5) {
-                const randomIndex = Math.floor(Math.random() * imageUrls.length);
-                if (!selectedImages.includes(imageUrls[randomIndex])) {
-                    selectedImages.push(imageUrls[randomIndex]);
+            var selected = [];
+            var currentBlob = null;
+            var currentUrl = null;
+
+            document.getElementById("total").textContent = IMAGE_URLS.length;
+
+            // สุ่มแบบ Fisher–Yates แล้วหยิบ n ตัวแรก (ไม่ซ้ำกัน)
+            function pickRandom(list, n) {
+                var copy = list.slice();
+                for (var i = copy.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var tmp = copy[i]; copy[i] = copy[j]; copy[j] = tmp;
                 }
+                return copy.slice(0, Math.min(n, copy.length));
             }
 
-            selectedImages.forEach(url => {
-                const img = $('<img>')
-                    .attr('src', url)
-                    .addClass('border rounded-lg') // เพิ่มคลาสสำหรับขอบมนและพื้นหลังไล่สี
-                    .css({
-                        width: '100%',
-                        height: 'auto',
-                        maxWidth: '240px',
-                        background: 'linear-gradient(45deg, #f39c12, #8e44ad)', // ไล่สีจากส้มไปม่วง
-                        padding: '10px', // ช่องว่างระหว่างรูปภาพและขอบ
-                    });
-                imageContainer.append(img);
+            function resetResult() {
+                result.hidden = true;
+                if (currentUrl) URL.revokeObjectURL(currentUrl);
+                currentUrl = null;
+                currentBlob = null;
+            }
+
+            randomizeBtn.addEventListener("click", function () {
+                resetResult();
+                selected = pickRandom(IMAGE_URLS, PICK_COUNT);
+                container.innerHTML = "";
+                selected.forEach(function (url, i) {
+                    var img = document.createElement("img");
+                    img.src = url;
+                    img.alt = "ตัวละครที่สุ่มได้ลำดับที่ " + (i + 1);
+                    img.width = 220;
+                    img.height = 220;
+                    img.style.animationDelay = (i * 70) + "ms";
+                    container.appendChild(img);
+                });
+                exportBtn.disabled = false;
+                randomizeBtn.textContent = "🎲 สุ่มใหม่อีกครั้ง";
             });
 
-            $('#exportBtn').prop('disabled', false);
-        });
-        $('#exportBtn').on('click', function () {
-            const images = $('#imageContainer img');
-            const numImages = images.length;
+            function loadImage(url) {
+                return new Promise(function (resolve, reject) {
+                    var img = new Image();
+                    img.onload = function () { resolve(img); };
+                    img.onerror = function () { reject(new Error("โหลดรูปไม่สำเร็จ: " + url)); };
+                    img.src = url;
+                });
+            }
 
-            const numCols = numImages < 3 ? numImages : 3;
-            const numRows = Math.ceil(numImages / numCols);
+            function roundRectPath(ctx, x, y, w, h, r) {
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.arcTo(x + w, y, x + w, y + h, r);
+                ctx.arcTo(x + w, y + h, x, y + h, r);
+                ctx.arcTo(x, y + h, x, y, r);
+                ctx.arcTo(x, y, x + w, y, r);
+                ctx.closePath();
+            }
 
-            const canvasWidth = numCols * 240 + 60; // เพิ่มความกว้างของ canvas ขึ้น 60px สำหรับขอบซ้ายและขวา
-            const canvasHeight = numRows * 240 + 200; // เพิ่มความสูงเพื่อให้มีพื้นที่สำหรับข้อความ
+            function orangePurple(ctx, x0, y0, x1, y1) {
+                var g = ctx.createLinearGradient(x0, y0, x1, y1);
+                g.addColorStop(0, "#f39c12");
+                g.addColorStop(1, "#8e44ad");
+                return g;
+            }
 
-            const canvas = document.createElement('canvas');
-            canvas.width = canvasWidth;
-            canvas.height = canvasHeight;
-            const ctx = canvas.getContext('2d');
+            function render(images) {
+                var n = images.length;
+                var cols = Math.min(n, 3);
+                var rows = Math.ceil(n / cols);
+                var width = cols * TILE + PADDING * 2;
+                var imageTop = 128;
+                var height = imageTop + rows * TILE + 72;
 
-            // รับคำถามจาก input field
-            const questionText = $('#questionInput').val() || "คุณอยากพาใครไปป้ายยาส้มเพื่อนของคุณ?";
-            const answerText = "และนี่คือคนที่คุณ จะพาไปป้ายยาส้มเพื่อนของคุณ";
-            const textX = 54; // ตำแหน่งเริ่มต้นของข้อความ (ด้านซ้าย) เพิ่มจากขอบซ้าย 30px
-            const questionY = 50; // ตำแหน่ง Y ของคำถาม
-            const answerY = questionY + 30 + 12; // ตำแหน่ง Y ของคำตอบ (ห่างจากคำถาม 12px)
-            const imageStartY = answerY + 20 + 16; // ตำแหน่ง Y ของรูปภาพ (ห่างจากคำตอบ 16px)
+                // วาดที่ความละเอียด 2 เท่าให้รูปคมบนมือถือ
+                var scale = 2;
+                var canvas = document.createElement("canvas");
+                canvas.width = width * scale;
+                canvas.height = height * scale;
+                var ctx = canvas.getContext("2d");
+                ctx.scale(scale, scale);
 
-            // 1. วาดพื้นหลังไล่สีม่วงและสีส้มที่พื้นหลังทั้งหมด (Layer3)
-            const gradient = ctx.createLinearGradient(0, 0, canvasWidth, canvasHeight);
-            gradient.addColorStop(0, '#f39c12'); // สีส้ม
-            gradient.addColorStop(1, '#8e44ad'); // สีม่วง
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+                ctx.fillStyle = orangePurple(ctx, 0, 0, width, height);
+                ctx.fillRect(0, 0, width, height);
+                ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+                ctx.fillRect(0, 0, width, height);
 
-            // 2. วาดพื้นหลังสีดำที่ความเข้ม 60% (Layer2)
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
-            ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+                ctx.fillStyle = "#fff";
+                ctx.textAlign = "left";
+                ctx.textBaseline = "alphabetic";
+                ctx.font = "600 30px Kanit, sans-serif";
+                ctx.fillText(QUESTION, PADDING + 10, 56, width - PADDING * 2);
+                ctx.font = "20px Kanit, sans-serif";
+                ctx.fillText(ANSWER, PADDING + 10, 94, width - PADDING * 2);
 
+                images.forEach(function (img, index) {
+                    var col = index % cols;
+                    var row = Math.floor(index / cols);
+                    // จัดแถวสุดท้ายที่ไม่เต็มให้อยู่กึ่งกลาง
+                    var inRow = row === rows - 1 && n % cols !== 0 ? n % cols : cols;
+                    var offsetX = ((cols - inRow) * TILE) / 2;
+                    var x = PADDING + offsetX + col * TILE + 10;
+                    var y = imageTop + row * TILE + 10;
+                    var size = TILE - 20;
 
-
-            // วาดคำถามและคำตอบด้านซ้าย
-            ctx.font = "30px Kanit";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "left";
-            ctx.fillText(questionText, textX, questionY);
-
-            ctx.font = "20px Kanit";
-            ctx.fillText(answerText, textX, answerY);
-
-            // วาดกรอบโค้งมน
-            let imagesLoaded = 0;
-
-            images.each(function (index, img) {
-                img.onload = function () {
-                    const col = index % numCols;
-                    const row = Math.floor(index / numCols);
-
-                    let offsetX = 0;
-                    if (row === numRows - 1 && numImages % numCols !== 0) {
-                        offsetX = ((numCols - (numImages % numCols)) * 240) / 2;
-                    }
-
-                    const x = col * 240 + offsetX + 30;
-                    const y = row * 240 + imageStartY;
-                    const radius = 20;
-
-                    ctx.beginPath();
-                    ctx.moveTo(x + radius + 10, y + 10);
-                    ctx.lineTo(x + 220 - radius, y + 10);
-                    ctx.quadraticCurveTo(x + 220 + 10, y + 10, x + 220 + 10, y + radius + 10);
-                    ctx.lineTo(x + 220 + 10, y + 220 - radius);
-                    ctx.quadraticCurveTo(x + 220 + 10, y + 220 + 10, x + 220 - radius, y + 220 + 10);
-                    ctx.lineTo(x + radius + 10, y + 220 + 10);
-                    ctx.quadraticCurveTo(x + 10, y + 220 + 10, x + 10, y + 220 - radius);
-                    ctx.lineTo(x + 10, y + radius + 10);
-                    ctx.quadraticCurveTo(x + 10, y + 10, x + radius + 10, y + 10);
-                    ctx.closePath();
-
-                    const frameGradient = ctx.createLinearGradient(x, y, x + 220, y + 220);
-                    frameGradient.addColorStop(0, '#f39c12');
-                    frameGradient.addColorStop(1, '#8e44ad');
-                    ctx.fillStyle = frameGradient;
+                    roundRectPath(ctx, x, y, size, size, 20);
+                    ctx.fillStyle = orangePurple(ctx, x, y, x + size, y + size);
                     ctx.fill();
-
                     ctx.lineWidth = 2;
-                    ctx.strokeStyle = "white";
+                    ctx.strokeStyle = "#fff";
                     ctx.stroke();
 
-                    ctx.drawImage(img, x + 10, y + 10, 220, 220);
+                    ctx.save();
+                    roundRectPath(ctx, x + 8, y + 8, size - 16, size - 16, 14);
+                    ctx.clip();
+                    ctx.drawImage(img, x + 8, y + 8, size - 16, size - 16);
+                    ctx.restore();
+                });
 
-                    imagesLoaded++;
-                    if (imagesLoaded === numImages) {
-                        // วาดพื้นหลังสีดำที่ด้านล่างสุด (Layer2)
-                        ctx.fillStyle = 'rgba(0, 0, 0, 0.6)'; // สีดำ 70%
-                        ctx.fillRect(0, canvasHeight - 40, canvasWidth, 40); // พื้นหลังสีดำที่ด้านล่างสุด
+                ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+                ctx.fillRect(0, height - 40, width, 40);
+                ctx.fillStyle = "#fff";
+                ctx.font = "16px Kanit, sans-serif";
+                ctx.textAlign = "left";
+                ctx.fillText(FOOTER_LEFT, 12, height - 14);
+                ctx.textAlign = "right";
+                ctx.fillText(FOOTER_RIGHT, width - 12, height - 14);
 
-                        // วาดข้อความที่ด้านล่างสุด
-                        ctx.font = "16px Kanit";
-                        ctx.fillStyle = "white";
-                        ctx.textAlign = "left";
-                        ctx.fillText("Thailand Bitcoin Conference 2024", 10, canvasHeight - 14); // ข้อความทดสอบที่ด้านล่างสุด
-                       
+                return canvas;
+            }
 
-                        // กำหนดวันที่ปัจจุบัน
-                        const today = new Date();
-                        const year = today.getFullYear();
-                        const month = String(today.getMonth() + 1).padStart(2, '0');
-                        const day = String(today.getDate()).padStart(2, '0');
-                        const date = `${year}${month}${day}`; // วันที่ในรูปแบบ YYYYMMDD
+            function toBlob(canvas) {
+                return new Promise(function (resolve, reject) {
+                    canvas.toBlob(function (blob) {
+                        blob ? resolve(blob) : reject(new Error("สร้างไฟล์รูปไม่สำเร็จ"));
+                    }, "image/png");
+                });
+            }
 
-                        // วาดข้อความที่ด้านล่างสุดด้านขวา
-                        ctx.textAlign = "right";
-                        ctx.fillText(`#siamstr`, canvasWidth - 10, canvasHeight - 14); // ข้อความที่ด้านล่างขวา
+            exportBtn.addEventListener("click", function () {
+                if (!selected.length) return;
+                exportBtn.disabled = true;
+                randomizeBtn.disabled = true;
+                exportBtn.textContent = "⏳ กำลังสร้างรูป…";
 
-                        const dataURL = canvas.toDataURL('image/png');
-                        const downloadButton = $('<a>')
-                            .attr('href', dataURL)
-                            .attr('download', 'random-images.png')
-                            .addClass('bg-yellow-500 text-black py-2 px-4 rounded mt-2 inline-block')
-                            .text('ดาวโหลดภาพ');
+                // รอฟอนต์ Kanit โหลดก่อน ไม่งั้นข้อความใน canvas จะเป็นฟอนต์สำรอง
+                var fontsReady = document.fonts
+                    ? Promise.all([document.fonts.load("600 30px Kanit"), document.fonts.load("20px Kanit")]).catch(function () {})
+                    : Promise.resolve();
 
-                        $('#downloadContainer').empty().append(downloadButton);
-                    }
-                };
-
-                if (img.complete) {
-                    img.onload();
-                }
+                fontsReady
+                    .then(function () { return Promise.all(selected.map(loadImage)); })
+                    .then(function (images) { return toBlob(render(images)); })
+                    .then(function (blob) {
+                        resetResult();
+                        currentBlob = blob;
+                        currentUrl = URL.createObjectURL(blob);
+                        var stamp = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+                        preview.src = currentUrl;
+                        downloadBtn.href = currentUrl;
+                        downloadBtn.download = "siamstr-random-" + stamp + ".png";
+                        var file = new File([blob], downloadBtn.download, { type: "image/png" });
+                        shareBtn.hidden = !(navigator.canShare && navigator.canShare({ files: [file] }));
+                        result.hidden = false;
+                        result.scrollIntoView({ behavior: "smooth", block: "start" });
+                    })
+                    .catch(function (err) {
+                        alert("เกิดข้อผิดพลาด: " + err.message);
+                    })
+                    .then(function () {
+                        exportBtn.disabled = false;
+                        randomizeBtn.disabled = false;
+                        exportBtn.textContent = "🖼️ สร้างรูปเพื่อแชร์";
+                    });
             });
-        });
-    </script>
 
+            shareBtn.addEventListener("click", function () {
+                if (!currentBlob) return;
+                var file = new File([currentBlob], downloadBtn.download, { type: "image/png" });
+                navigator.share({ files: [file], title: QUESTION, text: QUESTION + " " + FOOTER_RIGHT })
+                    .catch(function () { /* ผู้ใช้กดยกเลิก */ });
+            });
+        })();
+    </script>
 </body>
 
 </html>
