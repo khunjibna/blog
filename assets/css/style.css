@@ -26,8 +26,9 @@
   --shadow-lg: 0 30px 60px -20px rgba(31, 42, 46, 0.35);
   --logo-filter: none;
 
-  --font-body: "IBM Plex Sans Thai", "Noto Sans Thai", system-ui, sans-serif;
-  --font-display: "Noto Serif Thai", Georgia, serif;
+  /* Sarabun: ฟอนต์มีหัว อ่านเนื้อหายาว ๆ ได้สบายตา / Anuphan: หัวข้อ ไม่มีหัวแต่อ่านชัด */
+  --font-body: "Sarabun", "Noto Sans Thai Looped", "Noto Sans Thai", system-ui, sans-serif;
+  --font-display: "Anuphan", "Noto Sans Thai", system-ui, sans-serif;
 
   --radius-sm: 10px;
   --radius: 16px;
@@ -105,8 +106,8 @@ body {
   display: flex;
   flex-direction: column;
   font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: 1.0625rem;
+  line-height: 1.8;
   color: var(--ink);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -1112,8 +1113,8 @@ button {
 }
 
 .post-content {
-  font-size: 1.09rem;
-  line-height: 1.95;
+  font-size: 1.15rem;
+  line-height: 1.9;
   overflow-wrap: break-word;
 }
 
