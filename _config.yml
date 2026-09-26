@@ -26,7 +26,9 @@ nostr:
 
 lightning:
   lnurl: "https://walletofsatoshi.com/.well-known/lnurlp/khunjibna"
+  address: khunjibna@walletofsatoshi.com
   default_zap: 21
+  presets: [21, 100, 500, 1000]
 
 navigation:
   - title: หน้าแรก

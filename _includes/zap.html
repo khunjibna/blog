@@ -1,33 +1,78 @@
-<dialog class="zap-dialog" id="zap-dialog"
+<dialog class="zap-dialog" id="zap-dialog" aria-labelledby="zap-title"
         data-lnurl="{{ site.lightning.lnurl }}"
-        data-comment="Zap from {{ site.title | escape }}">
-  <button class="icon-btn" type="button" data-zap-close aria-label="ปิด">
+        data-qr-src="{{ '/assets/js/vendor/qrcode.min.js' | relative_url }}"
+        data-default-comment="Zap from {{ site.title | escape }}">
+  <button class="icon-btn zap-close" type="button" data-zap-close aria-label="ปิด">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
   </button>
-  <h3>⚡ สนับสนุนด้วย Lightning</h3>
-  <p>ถ้าชอบบทความ ส่ง sats มาเป็นกำลังใจให้คนเขียนได้เลย</p>
 
-  <div class="zap-presets" role="group" aria-label="จำนวนที่แนะนำ">
-    <button type="button" data-sats="21">21</button>
-    <button type="button" data-sats="100">100</button>
-    <button type="button" data-sats="500">500</button>
-    <button type="button" data-sats="1000">1k</button>
-  </div>
-  <label class="zap-amount">
-    <span class="visually-hidden">จำนวน sats</span>
-    <input class="input" id="zap-amount" type="number" min="1" step="1" inputmode="numeric"
-           value="{{ site.lightning.default_zap | default: 21 }}">
-    <span aria-hidden="true">sats</span>
-  </label>
-  <button class="btn btn-zap" type="button" id="zap-submit">สร้าง QR สำหรับ Zap</button>
-  <p class="zap-status" id="zap-status" role="status"></p>
-
-  <div class="zap-result" id="zap-result" hidden>
-    <canvas id="zap-qr"></canvas>
-    <p class="zap-invoice" id="zap-pr"></p>
-    <div class="hero-actions" style="justify-content:center">
-      <a class="btn btn-primary" id="zap-open-wallet" href="#">เปิดในวอลเล็ต</a>
-      <button class="btn btn-ghost" type="button" id="zap-copy">คัดลอก invoice</button>
+  <header class="zap-head">
+    <span class="zap-badge" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+    </span>
+    <div>
+      <h3 id="zap-title">สนับสนุนด้วย Lightning</h3>
+      <p>ถ้าชอบบทความ ส่ง sats มาเป็นกำลังใจให้คนเขียนได้เลย</p>
     </div>
+  </header>
+
+  <!-- ขั้นที่ 1: เลือกจำนวน -->
+  <form class="zap-step" id="zap-form" novalidate>
+    <fieldset class="zap-presets">
+      <legend class="visually-hidden">จำนวนที่แนะนำ</legend>
+      {% for amount in site.lightning.presets %}
+        <button type="button" data-sats="{{ amount }}">
+          <strong>{% if amount >= 1000 %}{{ amount | divided_by: 1000 }}k{% else %}{{ amount }}{% endif %}</strong>
+          <small>sats</small>
+        </button>
+      {% endfor %}
+    </fieldset>
+
+    <label class="zap-field">
+      <span class="zap-field-label">หรือระบุจำนวนเอง</span>
+      <span class="zap-amount">
+        <input class="input" id="zap-amount" type="number" min="1" step="1" inputmode="numeric"
+               value="{{ site.lightning.default_zap | default: 21 }}" required>
+        <span class="zap-unit" aria-hidden="true">sats</span>
+      </span>
+    </label>
+
+    <label class="zap-field">
+      <span class="zap-field-label">ข้อความถึงผู้เขียน <small>(ไม่บังคับ)</small></span>
+      <input class="input" id="zap-comment" type="text" maxlength="140" placeholder="เช่น ขอบคุณครับ 🙏">
+    </label>
+
+    <p class="zap-status" id="zap-status" role="alert" hidden></p>
+
+    <button class="btn btn-zap zap-submit" type="submit" id="zap-submit">
+      <span class="zap-spinner" aria-hidden="true"></span>
+      <span class="zap-submit-label">สร้าง QR สำหรับ Zap</span>
+    </button>
+
+    {% if site.lightning.address %}
+      <div class="zap-address">
+        <span>หรือส่งตรงไปที่ Lightning address</span>
+        <button type="button" class="zap-address-copy" data-copy="{{ site.lightning.address }}">
+          <code>{{ site.lightning.address }}</code>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span class="visually-hidden">คัดลอก</span>
+        </button>
+      </div>
+    {% endif %}
+  </form>
+
+  <!-- ขั้นที่ 2: สแกน / เปิดวอลเล็ต -->
+  <div class="zap-step" id="zap-invoice" hidden>
+    <p class="zap-amount-label">ส่ง <strong id="zap-invoice-amount"></strong> sats</p>
+    <div class="zap-qr">
+      <canvas id="zap-qr" width="240" height="240" aria-label="QR code ของ Lightning invoice"></canvas>
+      <p class="zap-qr-fallback" id="zap-qr-fallback" hidden>แสดง QR ไม่ได้ ใช้ปุ่มด้านล่างแทนได้เลย</p>
+    </div>
+    <p class="zap-hint">สแกนด้วยแอปวอลเล็ต Lightning หรือกดเปิดในวอลเล็ตบนมือถือ</p>
+    <div class="zap-actions">
+      <a class="btn btn-zap" id="zap-open-wallet" href="#">เปิดในวอลเล็ต</a>
+      <button class="btn btn-ghost" type="button" data-copy="" id="zap-copy">คัดลอก invoice</button>
+    </div>
+    <button class="zap-back" type="button" id="zap-back">← เปลี่ยนจำนวน</button>
   </div>
 </dialog>
