@@ -18,7 +18,7 @@ description: ช่องทางพูดคุย ติดตาม แล�
   <a class="contact-card" href="{{ site.lightning.lnurl }}" target="_blank" rel="noopener">
     <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
     <strong>Lightning</strong>
-    <small>khunjibna@walletofsatoshi.com</small>
+    <small>{{ site.lightning.address }}</small>
   </a>
   {% endif %}
   {% if site.repository_url %}

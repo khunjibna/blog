@@ -232,81 +232,179 @@
   /* ── Zap (Lightning) ───────────────────────────────────── */
   var zap = $("#zap-dialog");
   if (zap && typeof zap.showModal === "function") {
-    var amount = $("#zap-amount");
-    var status = $("#zap-status");
-    var result = $("#zap-result");
+    var form = $("#zap-form");
+    var invoiceStep = $("#zap-invoice");
+    var amountInput = $("#zap-amount");
+    var commentInput = $("#zap-comment");
+    var statusEl = $("#zap-status");
     var submit = $("#zap-submit");
-    var invoice = "";
+    var submitLabel = $(".zap-submit-label", submit);
+    var qrCanvas = $("#zap-qr");
+    var qrFallback = $("#zap-qr-fallback");
+    var copyInvoiceBtn = $("#zap-copy");
+    var lnParams = null;
+
+    function showStatus(msg) {
+      statusEl.textContent = msg || "";
+      statusEl.hidden = !msg;
+    }
 
     function syncPresets() {
       $$("[data-sats]", zap).forEach(function (b) {
-        b.classList.toggle("is-active", b.getAttribute("data-sats") === amount.value);
+        var active = b.getAttribute("data-sats") === amountInput.value;
+        b.classList.toggle("is-active", active);
+        b.setAttribute("aria-pressed", String(active));
       });
     }
 
-    $$("[data-zap-open]").forEach(function (b) {
-      b.addEventListener("click", function () { zap.showModal(); syncPresets(); });
-    });
+    function showStep(step) {
+      form.hidden = step !== "form";
+      invoiceStep.hidden = step !== "invoice";
+    }
+
+    function setLoading(loading) {
+      submit.disabled = loading;
+      submit.classList.toggle("is-loading", loading);
+      submitLabel.textContent = loading ? "กำลังสร้าง invoice…" : "สร้าง QR สำหรับ Zap";
+    }
+
+    function openZap() {
+      showStep("form");
+      showStatus("");
+      syncPresets();
+      zap.showModal();
+    }
+
+    $$("[data-zap-open]").forEach(function (b) { b.addEventListener("click", openZap); });
     $$("[data-zap-close]").forEach(function (b) { b.addEventListener("click", function () { zap.close(); }); });
     zap.addEventListener("click", function (e) { if (e.target === zap) zap.close(); });
     $$("[data-sats]", zap).forEach(function (b) {
-      b.addEventListener("click", function () { amount.value = b.getAttribute("data-sats"); syncPresets(); });
+      b.addEventListener("click", function () {
+        amountInput.value = b.getAttribute("data-sats");
+        syncPresets();
+        showStatus("");
+      });
     });
-    amount.addEventListener("input", syncPresets);
+    amountInput.addEventListener("input", function () { syncPresets(); showStatus(""); });
+    $("#zap-back").addEventListener("click", function () { showStep("form"); amountInput.focus(); });
 
-    function loadQr() {
-      if (window.QRCode) return Promise.resolve();
-      return new Promise(function (resolve, reject) {
-        var s = document.createElement("script");
-        s.src = "https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js";
-        s.onload = resolve;
-        s.onerror = reject;
-        document.head.appendChild(s);
+    // ปุ่มคัดลอก (Lightning address / invoice)
+    $$("[data-copy]", zap).forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var value = btn.getAttribute("data-copy");
+        if (!value) return;
+        copyText(value).then(function () {
+          btn.classList.add("is-done");
+          var label = btn.id === "zap-copy" ? btn : null;
+          if (label) label.textContent = "คัดลอกแล้ว ✓";
+          setTimeout(function () {
+            btn.classList.remove("is-done");
+            if (label) label.textContent = "คัดลอก invoice";
+          }, 2000);
+        });
+      });
+    });
+
+    function fetchJson(url) {
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = ctrl && setTimeout(function () { ctrl.abort(); }, 12000);
+      return fetch(url, ctrl ? { signal: ctrl.signal } : undefined)
+        .then(function (r) {
+          if (!r.ok) throw new Error("เซิร์ฟเวอร์วอลเล็ตตอบกลับผิดพลาด (" + r.status + ")");
+          return r.json();
+        })
+        .then(function (data) {
+          if (data && String(data.status).toUpperCase() === "ERROR") {
+            throw new Error(data.reason || "วอลเล็ตปฏิเสธคำขอ");
+          }
+          return data;
+        })
+        .finally(function () { if (timer) clearTimeout(timer); });
+    }
+
+    function getParams() {
+      if (lnParams) return Promise.resolve(lnParams);
+      return fetchJson(zap.getAttribute("data-lnurl")).then(function (p) {
+        if (!p || !p.callback) throw new Error("ข้อมูล LNURL ไม่ถูกต้อง");
+        lnParams = p;
+        return p;
       });
     }
 
-    submit.addEventListener("click", function () {
-      var sats = parseInt(amount.value, 10);
-      status.textContent = "";
-      if (isNaN(sats) || sats < 1) {
-        status.textContent = "กรุณาใส่จำนวน sats ที่ถูกต้อง";
-        return;
-      }
-      submit.disabled = true;
-      submit.textContent = "กำลังสร้าง invoice…";
-      var comment = zap.getAttribute("data-comment");
-      fetch(zap.getAttribute("data-lnurl"))
-        .then(function (r) { return r.json(); })
-        .then(function (ln) {
-          var sep = ln.callback.indexOf("?") > -1 ? "&" : "?";
-          return fetch(ln.callback + sep + "amount=" + sats * 1000 + "&comment=" + encodeURIComponent(comment));
-        })
-        .then(function (r) { return r.json(); })
-        .then(function (inv) {
-          if (!inv.pr) throw new Error(inv.reason || "ไม่สามารถสร้าง invoice ได้");
-          invoice = inv.pr;
-          return loadQr().then(function () {
-            QRCode.toCanvas($("#zap-qr"), "lightning:" + invoice, { width: 240, margin: 1 });
-            $("#zap-pr").textContent = invoice;
-            $("#zap-open-wallet").href = "lightning:" + invoice;
-            result.hidden = false;
+    var qrReady = null;
+    function loadQr() {
+      if (window.QRCode) return Promise.resolve();
+      if (qrReady) return qrReady;
+      qrReady = new Promise(function (resolve, reject) {
+        var s = document.createElement("script");
+        s.src = zap.getAttribute("data-qr-src");
+        s.onload = resolve;
+        s.onerror = function () { qrReady = null; reject(new Error("โหลดตัวสร้าง QR ไม่สำเร็จ")); };
+        document.head.appendChild(s);
+      });
+      return qrReady;
+    }
+
+    function friendlyError(err) {
+      if (err && err.name === "AbortError") return "วอลเล็ตตอบกลับช้าเกินไป ลองใหม่อีกครั้งนะ";
+      if (err instanceof TypeError) return "เชื่อมต่อวอลเล็ตไม่สำเร็จ ลองใหม่อีกครั้ง หรือส่งตรงไปที่ Lightning address ด้านล่าง";
+      return (err && err.message) || "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ";
+    }
+
+    function renderInvoice(pr, sats) {
+      $("#zap-invoice-amount").textContent = sats.toLocaleString("th-TH");
+      $("#zap-open-wallet").href = "lightning:" + pr;
+      copyInvoiceBtn.setAttribute("data-copy", pr);
+      qrFallback.hidden = true;
+      qrCanvas.hidden = false;
+      showStep("invoice");
+      return loadQr()
+        .then(function () {
+          return new Promise(function (resolve, reject) {
+            // ใช้ตัวพิมพ์ใหญ่ทำให้ QR เล็กและสแกนง่ายขึ้น (alphanumeric mode)
+            window.QRCode.toCanvas(qrCanvas, "lightning:" + pr.toUpperCase(),
+              { width: 240, margin: 1, errorCorrectionLevel: "M" },
+              function (err) { err ? reject(err) : resolve(); });
           });
         })
-        .catch(function (err) {
-          status.textContent = "เกิดข้อผิดพลาด: " + err.message;
-        })
-        .then(function () {
-          submit.disabled = false;
-          submit.textContent = "สร้าง QR ใหม่";
+        .catch(function () {
+          qrCanvas.hidden = true;
+          qrFallback.hidden = false;
         });
-    });
+    }
 
-    $("#zap-copy").addEventListener("click", function (e) {
-      var btn = e.currentTarget;
-      copyText(invoice).then(function () {
-        btn.textContent = "คัดลอกแล้ว";
-        setTimeout(function () { btn.textContent = "คัดลอก invoice"; }, 2000);
-      });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      showStatus("");
+      var sats = parseInt(amountInput.value, 10);
+      if (!sats || sats < 1) {
+        showStatus("กรุณาใส่จำนวน sats เป็นตัวเลขที่มากกว่า 0");
+        amountInput.focus();
+        return;
+      }
+
+      setLoading(true);
+      getParams()
+        .then(function (p) {
+          var min = Math.ceil((p.minSendable || 1000) / 1000);
+          var max = Math.floor((p.maxSendable || 1e14) / 1000);
+          if (sats < min) throw new Error("จำนวนขั้นต่ำคือ " + min.toLocaleString("th-TH") + " sats");
+          if (sats > max) throw new Error("จำนวนสูงสุดคือ " + max.toLocaleString("th-TH") + " sats");
+
+          var url = p.callback + (p.callback.indexOf("?") > -1 ? "&" : "?") + "amount=" + sats * 1000;
+          var allowed = parseInt(p.commentAllowed, 10) || 0;
+          var comment = commentInput.value.trim() || zap.getAttribute("data-default-comment");
+          if (allowed > 0 && comment) {
+            url += "&comment=" + encodeURIComponent(comment.slice(0, allowed));
+          }
+          return fetchJson(url);
+        })
+        .then(function (inv) {
+          if (!inv || !inv.pr) throw new Error("วอลเล็ตไม่ได้ส่ง invoice กลับมา");
+          return renderInvoice(inv.pr, sats);
+        })
+        .catch(function (err) { showStatus(friendlyError(err)); })
+        .then(function () { setLoading(false); });
     });
   }
 })();
