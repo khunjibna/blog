@@ -14,7 +14,7 @@ summary: "แนะนำการใช้งาน nostrnest โดยใช�
 
 <div class="px-2 py-2 border bg-red-200 text-whlie rounded"><b>หมายเหตุ: บทความนี้เก่าแล้ว (มีนาคม 2024) แต่ยังสามารถเป็นแนวทางการใช้งานส่วนเสริม Nostore Nostr ได้**</b></div>
 <br>
-สำหรับท่านไหนที่ต้องการใช้งาน nostrnest สำหรับบนมือถือ iphone โดย Extensions Nostore บน safari
+สำหรับท่านไหนที่ต้องการใช้งาน nostrnest สำหรับบนมือถือ iphone โดย Extensions Nostore บน safari 1
 <br>
 สำหรับวิธีดังกล่าวเป็นวิธีที่ใครที่ต้องการอยากจะพูดคุยและฟังในรังนกของทุ่งม่วงแห่งนี้ โดยมีวิธีขั้นตอนดังต่อไปนี้
 <br><br>
