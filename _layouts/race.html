@@ -23,9 +23,9 @@ layout: default
 
 <article class="race">
   <header class="post-hero">
-    <a class="back-link" href="{{ '/races/' | relative_url }}">
+    <a class="back-link" href="{{ '/running/' | relative_url }}">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      สนามวิ่งทั้งหมด
+      บันทึกวิ่งทั้งหมด
     </a>
     <p class="eyebrow">{% if is_trail %}Trail · วิ่งเทรล{% else %}Road · วิ่งถนน{% endif %}</p>
     <h1>{{ page.title }}</h1>
@@ -128,36 +128,29 @@ layout: default
       {{ content }}
     </div>
 
+    {%- assign train_posts = site.posts | where: "race", page.slug -%}
+    {% if page.training_routes or train_posts.size > 0 %}
+    <section class="race-related" aria-labelledby="race-road-title">
+      <h2 id="race-road-title">เส้นทางสู่สนามนี้</h2>
+      <ul>
+        {% for slug in page.training_routes %}
+          {% assign tr = site.routes | where: "slug", slug | first %}
+          {% if tr %}
+          <li><a href="{{ tr.url | relative_url }}"><span class="race-badge race-badge-route">เส้นทางซ้อม</span> {{ tr.title }}{% if tr.distance_km %} <small>· {{ tr.distance_km }} กม.{% if tr.elevation_m %} · D+ {{ tr.elevation_m }} ม.{% endif %}</small>{% endif %}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% for p in train_posts %}
+          <li><a href="{{ p.url | relative_url }}"><span class="race-badge race-badge-road">บทความ</span> {{ p.title }} <small>· {% include thai-date.html date=p.date %}</small></a></li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
     {% if page.ratings or page.fee_thb or page.cost_thb or page.gear or page.again != nil %}
     <section class="race-verdict" aria-labelledby="race-verdict-title">
       <h2 id="race-verdict-title">สรุปรีวิวสนาม</h2>
 
-      {% if page.ratings %}
-        {% capture overall %}{% include race-rating.html ratings=page.ratings %}{% endcapture %}
-        <div class="race-score">
-          <strong>{{ overall | strip }}</strong><span>/ 5<br>คะแนนรวม</span>
-        </div>
-        <ul class="race-ratings">
-          {% for r in page.ratings %}
-            {% assign key = r[0] %}{% assign val = r[1] | plus: 0 %}
-            {% case key %}
-              {% when "course" %}{% assign label = "เส้นทาง" %}
-              {% when "organization" %}{% assign label = "การจัดงาน" %}
-              {% when "aid" %}{% assign label = "จุดบริการน้ำ/อาหาร" %}
-              {% when "scenery" %}{% assign label = "วิวและบรรยากาศ" %}
-              {% when "marking" %}{% assign label = "ป้ายบอกทาง" %}
-              {% when "swag" %}{% assign label = "เสื้อ/เหรียญ/ของที่ระลึก" %}
-              {% when "value" %}{% assign label = "ความคุ้มค่า" %}
-              {% else %}{% assign label = key %}
-            {% endcase %}
-            {% assign pct = val | times: 20 %}
-            <li>
-              <span>{{ label }}</span>
-              <span class="race-bar" role="img" aria-label="{{ val }} จาก 5"><span style="width:{{ pct }}%"></span></span>
-              <b>{{ val }}</b>
-            </li>
-          {% endfor %}
-        </ul>
+      {% if page.ratings %}{% include rating-bars.html ratings=page.ratings %}
       {% endif %}
 
       <dl class="race-facts">

@@ -1,0 +1,31 @@
+{%- comment -%}กล่องคะแนนรวม + แถบคะแนนรายด้าน ใช้ทั้งสนามแข่งและเส้นทางซ้อม — include.ratings{%- endcomment -%}
+{% capture overall %}{% include race-rating.html ratings=include.ratings %}{% endcapture %}
+<div class="race-score">
+  <strong>{{ overall | strip }}</strong><span>/ 5<br>คะแนนรวม</span>
+</div>
+<ul class="race-ratings">
+  {% for r in include.ratings %}
+    {% assign key = r[0] %}{% assign val = r[1] | plus: 0 %}
+    {% case key %}
+      {% when "course" %}{% assign label = "เส้นทาง" %}
+      {% when "organization" %}{% assign label = "การจัดงาน" %}
+      {% when "aid" %}{% assign label = "จุดบริการน้ำ/อาหาร" %}
+      {% when "scenery" %}{% assign label = "วิวและบรรยากาศ" %}
+      {% when "marking" %}{% assign label = "ป้ายบอกทาง" %}
+      {% when "swag" %}{% assign label = "เสื้อ/เหรียญ/ของที่ระลึก" %}
+      {% when "value" %}{% assign label = "ความคุ้มค่า" %}
+      {% when "shade" %}{% assign label = "ร่มเงา" %}
+      {% when "safety" %}{% assign label = "ความปลอดภัย" %}
+      {% when "access" %}{% assign label = "การเดินทางไปถึง" %}
+      {% when "facilities" %}{% assign label = "ที่จอดรถ/ห้องน้ำ/น้ำดื่ม" %}
+      {% when "training" %}{% assign label = "เหมาะกับการซ้อม" %}
+      {% else %}{% assign label = key %}
+    {% endcase %}
+    {% assign pct = val | times: 20 %}
+    <li>
+      <span>{{ label }}</span>
+      <span class="race-bar" role="img" aria-label="{{ val }} จาก 5"><span style="width:{{ pct }}%"></span></span>
+      <b>{{ val }}</b>
+    </li>
+  {% endfor %}
+</ul>

@@ -35,8 +35,8 @@ navigation:
     url: /
   - title: บทความ
     url: /archive/
-  - title: สนามวิ่ง
-    url: /races/
+  - title: บันทึกวิ่ง
+    url: /running/
   - title: เกี่ยวกับเรา
     url: /about/
   - title: ติดต่อเรา
@@ -47,8 +47,8 @@ footer_links:
     url: /
   - title: บทความ
     url: /archive/
-  - title: สนามวิ่ง
-    url: /races/
+  - title: บันทึกวิ่ง
+    url: /running/
   - title: เกี่ยวกับเรา
     url: /about/
   - title: ติดต่อเรา
@@ -61,10 +61,15 @@ kramdown:
 collections:
   posts:
     output: true
-  # บันทึกสนามวิ่ง (เทรล / ถนน) — หนึ่งไฟล์ต่อหนึ่งสนาม ดูวิธีเขียนใน README
+  # บันทึกวิ่ง — ดูวิธีเขียนใน README
+  # สนามแข่ง: หนึ่งไฟล์ต่อหนึ่งสนาม
   races:
     output: true
-    permalink: /races/:year/:slug/
+    permalink: /running/races/:year/:slug/
+  # รีวิวเส้นทางซ้อม (วิ่ง / เดินซ้อม): หนึ่งไฟล์ต่อหนึ่งเส้นทาง
+  routes:
+    output: true
+    permalink: /running/routes/:slug/
 
 defaults:
   - scope:
@@ -78,6 +83,12 @@ defaults:
       type: races
     values:
       layout: race
+      sidebar: true
+  - scope:
+      path: ""
+      type: routes
+    values:
+      layout: route
       sidebar: true
 
 exclude:

@@ -2419,6 +2419,157 @@ button {
   margin: 0;
 }
 
+.run-tabs {
+  display: flex;
+  gap: 4px;
+  margin: 8px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.run-tabs a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: -1px;
+  padding: 12px 18px;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.run-tabs a:hover {
+  color: var(--ink);
+}
+
+.run-tabs a[aria-selected="true"] {
+  border-bottom-color: var(--peach);
+  color: var(--ink);
+}
+
+.run-tabs small {
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.run-panel[hidden],
+[data-filter-type][hidden] {
+  display: none;
+}
+
+.run-panel + .run-panel {
+  margin-top: 48px;
+}
+
+.run-panel .race-tools {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.route-grid .post-card .race-chips {
+  margin-top: 2px;
+}
+
+.race-badge-mixed,
+.race-badge-route {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.race-stats dd.is-text {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.route-dots {
+  display: inline-flex;
+  gap: 3px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.route-dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+
+.route-dots i.on {
+  background: var(--peach);
+  box-shadow: none;
+}
+
+.route-info {
+  display: block;
+}
+
+.route-info h2 {
+  margin-bottom: 16px;
+}
+
+.route-safety {
+  margin: 16px 0 0;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--peach-soft);
+  line-height: 1.7;
+}
+
+.route-links {
+  margin-top: 24px;
+}
+
+.race-related {
+  margin-top: 40px;
+}
+
+.race-related h2 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.race-related ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.race-related a {
+  display: block;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 160ms ease;
+}
+
+.race-related a:hover {
+  border-color: var(--accent);
+}
+
+.race-related small {
+  color: var(--faint);
+}
+
 @media (max-width: 720px) {
   .race-verdict {
     grid-template-columns: 1fr;
