@@ -229,31 +229,52 @@
     });
   }
 
-  /* ── Race filter (เทรล / ถนน) ──────────────────────────── */
-  var chips = $$("[data-race-filter]");
-  if (chips.length) {
-    var raceItems = $$("[data-race-type]");
-    var raceYears = $$("[data-year]");
-    var raceEmpty = $("#race-empty");
+  /* ── บันทึกวิ่ง: แท็บ สนามแข่ง / เส้นทางซ้อม ──────────────── */
+  var tabs = $$("[data-tab]");
+  if (tabs.length) {
+    var showTab = function (id, updateHash) {
+      var ids = tabs.map(function (t) { return t.getAttribute("data-tab"); });
+      if (ids.indexOf(id) < 0) id = ids[0];
+      tabs.forEach(function (t) {
+        t.setAttribute("aria-selected", t.getAttribute("data-tab") === id ? "true" : "false");
+      });
+      $$("[data-tab-panel]").forEach(function (p) { p.hidden = p.id !== id; });
+      if (updateHash && history.replaceState) history.replaceState(null, "", "#" + id);
+    };
+    tabs.forEach(function (t) {
+      t.addEventListener("click", function (e) {
+        e.preventDefault();
+        showTab(t.getAttribute("data-tab"), true);
+      });
+    });
+    showTab(location.hash.slice(1), false);
+  }
+
+  /* ── บันทึกวิ่ง: กรองประเภท (เทรล / ถนน) แยกตามแต่ละแท็บ ──── */
+  $$("[data-filter-group]").forEach(function (group) {
+    var chips = $$("[data-filter]", group);
+    var items = $$("[data-filter-type]", group);
+    var years = $$("[data-year]", group);
+    var empty = $("[data-filter-empty]", group);
     chips.forEach(function (chip) {
       chip.addEventListener("click", function () {
-        var type = chip.getAttribute("data-race-filter");
+        var type = chip.getAttribute("data-filter");
         chips.forEach(function (c) {
           var on = c === chip;
           c.classList.toggle("is-active", on);
           c.setAttribute("aria-pressed", on ? "true" : "false");
         });
         var shown = 0;
-        raceItems.forEach(function (li) {
-          var match = type === "all" || li.getAttribute("data-race-type") === type;
-          li.hidden = !match;
+        items.forEach(function (el) {
+          var match = type === "all" || el.getAttribute("data-filter-type") === type;
+          el.hidden = !match;
           if (match) shown++;
         });
-        raceYears.forEach(function (y) { y.hidden = !$("[data-race-type]:not([hidden])", y); });
-        if (raceEmpty) raceEmpty.hidden = shown > 0;
+        years.forEach(function (y) { y.hidden = !$("[data-filter-type]:not([hidden])", y); });
+        if (empty) empty.hidden = shown > 0;
       });
     });
-  }
+  });
 
   /* ── Zap (Lightning) ───────────────────────────────────── */
   var zap = $("#zap-dialog");

@@ -1,0 +1,149 @@
+---
+layout: default
+title: บันทึกวิ่ง
+permalink: /running/
+description: บันทึกการลงสนามวิ่งเทรลและวิ่งถนนปีละครั้งสองครั้ง กับเส้นทางที่ใช้ซ้อมจริง ไม่ได้ล่ารางวัล แค่อยากเห็นตัวเองดีขึ้นกว่าปีก่อน พร้อมรีวิวและสถิติทุกครั้ง
+---
+{%- assign races = site.races | sort: "date" | reverse -%}
+{%- assign routes = site.routes | sort: "date" | reverse -%}
+
+{%- comment -%}รวมสถิติตลอดชีพ{%- endcomment -%}
+{%- assign total_km = 0 -%}{%- assign total_elev = 0 -%}{%- assign total_secs = 0 -%}
+{%- assign finished_count = 0 -%}{%- assign trail_count = 0 -%}{%- assign longest = 0 -%}
+{%- for r in races -%}
+  {%- if r.race_type == "trail" -%}{%- assign trail_count = trail_count | plus: 1 -%}{%- endif -%}
+  {%- unless r.result == "dnf" or r.result == "dns" -%}
+    {%- assign finished_count = finished_count | plus: 1 -%}
+    {%- assign total_km = total_km | plus: r.distance_km -%}
+    {%- assign total_elev = total_elev | plus: r.elevation_m -%}
+    {%- capture s %}{% include race-seconds.html time=r.finish_time %}{% endcapture -%}
+    {%- assign s = s | strip | plus: 0 -%}{%- assign total_secs = total_secs | plus: s -%}
+    {%- assign d = r.distance_km | plus: 0 -%}{%- if d > longest -%}{%- assign longest = d -%}{%- endif -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- assign road_count = races.size | minus: trail_count -%}
+
+<header class="page-header container">
+  <p class="eyebrow">Running Journal</p>
+  <h1>บันทึกวิ่ง</h1>
+  <p>{{ page.description }}</p>
+</header>
+
+<div class="container">
+  <nav class="run-tabs" role="tablist" aria-label="ประเภทบันทึก">
+    <a href="#races" role="tab" data-tab="races" aria-selected="true">สนามแข่ง <small>{{ races.size }}</small></a>
+    <a href="#routes" role="tab" data-tab="routes" aria-selected="false">เส้นทางซ้อม <small>{{ routes.size }}</small></a>
+  </nav>
+
+  <section class="run-panel" id="races" role="tabpanel" aria-label="สนามแข่ง" data-tab-panel data-filter-group>
+  {% if races.size > 0 %}
+  {% assign first_year = races.last.date | date: "%Y" | plus: 543 %}
+  <ul class="race-totals" aria-label="สถิติรวมทุกสนาม">
+    <li><strong>{{ races.size }}</strong><span>สนามที่ลง</span></li>
+    <li><strong>{{ finished_count }}</strong><span>วิ่งจบ</span></li>
+    <li><strong>{{ total_km | round: 1 }}</strong><span>กม. บนสนามแข่ง</span></li>
+    {% if total_elev > 0 %}<li><strong>{{ total_elev }}</strong><span>ม. ไต่สะสม</span></li>{% endif %}
+    {% if total_secs > 0 %}<li><strong>{{ total_secs | divided_by: 3600.0 | round: 1 }}</strong><span>ชั่วโมงบนสนาม</span></li>{% endif %}
+    <li><strong>{{ longest }}</strong><span>กม. ไกลที่สุด</span></li>
+    <li><strong>{{ first_year }}</strong><span>ลงสนามแรก</span></li>
+  </ul>
+
+  <div class="race-tools" role="group" aria-label="กรองประเภทสนาม">
+    <button class="race-chip is-active" type="button" data-filter="all" aria-pressed="true">ทั้งหมด <small>{{ races.size }}</small></button>
+    <button class="race-chip" type="button" data-filter="trail" aria-pressed="false">เทรล <small>{{ trail_count }}</small></button>
+    <button class="race-chip" type="button" data-filter="road" aria-pressed="false">ถนน <small>{{ road_count }}</small></button>
+  </div>
+
+  {% assign years = races | group_by_exp: "r", "r.date | date: '%Y'" %}
+  {% for year in years %}
+  <section class="archive-year" data-year>
+    <h2 class="archive-year-label">{{ year.name | plus: 543 }}<small>{{ year.items | size }} สนาม</small></h2>
+    <ul class="archive-list">
+      {% for r in year.items %}
+      {% assign rtype = r.race_type | default: "road" %}
+      {% capture rs %}{% include race-seconds.html time=r.finish_time %}{% endcapture %}
+      {% assign rs = rs | strip | plus: 0 %}
+      {% assign rd = r.distance_km | plus: 0 %}
+      {% capture score %}{% include race-rating.html ratings=r.ratings %}{% endcapture %}
+      <li class="archive-item" data-filter-type="{{ rtype }}">
+        <a class="archive-link" href="{{ r.url | relative_url }}">
+          <span class="card-media"><img src="{{ r.image | default: site.og_image | relative_url }}" alt="" loading="lazy"></span>
+          <span>
+            <span class="card-meta">
+              <span class="race-badge race-badge-{{ rtype }}">{% if rtype == "trail" %}เทรล{% else %}ถนน{% endif %}</span>
+              <time datetime="{{ r.date | date_to_xmlschema }}">{% include thai-date.html date=r.date %}</time>
+              {% if r.location %}<span class="dot" aria-hidden="true"></span><span>{{ r.location }}</span>{% endif %}
+            </span>
+            <h3 class="card-title">{{ r.title }}</h3>
+            <span class="race-chips">
+              {% if rd > 0 %}<span>{{ rd }} กม.</span>{% endif %}
+              {% if r.elevation_m %}<span>D+ {{ r.elevation_m }} ม.</span>{% endif %}
+              {% if r.result == "dnf" or r.result == "dns" %}
+                <span class="is-dnf">{{ r.result | upcase }}</span>
+              {% elsif rs > 0 %}
+                <span>{% include race-hms.html seconds=rs %}</span>
+                {% if rd > 0 %}{% assign rp = rs | times: 1.0 | divided_by: rd %}<span>{% include race-hms.html seconds=rp pace=true %} /กม.</span>{% endif %}
+              {% endif %}
+              {% assign score = score | strip %}
+              {% if score != "" %}<span class="race-star">★ {{ score }}</span>{% endif %}
+            </span>
+          </span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+  <p class="archive-empty" data-filter-empty hidden>ยังไม่มีสนามประเภทนี้</p>
+  {% else %}
+  <div class="race-empty">
+    <p><strong>ยังไม่มีบันทึกสนาม</strong></p>
+    <p>สนามแรกกำลังจะมา — ปีละสนามก็นับนะ</p>
+  </div>
+  {% endif %}
+  </section>
+
+  {%- assign route_trail = routes | where: "route_type", "trail" | size -%}
+  {%- assign route_road = routes | where: "route_type", "road" | size -%}
+  {%- assign route_mixed = routes.size | minus: route_trail | minus: route_road -%}
+  <section class="run-panel" id="routes" role="tabpanel" aria-label="เส้นทางซ้อม" data-tab-panel data-filter-group>
+  {% if routes.size > 0 %}
+  <div class="race-tools" role="group" aria-label="กรองประเภทเส้นทาง">
+    <button class="race-chip is-active" type="button" data-filter="all" aria-pressed="true">ทั้งหมด <small>{{ routes.size }}</small></button>
+    {% if route_trail > 0 %}<button class="race-chip" type="button" data-filter="trail" aria-pressed="false">เทรล <small>{{ route_trail }}</small></button>{% endif %}
+    {% if route_road > 0 %}<button class="race-chip" type="button" data-filter="road" aria-pressed="false">ถนน / สวน <small>{{ route_road }}</small></button>{% endif %}
+    {% if route_mixed > 0 %}<button class="race-chip" type="button" data-filter="mixed" aria-pressed="false">ผสม <small>{{ route_mixed }}</small></button>{% endif %}
+  </div>
+
+  <div class="post-grid route-grid">
+    {% for t in routes %}
+    {% assign ttype = t.route_type | default: "mixed" %}
+    {% unless ttype == "trail" or ttype == "road" %}{% assign ttype = "mixed" %}{% endunless %}
+    {% capture tscore %}{% include race-rating.html ratings=t.ratings %}{% endcapture %}{% assign tscore = tscore | strip %}
+    <a class="post-card" href="{{ t.url | relative_url }}" data-filter-type="{{ ttype }}">
+      <span class="card-media"><img src="{{ t.image | default: site.og_image | relative_url }}" alt="" loading="lazy"></span>
+      <span class="card-body">
+        <span class="card-meta">
+          <span class="race-badge race-badge-{{ ttype }}">{% case ttype %}{% when "trail" %}เทรล{% when "road" %}ถนน / สวน{% else %}ผสม{% endcase %}</span>
+          {% if t.location %}<span>{{ t.location }}</span>{% endif %}
+        </span>
+        <h3 class="card-title">{{ t.title }}</h3>
+        <span class="race-chips">
+          {% if t.distance_km %}<span>{{ t.distance_km }} กม.</span>{% endif %}
+          {% if t.elevation_m %}<span>D+ {{ t.elevation_m }} ม.</span>{% endif %}
+          {% if t.difficulty %}<span>ความยาก {{ t.difficulty }}/5</span>{% endif %}
+          {% if tscore != "" %}<span class="race-star">★ {{ tscore }}</span>{% endif %}
+        </span>
+      </span>
+    </a>
+    {% endfor %}
+  </div>
+  <p class="archive-empty" data-filter-empty hidden>ยังไม่มีเส้นทางประเภทนี้</p>
+  {% else %}
+  <div class="race-empty">
+    <p><strong>ยังไม่มีรีวิวเส้นทางซ้อม</strong></p>
+    <p>เส้นทางที่ไปซ้อมบ่อย ๆ จะมาเล่าที่นี่ — ทั้งวิ่งและเดินซ้อม</p>
+  </div>
+  {% endif %}
+  </section>
+</div>
