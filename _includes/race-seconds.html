@@ -1,0 +1,7 @@
+{%- comment -%}แปลงเวลา "H:MM:SS" หรือ "MM:SS" เป็นจำนวนวินาที (ว่างถ้าไม่มีข้อมูล){%- endcomment -%}
+{%- assign _p = include.time | append: "" | split: ":" -%}
+{%- if _p.size == 3 -%}
+  {%- assign _h = _p[0] | times: 3600 -%}{%- assign _m = _p[1] | times: 60 -%}{{ _h | plus: _m | plus: _p[2] }}
+{%- elsif _p.size == 2 -%}
+  {%- assign _m = _p[0] | times: 60 -%}{{ _m | plus: _p[1] }}
+{%- endif -%}

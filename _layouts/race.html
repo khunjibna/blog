@@ -1,0 +1,214 @@
+---
+layout: default
+---
+{%- assign is_trail = false -%}{%- if page.race_type == "trail" -%}{%- assign is_trail = true -%}{%- endif -%}
+{%- assign dist = page.distance_km | plus: 0 -%}
+{%- assign elev = page.elevation_m | plus: 0 -%}
+{%- capture secs %}{% include race-seconds.html time=page.finish_time %}{% endcapture -%}
+{%- assign secs = secs | strip | plus: 0 -%}
+{%- capture cut %}{% include race-seconds.html time=page.cutoff %}{% endcapture -%}
+{%- assign cut = cut | strip | plus: 0 -%}
+{%- assign finished = true -%}{%- if page.result == "dnf" or page.result == "dns" -%}{%- assign finished = false -%}{%- endif -%}
+
+{%- comment -%}ครั้งก่อนของสนามเดียวกัน (ใช้ series ตัวเดียวกัน) — ไว้เทียบกับตัวเอง{%- endcomment -%}
+{%- assign prev_same = nil -%}
+{%- if page.series -%}
+  {%- assign same_series = site.races | where: "series", page.series | sort: "date" -%}
+  {%- for r in same_series -%}
+    {%- if r.date < page.date and r.finish_time and r.result != "dnf" and r.result != "dns" -%}{%- assign prev_same = r -%}{%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+<div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+
+<article class="race">
+  <header class="post-hero">
+    <a class="back-link" href="{{ '/races/' | relative_url }}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      สนามวิ่งทั้งหมด
+    </a>
+    <p class="eyebrow">{% if is_trail %}Trail · วิ่งเทรล{% else %}Road · วิ่งถนน{% endif %}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<p class="post-lede">{{ page.summary }}</p>{% endif %}
+    <div class="post-meta">
+      <span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        วันแข่ง <time datetime="{{ page.date | date_to_xmlschema }}">{% include thai-date.html date=page.date long=true %}</time>
+      </span>
+      {% if page.location %}
+      <span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        {{ page.location }}
+      </span>
+      {% endif %}
+      {% if page.category %}
+      <span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        รุ่น {{ page.category }}
+      </span>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.image %}
+  <figure class="race-cover">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" fetchpriority="high">
+  </figure>
+  {% endif %}
+
+  <div class="post-body">
+    <section class="race-panel" aria-labelledby="race-stats-title">
+      <h2 class="visually-hidden" id="race-stats-title">สถิติสนามนี้</h2>
+      <dl class="race-stats">
+        {% if dist > 0 %}
+        <div><dt>ระยะทาง</dt><dd>{{ dist }}<small> กม.</small></dd></div>
+        {% endif %}
+        {% if elev > 0 %}
+        <div><dt>ไต่สะสม (D+)</dt><dd>{{ elev }}<small> ม.</small></dd></div>
+        {% endif %}
+        <div>
+          <dt>เวลาจบ</dt>
+          {% if finished and secs > 0 %}
+            <dd>{% include race-hms.html seconds=secs %}</dd>
+          {% elsif page.result == "dns" %}
+            <dd class="is-dnf">DNS</dd>
+          {% else %}
+            <dd class="is-dnf">DNF{% if page.dnf_km %}<small> ที่ กม. {{ page.dnf_km }}</small>{% endif %}</dd>
+          {% endif %}
+        </div>
+        {% if finished and secs > 0 and dist > 0 %}
+          {% assign pace = secs | times: 1.0 | divided_by: dist %}
+          <div><dt>เพซเฉลี่ย</dt><dd>{% include race-hms.html seconds=pace pace=true %}<small> /กม.</small></dd></div>
+        {% endif %}
+        {% if is_trail and elev > 0 and dist > 0 %}
+          {% assign effort = elev | divided_by: 100.0 | plus: dist %}
+          <div title="ระยะทาง + (D+ ÷ 100) ใช้เทียบความหนักของสนามเทรลที่ระยะไม่เท่ากัน">
+            <dt>ระยะเทียบแรง (km-effort)</dt><dd>{{ effort | round: 1 }}</dd>
+          </div>
+          {% if finished and secs > 0 %}
+            {% assign effort_pace = secs | times: 1.0 | divided_by: effort %}
+            <div><dt>เพซต่อ km-effort</dt><dd>{% include race-hms.html seconds=effort_pace pace=true %}</dd></div>
+          {% endif %}
+        {% endif %}
+        {% if finished and secs > 0 and cut > 0 %}
+          {% assign margin = cut | minus: secs %}
+          <div><dt>เผื่อก่อนตัดตัว (COT)</dt><dd>{% if margin >= 0 %}{% include race-hms.html seconds=margin %}{% else %}เกินเวลา{% endif %}</dd></div>
+        {% endif %}
+        {% if page.rank_overall and page.finishers %}
+          {% assign top = page.rank_overall | times: 100.0 | divided_by: page.finishers | ceil %}
+          <div><dt>อันดับรวม</dt><dd>{{ page.rank_overall }}<small> / {{ page.finishers }} · {{ top }}% แรก</small></dd></div>
+        {% endif %}
+        {% if page.rank_category and page.category_finishers %}
+          <div><dt>อันดับในรุ่น</dt><dd>{{ page.rank_category }}<small> / {{ page.category_finishers }}</small></dd></div>
+        {% endif %}
+      </dl>
+
+      {% if page.goal or prev_same %}
+      <div class="race-notes">
+        {% if page.goal %}
+        <p class="race-goal {% if page.goal_met %}is-met{% elsif page.goal_met == false %}is-missed{% endif %}">
+          <span class="race-goal-icon" aria-hidden="true">{% if page.goal_met %}✓{% elsif page.goal_met == false %}✗{% else %}◎{% endif %}</span>
+          <span><strong>เป้าหมายของปีนี้:</strong> {{ page.goal }}{% if page.goal_met %} — <em>ทำได้</em>{% elsif page.goal_met == false %} — <em>ยังไม่ถึง</em>{% endif %}</span>
+        </p>
+        {% endif %}
+        {% if prev_same and finished and secs > 0 %}
+          {% capture prev_secs %}{% include race-seconds.html time=prev_same.finish_time %}{% endcapture %}
+          {% assign diff = prev_secs | strip | plus: 0 | minus: secs %}
+          <p class="race-compare">
+            <span class="race-goal-icon" aria-hidden="true">↺</span>
+            <span><strong>เทียบกับครั้งก่อน</strong> (<a href="{{ prev_same.url | relative_url }}">{{ prev_same.date | date: "%Y" | plus: 543 }}</a>, {{ prev_same.finish_time }}):
+            {% if diff > 0 %}เร็วขึ้น <em>{% include race-hms.html seconds=diff %}</em>{% elsif diff < 0 %}{% assign slower = diff | abs %}ช้าลง <em>{% include race-hms.html seconds=slower %}</em>{% else %}เวลาเท่าเดิมเป๊ะ{% endif %}{% if prev_same.distance_km != page.distance_km %} <small>(ระยะต่างกัน {{ prev_same.distance_km }} → {{ page.distance_km }} กม.)</small>{% endif %}</span>
+          </p>
+        {% endif %}
+      </div>
+      {% endif %}
+    </section>
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    {% if page.ratings or page.fee_thb or page.cost_thb or page.gear or page.again != nil %}
+    <section class="race-verdict" aria-labelledby="race-verdict-title">
+      <h2 id="race-verdict-title">สรุปรีวิวสนาม</h2>
+
+      {% if page.ratings %}
+        {% capture overall %}{% include race-rating.html ratings=page.ratings %}{% endcapture %}
+        <div class="race-score">
+          <strong>{{ overall | strip }}</strong><span>/ 5<br>คะแนนรวม</span>
+        </div>
+        <ul class="race-ratings">
+          {% for r in page.ratings %}
+            {% assign key = r[0] %}{% assign val = r[1] | plus: 0 %}
+            {% case key %}
+              {% when "course" %}{% assign label = "เส้นทาง" %}
+              {% when "organization" %}{% assign label = "การจัดงาน" %}
+              {% when "aid" %}{% assign label = "จุดบริการน้ำ/อาหาร" %}
+              {% when "scenery" %}{% assign label = "วิวและบรรยากาศ" %}
+              {% when "marking" %}{% assign label = "ป้ายบอกทาง" %}
+              {% when "swag" %}{% assign label = "เสื้อ/เหรียญ/ของที่ระลึก" %}
+              {% when "value" %}{% assign label = "ความคุ้มค่า" %}
+              {% else %}{% assign label = key %}
+            {% endcase %}
+            {% assign pct = val | times: 20 %}
+            <li>
+              <span>{{ label }}</span>
+              <span class="race-bar" role="img" aria-label="{{ val }} จาก 5"><span style="width:{{ pct }}%"></span></span>
+              <b>{{ val }}</b>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <dl class="race-facts">
+        {% if page.fee_thb %}<div><dt>ค่าสมัคร</dt><dd>{{ page.fee_thb }} บาท</dd></div>{% endif %}
+        {% if page.cost_thb %}<div><dt>ค่าใช้จ่ายทั้งทริป</dt><dd>{{ page.cost_thb }} บาท</dd></div>{% endif %}
+        {% if page.weather %}<div><dt>สภาพอากาศ</dt><dd>{{ page.weather }}</dd></div>{% endif %}
+        {% if page.gear %}<div><dt>อุปกรณ์</dt><dd>{{ page.gear | join: " · " }}</dd></div>{% endif %}
+        {% if page.again != nil %}<div><dt>ปีหน้าจะกลับไปอีกไหม</dt><dd>{% if page.again %}ไปแน่นอน{% else %}คงพอแล้ว{% endif %}</dd></div>{% endif %}
+      </dl>
+
+      {% if page.links %}
+      <p class="race-links">
+        {% if page.links.event %}<a class="share-btn" href="{{ page.links.event }}" target="_blank" rel="noopener">เว็บงาน</a>{% endif %}
+        {% if page.links.results %}<a class="share-btn" href="{{ page.links.results }}" target="_blank" rel="noopener">ผลการแข่งขัน</a>{% endif %}
+        {% if page.links.activity %}<a class="share-btn" href="{{ page.links.activity }}" target="_blank" rel="noopener">Activity / GPX</a>{% endif %}
+      </p>
+      {% endif %}
+    </section>
+    {% endif %}
+
+    {% assign full_url = page.url | absolute_url %}
+    <footer class="post-footer">
+      <div class="share-row">
+        <span class="share-label">แชร์รีวิวสนาม</span>
+        <a class="share-btn" href="https://www.facebook.com/sharer.php?u={{ full_url | uri_escape }}" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a class="share-btn" href="https://twitter.com/intent/tweet?url={{ full_url | uri_escape }}&text={{ page.title | uri_escape }}" target="_blank" rel="noopener noreferrer">X</a>
+        <a class="share-btn" href="https://social-plugins.line.me/lineit/share?url={{ full_url | uri_escape }}" target="_blank" rel="noopener noreferrer">LINE</a>
+        <button class="share-btn" type="button" data-copy-link="{{ full_url }}" data-title="{{ page.title | escape }}">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+          <span>คัดลอกลิงก์</span>
+        </button>
+      </div>
+
+      {% include author-card.html %}
+
+      {% if page.previous or page.next %}
+        <nav class="post-nav" aria-label="สนามก่อนหน้าและถัดไป">
+          {% if page.previous %}
+            <a class="prev" href="{{ page.previous.url | relative_url }}">
+              <small>← สนามก่อนหน้า</small>
+              <strong>{{ page.previous.title }}</strong>
+            </a>
+          {% endif %}
+          {% if page.next %}
+            <a class="next" href="{{ page.next.url | relative_url }}">
+              <small>สนามถัดไป →</small>
+              <strong>{{ page.next.title }}</strong>
+            </a>
+          {% endif %}
+        </nav>
+      {% endif %}
+    </footer>
+  </div>
+</article>

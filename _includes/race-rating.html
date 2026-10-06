@@ -1,0 +1,6 @@
+{%- comment -%}คะแนนเฉลี่ยจาก ratings ใน front matter (เต็ม 5) — ว่างถ้าไม่ได้ให้คะแนน{%- endcomment -%}
+{%- assign _sum = 0 -%}{%- assign _n = 0 -%}
+{%- for _r in include.ratings -%}
+  {%- if _r[1] -%}{%- assign _sum = _sum | plus: _r[1] -%}{%- assign _n = _n | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- if _n > 0 -%}{{ _sum | times: 1.0 | divided_by: _n | round: 1 }}{%- endif -%}

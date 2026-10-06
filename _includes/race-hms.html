@@ -1,0 +1,10 @@
+{%- comment -%}แสดงวินาทีเป็น "H:MM:SS" — ใส่ pace=true เพื่อแสดงแบบ "M:SS"{%- endcomment -%}
+{%- assign _s = include.seconds | plus: 0 | round -%}
+{%- assign _h = _s | divided_by: 3600 -%}
+{%- assign _m = _s | modulo: 3600 | divided_by: 60 -%}
+{%- assign _r = _s | modulo: 60 -%}
+{%- if include.pace -%}
+  {%- assign _m = _s | divided_by: 60 -%}{{ _m }}:{% if _r < 10 %}0{% endif %}{{ _r }}
+{%- else -%}
+  {{ _h }}:{% if _m < 10 %}0{% endif %}{{ _m }}:{% if _r < 10 %}0{% endif %}{{ _r }}
+{%- endif -%}

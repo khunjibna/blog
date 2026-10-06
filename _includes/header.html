@@ -11,7 +11,7 @@
         {% assign is_active = false %}
         {% if item.url == '/' %}
           {% if page.url == '/' %}{% assign is_active = true %}{% endif %}
-        {% elsif page.url contains item.url or page.date and item.url == '/archive/' %}
+        {% elsif page.url contains item.url or page.collection == 'posts' and item.url == '/archive/' %}
           {% assign is_active = true %}
         {% endif %}
         <a href="{{ item.url | relative_url }}"{% if is_active %} class="active" aria-current="page"{% endif %}>{{ item.title }}</a>
@@ -38,7 +38,7 @@
   <div class="mobile-menu" id="mobile-menu">
     <nav class="container" aria-label="เมนูมือถือ">
       {% for item in site.navigation %}
-        <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active" aria-current="page"{% endif %}>{{ item.title }}<span aria-hidden="true">→</span></a>
+        <a href="{{ item.url | relative_url }}"{% if page.url == item.url or item.url != '/' and page.url contains item.url %} class="active" aria-current="page"{% endif %}>{{ item.title }}<span aria-hidden="true">→</span></a>
       {% endfor %}
     </nav>
   </div>
