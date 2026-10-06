@@ -229,6 +229,32 @@
     });
   }
 
+  /* ── Race filter (เทรล / ถนน) ──────────────────────────── */
+  var chips = $$("[data-race-filter]");
+  if (chips.length) {
+    var raceItems = $$("[data-race-type]");
+    var raceYears = $$("[data-year]");
+    var raceEmpty = $("#race-empty");
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var type = chip.getAttribute("data-race-filter");
+        chips.forEach(function (c) {
+          var on = c === chip;
+          c.classList.toggle("is-active", on);
+          c.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        var shown = 0;
+        raceItems.forEach(function (li) {
+          var match = type === "all" || li.getAttribute("data-race-type") === type;
+          li.hidden = !match;
+          if (match) shown++;
+        });
+        raceYears.forEach(function (y) { y.hidden = !$("[data-race-type]:not([hidden])", y); });
+        if (raceEmpty) raceEmpty.hidden = shown > 0;
+      });
+    });
+  }
+
   /* ── Zap (Lightning) ───────────────────────────────────── */
   var zap = $("#zap-dialog");
   if (zap && typeof zap.showModal === "function") {
