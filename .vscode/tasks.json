@@ -1,0 +1,71 @@
+{
+  // Ruby ติดตั้งผ่าน RubyInstaller ที่ C:\Ruby34-x64 — ใส่ PATH ตรงนี้เพื่อให้ task
+  // ทำงานได้แม้ VS Code ถูกเปิดค้างไว้ก่อนติดตั้ง Ruby (ถ้าย้าย/อัปเดต Ruby ให้แก้ path นี้)
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Jekyll: Serve",
+      "detail": "serve ที่ http://127.0.0.1:4000/blog/",
+      "type": "shell",
+      "command": "bundle exec jekyll serve",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": { "PATH": "C:\\Ruby34-x64\\bin;${env:PATH}" }
+      },
+      "isBackground": true,
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Jekyll: Serve (unpublished)",
+      "detail": "เหมือน Serve แต่แสดงไฟล์ที่ตั้ง published: false ด้วย",
+      "type": "shell",
+      "command": "bundle exec jekyll serve --unpublished",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": { "PATH": "C:\\Ruby34-x64\\bin;${env:PATH}" }
+      },
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Jekyll: Build",
+      "detail": "build ครั้งเดียวลง _site/ (เหมือนที่ CI ทำ)",
+      "type": "shell",
+      "command": "bundle exec jekyll build",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": { "PATH": "C:\\Ruby34-x64\\bin;${env:PATH}" }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Jekyll: Bundle install",
+      "detail": "ติดตั้ง/อัปเดต gem ตาม Gemfile",
+      "type": "shell",
+      "command": "bundle install",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": { "PATH": "C:\\Ruby34-x64\\bin;C:\\Ruby34-x64\\msys64\\ucrt64\\bin;${env:PATH}" }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Ruby: Run current file",
+      "detail": "รันไฟล์ .rb ที่เปิดอยู่ด้วย ruby",
+      "type": "shell",
+      "command": "ruby",
+      "args": ["${file}"],
+      "options": {
+        "cwd": "${fileDirname}",
+        "env": { "PATH": "C:\\Ruby34-x64\\bin;${env:PATH}" }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": []
+    }
+  ]
+}

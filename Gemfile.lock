@@ -12,8 +12,16 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
+    ffi (1.17.2)
+    ffi (1.17.2-x64-mingw-ucrt)
     ffi (1.17.2-x86_64-linux-gnu)
     forwardable-extended (2.6.0)
+    google-protobuf (4.33.1)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.33.1-x64-mingw-ucrt)
+      bigdecimal
+      rake (>= 13)
     google-protobuf (4.33.1-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
@@ -64,19 +72,32 @@ GEM
     rexml (3.4.4)
     rouge (4.6.1)
     safe_yaml (1.0.5)
+    sass-embedded (1.94.2)
+      google-protobuf (~> 4.31)
+      rake (>= 13)
+    sass-embedded (1.94.2-x64-mingw-ucrt)
+      google-protobuf (~> 4.31)
     sass-embedded (1.94.2-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2026.5)
+      tzinfo (>= 1.0.0)
     unicode-display_width (2.6.0)
     webrick (1.9.2)
 
 PLATFORMS
+  x64-mingw-ucrt
   x86_64-linux-gnu
+  x86_64-mingw-ucrt
 
 DEPENDENCIES
   jekyll (~> 4.4)
   logger
+  tzinfo (~> 2.0)
+  tzinfo-data
   webrick (~> 1.8)
 
 BUNDLED WITH
