@@ -128,6 +128,8 @@ layout: default
       {{ content }}
     </div>
 
+    {% if page.gallery %}{% include race-gallery.html gallery=page.gallery %}{% endif %}
+
     {%- assign train_posts = site.posts | where: "race", page.slug -%}
     {% if page.training_routes or train_posts.size > 0 %}
     <section class="race-related" aria-labelledby="race-road-title">

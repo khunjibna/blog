@@ -2240,6 +2240,181 @@ button {
   border-radius: var(--radius-lg);
 }
 
+/* ── แกลเลอรีภาพแนบ + lightbox ───────────────────────────── */
+.race-gallery {
+  margin-top: 44px;
+}
+
+.race-gallery h2 {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.race-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.race-gallery-grid li {
+  min-width: 0;
+}
+
+.race-photo {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.race-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.race-photo:hover img,
+.race-photo:focus-visible img {
+  transform: scale(1.05);
+}
+
+.race-photo:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.race-photo-caption {
+  margin: 8px 2px 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.race-lightbox {
+  position: fixed;
+  inset: 0;
+  width: min(1100px, 100% - 32px);
+  max-width: min(1100px, 100% - 32px);
+  max-height: calc(100% - 32px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.race-lightbox[open] {
+  animation: pop-in 180ms ease-out;
+}
+
+.race-lightbox::backdrop {
+  background: rgba(10, 16, 18, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.race-lightbox-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+}
+
+.race-lightbox-stage img {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 140px);
+  object-fit: contain;
+}
+
+.race-lightbox-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--line);
+}
+
+.race-lightbox-caption {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.race-lightbox-count {
+  margin-left: auto;
+  font-size: 0.82rem;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.race-lightbox-nav,
+.race-lightbox-close {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.race-lightbox-nav:hover,
+.race-lightbox-close:hover {
+  opacity: 1;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.race-lightbox-nav:focus-visible,
+.race-lightbox-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.race-lightbox.is-single .race-lightbox-nav {
+  display: none;
+}
+
+.race-lightbox-prev {
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+}
+
+.race-lightbox-next {
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+}
+
+.race-lightbox-close {
+  top: 12px;
+  right: 12px;
+}
+
 .race-panel {
   margin-bottom: 40px;
 }
@@ -2573,6 +2748,10 @@ button {
 @media (max-width: 720px) {
   .race-verdict {
     grid-template-columns: 1fr;
+  }
+
+  .race-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .race-ratings li {

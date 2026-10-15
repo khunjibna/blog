@@ -25,8 +25,8 @@ nostr:
   npub: npub1p7w6gyufuy3e6fnugvg9an7fyfes085qct2tp8sarctjwqdaqltsg47tzy
 
 lightning:
-  lnurl: "https://walletofsatoshi.com/.well-known/lnurlp/khunjibna"
-  address: khunjibna@walletofsatoshi.com
+  lnurl: "https://walletofsatoshi.com/.well-known/lnurlp/worklatency983"
+  address: worklatency983@walletofsatoshi.com
   default_zap: 21
   presets: [21, 100, 500, 1000]
 

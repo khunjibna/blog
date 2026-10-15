@@ -276,6 +276,60 @@
     });
   });
 
+  /* ── แกลเลอรีภาพสนามแข่ง: คลิกขยาย (lightbox) ───────────── */
+  var lightbox = $("#race-lightbox");
+  if (lightbox) {
+    var lbImg = $("#race-lightbox-img", lightbox);
+    var lbCaption = $("#race-lightbox-caption", lightbox);
+    var lbCount = $("#race-lightbox-count", lightbox);
+    var shots = $$("[data-gallery-item]");
+    var shotAt = 0;
+
+    lightbox.classList.toggle("is-single", shots.length < 2);
+
+    var showShot = function (i) {
+      if (!shots.length) return;
+      shotAt = (i + shots.length) % shots.length;
+      var btn = shots[shotAt];
+      var caption = btn.getAttribute("data-caption") || "";
+      lbImg.src = btn.getAttribute("data-src");
+      lbImg.alt = caption || btn.getAttribute("data-alt") || "";
+      lbCaption.textContent = caption;
+      lbCaption.hidden = !caption;
+      lbCount.textContent = shotAt + 1 + " / " + shots.length;
+    };
+
+    shots.forEach(function (btn, i) {
+      btn.addEventListener("click", function () {
+        showShot(i);
+        lightbox.showModal();
+      });
+    });
+
+    $$("[data-lightbox-prev]", lightbox).forEach(function (b) {
+      b.addEventListener("click", function () { showShot(shotAt - 1); });
+    });
+
+    $$("[data-lightbox-next]", lightbox).forEach(function (b) {
+      b.addEventListener("click", function () { showShot(shotAt + 1); });
+    });
+
+    $$("[data-lightbox-close]", lightbox).forEach(function (b) {
+      b.addEventListener("click", function () { lightbox.close(); });
+    });
+
+    lightbox.addEventListener("keydown", function (e) {
+      if (shots.length < 2) return;
+      if (e.key === "ArrowLeft") { e.preventDefault(); showShot(shotAt - 1); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); showShot(shotAt + 1); }
+    });
+
+    // คลิกพื้นที่ว่างรอบภาพเพื่อปิด (Esc ปิดเองได้เพราะเป็น <dialog>)
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) lightbox.close();
+    });
+  }
+
   /* ── Zap (Lightning) ───────────────────────────────────── */
   var zap = $("#zap-dialog");
   if (zap && typeof zap.showModal === "function") {
